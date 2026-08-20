@@ -1,0 +1,35 @@
+<Window x:Class="PokemonHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokemonHelper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <!-- 프로세스 선택 영역 -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,15" HorizontalAlignment="Center">
+                <TextBlock Text="타겟 윈도우:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="14"/>
+                <ComboBox x:Name="ProcessComboBox" Width="200" Height="30" Margin="0,0,10,0" DisplayMemberPath="MainWindowTitle" SelectedValuePath="MainWindowHandle"/>
+                <Button x:Name="RefreshProcessButton" Content="새로고침" Width="80" Height="30" Click="RefreshProcessButton_Click"/>
+                <Button x:Name="SetRegionButton" Content="영역 설정" Width="80" Height="30" Margin="10,0,0,0" Click="SetRegionButton_Click"/>
+            </StackPanel>
+
+            <!-- OCR 컨트롤 영역 -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Button x:Name="StartOcrButton" Content="화면 인식 시작" Height="40" Width="150" FontSize="16" Margin="0,0,10,0" Click="StartOcrButton_Click"/>
+                <Button x:Name="StopOcrButton" Content="화면 인식 종료" Height="40" Width="150" FontSize="16" Click="StopOcrButton_Click" IsEnabled="False"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
+            <TextBlock x:Name="ResultTextBlock" FontSize="14" TextWrapping="Wrap" Text="버튼을 눌러 웹 서버를 시작하세요."/>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+<Window x:Class="PokemonHelper.CaptureOverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CaptureOverlayWindow" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="#44000000" 
+        Topmost="True"
+        Cursor="Cross"
+        KeyDown="Window_KeyDown"
+        SizeChanged="Window_SizeChanged">
+    <Canvas x:Name="OverlayCanvas">
+        <TextBlock x:Name="InstructionText" Text="각각의 영역 박스를 마우스로 잡아 드래그하거나 모서리를 잡아 크기를 조절하세요. (저장: ESC)" FontSize="24" Foreground="Yellow" FontWeight="Bold" Canvas.Top="20" Canvas.Left="20" />
+    </Canvas>
+</Window>

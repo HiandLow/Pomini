@@ -1,0 +1,6433 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-16T15:49:03.3401621+00:00",
+  "source": "챔피언스 공식 sprite_poke.png (slice) + champions_pokemon.html (한국어) + Fandom (메가 한국어 fallback) + Bulbagarden Champions Shiny menu sprites (이로치 append, 48차)",
+  "sprites": [
+    {
+      "dexId": 3,
+      "formKey": "default",
+      "nameKo": "이상해꽃",
+      "displayName": "이상해꽃",
+      "iconFile": "0003_default.png",
+      "iconUrl": "sprite_poke.png#0003_00",
+      "dHash": "2733330f0f0f0c00"
+    },
+    {
+      "dexId": 3,
+      "formKey": "defaultShiny",
+      "nameKo": "이상해꽃",
+      "displayName": "이상해꽃",
+      "iconFile": "0003_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/40/Menu_CP_0003_shiny.png",
+      "dHash": "4759670b27270c00"
+    },
+    {
+      "dexId": 3,
+      "formKey": "mega",
+      "nameKo": "메가이상해꽃",
+      "displayName": "메가이상해꽃",
+      "iconFile": "0003_mega.png",
+      "iconUrl": "sprite_poke.png#0003_01",
+      "dHash": "0b231b2b170c0000"
+    },
+    {
+      "dexId": 3,
+      "formKey": "megaShiny",
+      "nameKo": "메가이상해꽃",
+      "displayName": "메가이상해꽃",
+      "iconFile": "0003_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a7/Menu_CP_0003-Mega_shiny.png",
+      "dHash": "0b2b1b4f170c0000"
+    },
+    {
+      "dexId": 6,
+      "formKey": "default",
+      "nameKo": "리자몽",
+      "displayName": "리자몽",
+      "iconFile": "0006_default.png",
+      "iconUrl": "sprite_poke.png#0006_00",
+      "dHash": "1b1b2b0331390800"
+    },
+    {
+      "dexId": 6,
+      "formKey": "defaultShiny",
+      "nameKo": "리자몽",
+      "displayName": "리자몽",
+      "iconFile": "0006_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/33/Menu_CP_0006_shiny.png",
+      "dHash": "1b1b2f0331390000"
+    },
+    {
+      "dexId": 6,
+      "formKey": "megaX",
+      "nameKo": "메가리자몽X",
+      "displayName": "메가리자몽X",
+      "iconFile": "0006_megaX.png",
+      "iconUrl": "sprite_poke.png#0006_01",
+      "dHash": "1616571317060800"
+    },
+    {
+      "dexId": 6,
+      "formKey": "megaXShiny",
+      "nameKo": "메가리자몽X",
+      "displayName": "메가리자몽X",
+      "iconFile": "0006_megaX_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/dd/Menu_CP_0006-Mega_X_shiny.png",
+      "dHash": "1616571717060800"
+    },
+    {
+      "dexId": 6,
+      "formKey": "megaY",
+      "nameKo": "메가리자몽Y",
+      "displayName": "메가리자몽Y",
+      "iconFile": "0006_megaY.png",
+      "iconUrl": "sprite_poke.png#0006_02",
+      "dHash": "070b8dcf5a311300"
+    },
+    {
+      "dexId": 6,
+      "formKey": "megaYShiny",
+      "nameKo": "메가리자몽Y",
+      "displayName": "메가리자몽Y",
+      "iconFile": "0006_megaY_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/08/Menu_CP_0006-Mega_Y_shiny.png",
+      "dHash": "070b8dcf5a311300"
+    },
+    {
+      "dexId": 9,
+      "formKey": "default",
+      "nameKo": "거북왕",
+      "displayName": "거북왕",
+      "iconFile": "0009_default.png",
+      "iconUrl": "sprite_poke.png#0009_00",
+      "dHash": "3727363b1b6f4d0c"
+    },
+    {
+      "dexId": 9,
+      "formKey": "defaultShiny",
+      "nameKo": "거북왕",
+      "displayName": "거북왕",
+      "iconFile": "0009_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a4/Menu_CP_0009_shiny.png",
+      "dHash": "3727363b1b6f4d0c"
+    },
+    {
+      "dexId": 9,
+      "formKey": "mega",
+      "nameKo": "메가거북왕",
+      "displayName": "메가거북왕",
+      "iconFile": "0009_mega.png",
+      "iconUrl": "sprite_poke.png#0009_01",
+      "dHash": "2637630f0e0c0606"
+    },
+    {
+      "dexId": 9,
+      "formKey": "megaShiny",
+      "nameKo": "메가거북왕",
+      "displayName": "메가거북왕",
+      "iconFile": "0009_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0b/Menu_CP_0009-Mega_shiny.png",
+      "dHash": "26376b070e0c0606"
+    },
+    {
+      "dexId": 15,
+      "formKey": "default",
+      "nameKo": "독침붕",
+      "displayName": "독침붕",
+      "iconFile": "0015_default.png",
+      "iconUrl": "sprite_poke.png#0015_00",
+      "dHash": "2a0e0f4f6b665272"
+    },
+    {
+      "dexId": 15,
+      "formKey": "defaultShiny",
+      "nameKo": "독침붕",
+      "displayName": "독침붕",
+      "iconFile": "0015_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a4/Menu_CP_0015_shiny.png",
+      "dHash": "2a0e0f0d67675272"
+    },
+    {
+      "dexId": 15,
+      "formKey": "mega",
+      "nameKo": "메가독침붕",
+      "displayName": "메가독침붕",
+      "iconFile": "0015_mega.png",
+      "iconUrl": "sprite_poke.png#0015_01",
+      "dHash": "242eae1d1f160c04"
+    },
+    {
+      "dexId": 15,
+      "formKey": "megaShiny",
+      "nameKo": "메가독침붕",
+      "displayName": "메가독침붕",
+      "iconFile": "0015_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2a/Menu_CP_0015-Mega_shiny.png",
+      "dHash": "242eae8d0f1e0e24"
+    },
+    {
+      "dexId": 18,
+      "formKey": "default",
+      "nameKo": "피죤투",
+      "displayName": "피죤투",
+      "iconFile": "0018_default.png",
+      "iconUrl": "sprite_poke.png#0018_00",
+      "dHash": "0f070d0c0b070303"
+    },
+    {
+      "dexId": 18,
+      "formKey": "defaultShiny",
+      "nameKo": "피죤투",
+      "displayName": "피죤투",
+      "iconFile": "0018_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/75/Menu_CP_0018_shiny.png",
+      "dHash": "0f070d0c0f070503"
+    },
+    {
+      "dexId": 18,
+      "formKey": "mega",
+      "nameKo": "메가피죤투",
+      "displayName": "메가피죤투",
+      "iconFile": "0018_mega.png",
+      "iconUrl": "sprite_poke.png#0018_01",
+      "dHash": "00000c0f352d0000"
+    },
+    {
+      "dexId": 18,
+      "formKey": "megaShiny",
+      "nameKo": "메가피죤투",
+      "displayName": "메가피죤투",
+      "iconFile": "0018_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a4/Menu_CP_0018-Mega_shiny.png",
+      "dHash": "00000c0f352d0000"
+    },
+    {
+      "dexId": 24,
+      "formKey": "default",
+      "nameKo": "아보크",
+      "displayName": "아보크",
+      "iconFile": "0024_default.png",
+      "iconUrl": "sprite_poke.png#0024_00",
+      "dHash": "1e1b1d0f161f0e0c"
+    },
+    {
+      "dexId": 24,
+      "formKey": "defaultShiny",
+      "nameKo": "아보크",
+      "displayName": "아보크",
+      "iconFile": "0024_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/57/Menu_CP_0024_shiny.png",
+      "dHash": "1e33310f361b160c"
+    },
+    {
+      "dexId": 25,
+      "formKey": "default",
+      "nameKo": "피카츄",
+      "displayName": "피카츄",
+      "iconFile": "0025_default.png",
+      "iconUrl": "sprite_poke.png#0025_00",
+      "dHash": "070b0f272b090000"
+    },
+    {
+      "dexId": 25,
+      "formKey": "defaultShiny",
+      "nameKo": "피카츄",
+      "displayName": "피카츄",
+      "iconFile": "0025_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/96/Menu_CP_0025_shiny.png",
+      "dHash": "070303072b090000"
+    },
+    {
+      "dexId": 26,
+      "formKey": "alola",
+      "nameKo": "라이츄",
+      "displayName": "라이츄(알로라의 모습)",
+      "iconFile": "0026_alola.png",
+      "iconUrl": "sprite_poke.png#0026_01",
+      "dHash": "278c28652e2c6c6c"
+    },
+    {
+      "dexId": 26,
+      "formKey": "alolaShiny",
+      "nameKo": "라이츄",
+      "displayName": "라이츄(알로라의 모습)",
+      "iconFile": "0026_alola_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/68/Menu_CP_0026-Alola_shiny.png",
+      "dHash": "27bc28252e1c6c6c"
+    },
+    {
+      "dexId": 26,
+      "formKey": "default",
+      "nameKo": "라이츄",
+      "displayName": "라이츄",
+      "iconFile": "0026_default.png",
+      "iconUrl": "sprite_poke.png#0026_00",
+      "dHash": "0b2b6b4f2b0d0e03"
+    },
+    {
+      "dexId": 26,
+      "formKey": "defaultShiny",
+      "nameKo": "라이츄",
+      "displayName": "라이츄",
+      "iconFile": "0026_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8d/Menu_CP_0026_shiny.png",
+      "dHash": "0b0b6b472b0d0e03"
+    },
+    {
+      "dexId": 36,
+      "formKey": "default",
+      "nameKo": "픽시",
+      "displayName": "픽시",
+      "iconFile": "0036_default.png",
+      "iconUrl": "sprite_poke.png#0036_00",
+      "dHash": "0e1b313133256000"
+    },
+    {
+      "dexId": 36,
+      "formKey": "defaultShiny",
+      "nameKo": "픽시",
+      "displayName": "픽시",
+      "iconFile": "0036_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9d/Menu_CP_0036_shiny.png",
+      "dHash": "0633313131256000"
+    },
+    {
+      "dexId": 36,
+      "formKey": "mega",
+      "nameKo": "메가픽시",
+      "displayName": "메가픽시",
+      "iconFile": "0036_form01.png",
+      "iconUrl": "sprite_poke.png#0036_01",
+      "dHash": "0010063b1b710000"
+    },
+    {
+      "dexId": 36,
+      "formKey": "megaShiny",
+      "nameKo": "메가픽시",
+      "displayName": "메가픽시",
+      "iconFile": "0036_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8a/Menu_CP_0036-Mega_shiny.png",
+      "dHash": "0010063b3b710000"
+    },
+    {
+      "dexId": 38,
+      "formKey": "alola",
+      "nameKo": "나인테일",
+      "displayName": "나인테일(알로라의 모습)",
+      "iconFile": "0038_alola.png",
+      "iconUrl": "sprite_poke.png#0038_01",
+      "dHash": "125653994d270702"
+    },
+    {
+      "dexId": 38,
+      "formKey": "alolaShiny",
+      "nameKo": "나인테일",
+      "displayName": "나인테일(알로라의 모습)",
+      "iconFile": "0038_alola_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a7/Menu_CP_0038-Alola_shiny.png",
+      "dHash": "12964b1947270702"
+    },
+    {
+      "dexId": 38,
+      "formKey": "default",
+      "nameKo": "나인테일",
+      "displayName": "나인테일",
+      "iconFile": "0038_default.png",
+      "iconUrl": "sprite_poke.png#0038_00",
+      "dHash": "6b6b334b6373130c"
+    },
+    {
+      "dexId": 38,
+      "formKey": "defaultShiny",
+      "nameKo": "나인테일",
+      "displayName": "나인테일",
+      "iconFile": "0038_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d1/Menu_CP_0038_shiny.png",
+      "dHash": "6b6b334b6373130c"
+    },
+    {
+      "dexId": 59,
+      "formKey": "default",
+      "nameKo": "윈디",
+      "displayName": "윈디",
+      "iconFile": "0059_default.png",
+      "iconUrl": "sprite_poke.png#0059_00",
+      "dHash": "0d111d0d4d692d17"
+    },
+    {
+      "dexId": 59,
+      "formKey": "defaultShiny",
+      "nameKo": "윈디",
+      "displayName": "윈디",
+      "iconFile": "0059_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/77/Menu_CP_0059_shiny.png",
+      "dHash": "0d13171d19392d17"
+    },
+    {
+      "dexId": 59,
+      "formKey": "hisui",
+      "nameKo": "윈디",
+      "displayName": "윈디(히스이의 모습)",
+      "iconFile": "0059_hisui.png",
+      "iconUrl": "sprite_poke.png#0059_01",
+      "dHash": "1b1b0f03072f4704"
+    },
+    {
+      "dexId": 59,
+      "formKey": "hisuiShiny",
+      "nameKo": "윈디",
+      "displayName": "윈디(히스이의 모습)",
+      "iconFile": "0059_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/df/Menu_CP_0059-Hisui_shiny.png",
+      "dHash": "1b2b0f3327334704"
+    },
+    {
+      "dexId": 65,
+      "formKey": "default",
+      "nameKo": "후딘",
+      "displayName": "후딘",
+      "iconFile": "0065_default.png",
+      "iconUrl": "sprite_poke.png#0065_00",
+      "dHash": "232765595b363624"
+    },
+    {
+      "dexId": 65,
+      "formKey": "defaultShiny",
+      "nameKo": "후딘",
+      "displayName": "후딘",
+      "iconFile": "0065_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/12/Menu_CP_0065_shiny.png",
+      "dHash": "232765595b363624"
+    },
+    {
+      "dexId": 65,
+      "formKey": "mega",
+      "nameKo": "메가후딘",
+      "displayName": "메가후딘",
+      "iconFile": "0065_mega.png",
+      "iconUrl": "sprite_poke.png#0065_01",
+      "dHash": "0e0e3351454ab325"
+    },
+    {
+      "dexId": 65,
+      "formKey": "megaShiny",
+      "nameKo": "메가후딘",
+      "displayName": "메가후딘",
+      "iconFile": "0065_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/83/Menu_CP_0065-Mega_shiny.png",
+      "dHash": "0e0e3351454ab325"
+    },
+    {
+      "dexId": 68,
+      "formKey": "default",
+      "nameKo": "괴력몬",
+      "displayName": "괴력몬",
+      "iconFile": "0068_default.png",
+      "iconUrl": "sprite_poke.png#0068_00",
+      "dHash": "36260c1f336e2b29"
+    },
+    {
+      "dexId": 68,
+      "formKey": "defaultShiny",
+      "nameKo": "괴력몬",
+      "displayName": "괴력몬",
+      "iconFile": "0068_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b8/Menu_CP_0068_shiny.png",
+      "dHash": "36361c1f0f362b29"
+    },
+    {
+      "dexId": 71,
+      "formKey": "default",
+      "nameKo": "우츠보트",
+      "displayName": "우츠보트",
+      "iconFile": "0071_default.png",
+      "iconUrl": "sprite_poke.png#0071_00",
+      "dHash": "01039b1306060b10"
+    },
+    {
+      "dexId": 71,
+      "formKey": "defaultShiny",
+      "nameKo": "우츠보트",
+      "displayName": "우츠보트",
+      "iconFile": "0071_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/75/Menu_CP_0071_shiny.png",
+      "dHash": "01233931060f0f10"
+    },
+    {
+      "dexId": 71,
+      "formKey": "mega",
+      "nameKo": "메가우츠보트",
+      "displayName": "메가우츠보트",
+      "iconFile": "0071_form01.png",
+      "iconUrl": "sprite_poke.png#0071_01",
+      "dHash": "1e3313130e0e0e0c"
+    },
+    {
+      "dexId": 71,
+      "formKey": "megaShiny",
+      "nameKo": "메가우츠보트",
+      "displayName": "메가우츠보트",
+      "iconFile": "0071_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/09/Menu_CP_0071-Mega_shiny.png",
+      "dHash": "0e1b1b0f0e0e0e0c"
+    },
+    {
+      "dexId": 80,
+      "formKey": "default",
+      "nameKo": "야도란",
+      "displayName": "야도란",
+      "iconFile": "0080_default.png",
+      "iconUrl": "sprite_poke.png#0080_00",
+      "dHash": "25196a4931120100"
+    },
+    {
+      "dexId": 80,
+      "formKey": "defaultShiny",
+      "nameKo": "야도란",
+      "displayName": "야도란",
+      "iconFile": "0080_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7f/Menu_CP_0080_shiny.png",
+      "dHash": "25196a6931120100"
+    },
+    {
+      "dexId": 80,
+      "formKey": "galar",
+      "nameKo": "야도란",
+      "displayName": "야도란(가라르의 모습)",
+      "iconFile": "0080_galar.png",
+      "iconUrl": "sprite_poke.png#0080_02",
+      "dHash": "1b27231b071b070f"
+    },
+    {
+      "dexId": 80,
+      "formKey": "galarShiny",
+      "nameKo": "야도란",
+      "displayName": "야도란(가라르의 모습)",
+      "iconFile": "0080_galar_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/50/Menu_CP_0080-Galar_shiny.png",
+      "dHash": "1b27271d071b1b0f"
+    },
+    {
+      "dexId": 80,
+      "formKey": "mega",
+      "nameKo": "메가야도란",
+      "displayName": "메가야도란",
+      "iconFile": "0080_mega.png",
+      "iconUrl": "sprite_poke.png#0080_01",
+      "dHash": "1a0e34363339361c"
+    },
+    {
+      "dexId": 80,
+      "formKey": "megaShiny",
+      "nameKo": "메가야도란",
+      "displayName": "메가야도란",
+      "iconFile": "0080_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e5/Menu_CP_0080-Mega_shiny.png",
+      "dHash": "1a1e0e0e0727361c"
+    },
+    {
+      "dexId": 94,
+      "formKey": "default",
+      "nameKo": "팬텀",
+      "displayName": "팬텀",
+      "iconFile": "0094_default.png",
+      "iconUrl": "sprite_poke.png#0094_00",
+      "dHash": "33031b3103072b41"
+    },
+    {
+      "dexId": 94,
+      "formKey": "defaultShiny",
+      "nameKo": "팬텀",
+      "displayName": "팬텀",
+      "iconFile": "0094_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a4/Menu_CP_0094_shiny.png",
+      "dHash": "3b031b3117072b41"
+    },
+    {
+      "dexId": 94,
+      "formKey": "mega",
+      "nameKo": "메가팬텀",
+      "displayName": "메가팬텀",
+      "iconFile": "0094_mega.png",
+      "iconUrl": "sprite_poke.png#0094_01",
+      "dHash": "79193716062e6200"
+    },
+    {
+      "dexId": 94,
+      "formKey": "megaShiny",
+      "nameKo": "메가팬텀",
+      "displayName": "메가팬텀",
+      "iconFile": "0094_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ef/Menu_CP_0094-Mega_shiny.png",
+      "dHash": "989a27262e4e6200"
+    },
+    {
+      "dexId": 115,
+      "formKey": "default",
+      "nameKo": "캥카",
+      "displayName": "캥카",
+      "iconFile": "0115_default.png",
+      "iconUrl": "sprite_poke.png#0115_00",
+      "dHash": "1b1b3d1b390f0607"
+    },
+    {
+      "dexId": 115,
+      "formKey": "defaultShiny",
+      "nameKo": "캥카",
+      "displayName": "캥카",
+      "iconFile": "0115_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1b/Menu_CP_0115_shiny.png",
+      "dHash": "1b33693313070707"
+    },
+    {
+      "dexId": 115,
+      "formKey": "mega",
+      "nameKo": "메가캥카",
+      "displayName": "메가캥카",
+      "iconFile": "0115_mega.png",
+      "iconUrl": "sprite_poke.png#0115_01",
+      "dHash": "1a1b3919190f0607"
+    },
+    {
+      "dexId": 115,
+      "formKey": "megaShiny",
+      "nameKo": "메가캥카",
+      "displayName": "메가캥카",
+      "iconFile": "0115_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/24/Menu_CP_0115-Mega_shiny.png",
+      "dHash": "1a1b3919190f0607"
+    },
+    {
+      "dexId": 121,
+      "formKey": "default",
+      "nameKo": "아쿠스타",
+      "displayName": "아쿠스타",
+      "iconFile": "0121_default.png",
+      "iconUrl": "sprite_poke.png#0121_00",
+      "dHash": "0a07272717262c00"
+    },
+    {
+      "dexId": 121,
+      "formKey": "defaultShiny",
+      "nameKo": "아쿠스타",
+      "displayName": "아쿠스타",
+      "iconFile": "0121_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/cb/Menu_CP_0121_shiny.png",
+      "dHash": "2a0707270f2e2c00"
+    },
+    {
+      "dexId": 121,
+      "formKey": "mega",
+      "nameKo": "메가아쿠스타",
+      "displayName": "메가아쿠스타",
+      "iconFile": "0121_form01.png",
+      "iconUrl": "sprite_poke.png#0121_01",
+      "dHash": "3236061e33170e2e"
+    },
+    {
+      "dexId": 121,
+      "formKey": "megaShiny",
+      "nameKo": "메가아쿠스타",
+      "displayName": "메가아쿠스타",
+      "iconFile": "0121_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/73/Menu_CP_0121-Mega_shiny.png",
+      "dHash": "33360e0e33170e2e"
+    },
+    {
+      "dexId": 127,
+      "formKey": "default",
+      "nameKo": "쁘사이저",
+      "displayName": "쁘사이저",
+      "iconFile": "0127_default.png",
+      "iconUrl": "sprite_poke.png#0127_00",
+      "dHash": "261e5d1d16160800"
+    },
+    {
+      "dexId": 127,
+      "formKey": "defaultShiny",
+      "nameKo": "쁘사이저",
+      "displayName": "쁘사이저",
+      "iconFile": "0127_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/36/Menu_CP_0127_shiny.png",
+      "dHash": "261e1d0d16160800"
+    },
+    {
+      "dexId": 127,
+      "formKey": "mega",
+      "nameKo": "메가쁘사이저",
+      "displayName": "메가쁘사이저",
+      "iconFile": "0127_mega.png",
+      "iconUrl": "sprite_poke.png#0127_01",
+      "dHash": "22964d0f2f970a0c"
+    },
+    {
+      "dexId": 127,
+      "formKey": "megaShiny",
+      "nameKo": "메가쁘사이저",
+      "displayName": "메가쁘사이저",
+      "iconFile": "0127_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f8/Menu_CP_0127-Mega_shiny.png",
+      "dHash": "12964c3337a70b0c"
+    },
+    {
+      "dexId": 128,
+      "formKey": "default",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스",
+      "iconFile": "0128_default.png",
+      "iconUrl": "sprite_poke.png#0128_00",
+      "dHash": "0e2627472d0b5e60"
+    },
+    {
+      "dexId": 128,
+      "formKey": "defaultShiny",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스",
+      "iconFile": "0128_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f5/Menu_CP_0128_shiny.png",
+      "dHash": "0e2627476d0b5e60"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaBlaze",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/블레이즈종)",
+      "iconFile": "0128_paldeaBlaze.png",
+      "iconUrl": "sprite_poke.png#0128_02",
+      "dHash": "0e060607076e6c40"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaBlazeShiny",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/블레이즈종)",
+      "iconFile": "0128_paldeaBlaze_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/85/Menu_CP_0128-Paldea_Blaze_shiny.png",
+      "dHash": "0e06060f076e6c40"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaCombat",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/컴뱃종)",
+      "iconFile": "0128_paldeaCombat.png",
+      "iconUrl": "sprite_poke.png#0128_01",
+      "dHash": "2e2e070b03075660"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaCombatShiny",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/컴뱃종)",
+      "iconFile": "0128_paldeaCombat_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fd/Menu_CP_0128-Paldea_Combat_shiny.png",
+      "dHash": "2e2e070f03075660"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaWater",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/워터종)",
+      "iconFile": "0128_paldeaWater.png",
+      "iconUrl": "sprite_poke.png#0128_03",
+      "dHash": "0e0e070f47664000"
+    },
+    {
+      "dexId": 128,
+      "formKey": "paldeaWaterShiny",
+      "nameKo": "켄타로스",
+      "displayName": "켄타로스(팔데아의 모습/워터종)",
+      "iconFile": "0128_paldeaWater_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bb/Menu_CP_0128-Paldea_Aqua_shiny.png",
+      "dHash": "0e0f070f47664000"
+    },
+    {
+      "dexId": 130,
+      "formKey": "default",
+      "nameKo": "갸라도스",
+      "displayName": "갸라도스",
+      "iconFile": "0130_default.png",
+      "iconUrl": "sprite_poke.png#0130_00",
+      "dHash": "284c153123270705"
+    },
+    {
+      "dexId": 130,
+      "formKey": "defaultShiny",
+      "nameKo": "갸라도스",
+      "displayName": "갸라도스",
+      "iconFile": "0130_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a4/Menu_CP_0130_shiny.png",
+      "dHash": "6c4e1d1923232505"
+    },
+    {
+      "dexId": 130,
+      "formKey": "mega",
+      "nameKo": "메가갸라도스",
+      "displayName": "메가갸라도스",
+      "iconFile": "0130_mega.png",
+      "iconUrl": "sprite_poke.png#0130_01",
+      "dHash": "080a1b53c70b1220"
+    },
+    {
+      "dexId": 130,
+      "formKey": "megaShiny",
+      "nameKo": "메가갸라도스",
+      "displayName": "메가갸라도스",
+      "iconFile": "0130_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/07/Menu_CP_0130-Mega_shiny.png",
+      "dHash": "080b1b43c71b1220"
+    },
+    {
+      "dexId": 132,
+      "formKey": "default",
+      "nameKo": "메타몽",
+      "displayName": "메타몽",
+      "iconFile": "0132_default.png",
+      "iconUrl": "sprite_poke.png#0132_00",
+      "dHash": "176129691b070000"
+    },
+    {
+      "dexId": 132,
+      "formKey": "defaultShiny",
+      "nameKo": "메타몽",
+      "displayName": "메타몽",
+      "iconFile": "0132_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/15/Menu_CP_0132_shiny.png",
+      "dHash": "1f03070307050000"
+    },
+    {
+      "dexId": 134,
+      "formKey": "default",
+      "nameKo": "샤미드",
+      "displayName": "샤미드",
+      "iconFile": "0134_default.png",
+      "iconUrl": "sprite_poke.png#0134_00",
+      "dHash": "032b0b030b030000"
+    },
+    {
+      "dexId": 134,
+      "formKey": "defaultShiny",
+      "nameKo": "샤미드",
+      "displayName": "샤미드",
+      "iconFile": "0134_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/77/Menu_CP_0134_shiny.png",
+      "dHash": "0b0b1f010b030000"
+    },
+    {
+      "dexId": 135,
+      "formKey": "default",
+      "nameKo": "쥬피썬더",
+      "displayName": "쥬피썬더",
+      "iconFile": "0135_default.png",
+      "iconUrl": "sprite_poke.png#0135_00",
+      "dHash": "1b333f2b0b1b0900"
+    },
+    {
+      "dexId": 135,
+      "formKey": "defaultShiny",
+      "nameKo": "쥬피썬더",
+      "displayName": "쥬피썬더",
+      "iconFile": "0135_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3a/Menu_CP_0135_shiny.png",
+      "dHash": "1b333f2b0b1b0900"
+    },
+    {
+      "dexId": 136,
+      "formKey": "default",
+      "nameKo": "부스터",
+      "displayName": "부스터",
+      "iconFile": "0136_default.png",
+      "iconUrl": "sprite_poke.png#0136_00",
+      "dHash": "0b0f17370b191918"
+    },
+    {
+      "dexId": 136,
+      "formKey": "defaultShiny",
+      "nameKo": "부스터",
+      "displayName": "부스터",
+      "iconFile": "0136_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/62/Menu_CP_0136_shiny.png",
+      "dHash": "0b1f17370b191918"
+    },
+    {
+      "dexId": 142,
+      "formKey": "default",
+      "nameKo": "프테라",
+      "displayName": "프테라",
+      "iconFile": "0142_default.png",
+      "iconUrl": "sprite_poke.png#0142_00",
+      "dHash": "18061b2b1b193160"
+    },
+    {
+      "dexId": 142,
+      "formKey": "defaultShiny",
+      "nameKo": "프테라",
+      "displayName": "프테라",
+      "iconFile": "0142_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b4/Menu_CP_0142_shiny.png",
+      "dHash": "18061b2b1b193160"
+    },
+    {
+      "dexId": 142,
+      "formKey": "mega",
+      "nameKo": "메가프테라",
+      "displayName": "메가프테라",
+      "iconFile": "0142_mega.png",
+      "iconUrl": "sprite_poke.png#0142_01",
+      "dHash": "000e060617343000"
+    },
+    {
+      "dexId": 142,
+      "formKey": "megaShiny",
+      "nameKo": "메가프테라",
+      "displayName": "메가프테라",
+      "iconFile": "0142_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3b/Menu_CP_0142-Mega_shiny.png",
+      "dHash": "000e060637343000"
+    },
+    {
+      "dexId": 143,
+      "formKey": "default",
+      "nameKo": "잠만보",
+      "displayName": "잠만보",
+      "iconFile": "0143_default.png",
+      "iconUrl": "sprite_poke.png#0143_00",
+      "dHash": "1333616131331616"
+    },
+    {
+      "dexId": 143,
+      "formKey": "defaultShiny",
+      "nameKo": "잠만보",
+      "displayName": "잠만보",
+      "iconFile": "0143_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/05/Menu_CP_0143_shiny.png",
+      "dHash": "1333616131331616"
+    },
+    {
+      "dexId": 149,
+      "formKey": "default",
+      "nameKo": "망나뇽",
+      "displayName": "망나뇽",
+      "iconFile": "0149_default.png",
+      "iconUrl": "sprite_poke.png#0149_00",
+      "dHash": "13031b1b312b0e0e"
+    },
+    {
+      "dexId": 149,
+      "formKey": "defaultShiny",
+      "nameKo": "망나뇽",
+      "displayName": "망나뇽",
+      "iconFile": "0149_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c1/Menu_CP_0149_shiny.png",
+      "dHash": "13131b1b1b232e0e"
+    },
+    {
+      "dexId": 149,
+      "formKey": "mega",
+      "nameKo": "메가망나뇽",
+      "displayName": "메가망나뇽",
+      "iconFile": "0149_form01.png",
+      "iconUrl": "sprite_poke.png#0149_01",
+      "dHash": "301c1e921e0c0b1a"
+    },
+    {
+      "dexId": 149,
+      "formKey": "megaShiny",
+      "nameKo": "메가망나뇽",
+      "displayName": "메가망나뇽",
+      "iconFile": "0149_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/01/Menu_CP_0149-Mega_shiny.png",
+      "dHash": "301c1e9e360c0b1a"
+    },
+    {
+      "dexId": 154,
+      "formKey": "default",
+      "nameKo": "메가니움",
+      "displayName": "메가니움",
+      "iconFile": "0154_default.png",
+      "iconUrl": "sprite_poke.png#0154_00",
+      "dHash": "042616160e06060c"
+    },
+    {
+      "dexId": 154,
+      "formKey": "defaultShiny",
+      "nameKo": "메가니움",
+      "displayName": "메가니움",
+      "iconFile": "0154_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5f/Menu_CP_0154_shiny.png",
+      "dHash": "042617160e06060c"
+    },
+    {
+      "dexId": 154,
+      "formKey": "mega",
+      "nameKo": "메가메가니움",
+      "displayName": "메가메가니움",
+      "iconFile": "0154_form01.png",
+      "iconUrl": "sprite_poke.png#0154_01",
+      "dHash": "162e2303031f0a0b"
+    },
+    {
+      "dexId": 154,
+      "formKey": "megaShiny",
+      "nameKo": "메가메가니움",
+      "displayName": "메가메가니움",
+      "iconFile": "0154_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/91/Menu_CP_0154-Mega_shiny.png",
+      "dHash": "162e2303071f0b0b"
+    },
+    {
+      "dexId": 157,
+      "formKey": "default",
+      "nameKo": "블레이범",
+      "displayName": "블레이범",
+      "iconFile": "0157_default.png",
+      "iconUrl": "sprite_poke.png#0157_00",
+      "dHash": "1306131b13331716"
+    },
+    {
+      "dexId": 157,
+      "formKey": "defaultShiny",
+      "nameKo": "블레이범",
+      "displayName": "블레이범",
+      "iconFile": "0157_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c8/Menu_CP_0157_shiny.png",
+      "dHash": "1307131b13331717"
+    },
+    {
+      "dexId": 157,
+      "formKey": "hisui",
+      "nameKo": "블레이범",
+      "displayName": "블레이범(히스이의 모습)",
+      "iconFile": "0157_hisui.png",
+      "iconUrl": "sprite_poke.png#0157_01",
+      "dHash": "12061633070a0e0c"
+    },
+    {
+      "dexId": 157,
+      "formKey": "hisuiShiny",
+      "nameKo": "블레이범",
+      "displayName": "블레이범(히스이의 모습)",
+      "iconFile": "0157_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/89/Menu_CP_0157-Hisui_shiny.png",
+      "dHash": "13061613070a0e0c"
+    },
+    {
+      "dexId": 160,
+      "formKey": "default",
+      "nameKo": "장크로다일",
+      "displayName": "장크로다일",
+      "iconFile": "0160_default.png",
+      "iconUrl": "sprite_poke.png#0160_00",
+      "dHash": "31333357190f0616"
+    },
+    {
+      "dexId": 160,
+      "formKey": "defaultShiny",
+      "nameKo": "장크로다일",
+      "displayName": "장크로다일",
+      "iconFile": "0160_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Menu_CP_0160_shiny.png",
+      "dHash": "3133737519230616"
+    },
+    {
+      "dexId": 160,
+      "formKey": "mega",
+      "nameKo": "메가장크로다일",
+      "displayName": "메가장크로다일",
+      "iconFile": "0160_form01.png",
+      "iconUrl": "sprite_poke.png#0160_01",
+      "dHash": "1617130f060e0e0c"
+    },
+    {
+      "dexId": 160,
+      "formKey": "megaShiny",
+      "nameKo": "메가장크로다일",
+      "displayName": "메가장크로다일",
+      "iconFile": "0160_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a7/Menu_CP_0160-Mega_shiny.png",
+      "dHash": "16171b17060e0e0e"
+    },
+    {
+      "dexId": 168,
+      "formKey": "default",
+      "nameKo": "아리아도스",
+      "displayName": "아리아도스",
+      "iconFile": "0168_default.png",
+      "iconUrl": "sprite_poke.png#0168_00",
+      "dHash": "55470f1c34260000"
+    },
+    {
+      "dexId": 168,
+      "formKey": "defaultShiny",
+      "nameKo": "아리아도스",
+      "displayName": "아리아도스",
+      "iconFile": "0168_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1f/Menu_CP_0168_shiny.png",
+      "dHash": "55470f1c34260000"
+    },
+    {
+      "dexId": 181,
+      "formKey": "default",
+      "nameKo": "전룡",
+      "displayName": "전룡",
+      "iconFile": "0181_default.png",
+      "iconUrl": "sprite_poke.png#0181_00",
+      "dHash": "0b0b1b6b46060a0b"
+    },
+    {
+      "dexId": 181,
+      "formKey": "defaultShiny",
+      "nameKo": "전룡",
+      "displayName": "전룡",
+      "iconFile": "0181_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6d/Menu_CP_0181_shiny.png",
+      "dHash": "0b0b1b6b47060b0b"
+    },
+    {
+      "dexId": 181,
+      "formKey": "mega",
+      "nameKo": "메가전룡",
+      "displayName": "메가전룡",
+      "iconFile": "0181_mega.png",
+      "iconUrl": "sprite_poke.png#0181_01",
+      "dHash": "0a0e1b1b16160e0e"
+    },
+    {
+      "dexId": 181,
+      "formKey": "megaShiny",
+      "nameKo": "메가전룡",
+      "displayName": "메가전룡",
+      "iconFile": "0181_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b9/Menu_CP_0181-Mega_shiny.png",
+      "dHash": "0a0e1b3b16160e0e"
+    },
+    {
+      "dexId": 184,
+      "formKey": "default",
+      "nameKo": "마릴리",
+      "displayName": "마릴리",
+      "iconFile": "0184_default.png",
+      "iconUrl": "sprite_poke.png#0184_00",
+      "dHash": "161735570e171b18"
+    },
+    {
+      "dexId": 184,
+      "formKey": "defaultShiny",
+      "nameKo": "마릴리",
+      "displayName": "마릴리",
+      "iconFile": "0184_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/34/Menu_CP_0184_shiny.png",
+      "dHash": "1633716316171b18"
+    },
+    {
+      "dexId": 186,
+      "formKey": "default",
+      "nameKo": "왕구리",
+      "displayName": "왕구리",
+      "iconFile": "0186_default.png",
+      "iconUrl": "sprite_poke.png#0186_00",
+      "dHash": "333733131e0e0604"
+    },
+    {
+      "dexId": 186,
+      "formKey": "defaultShiny",
+      "nameKo": "왕구리",
+      "displayName": "왕구리",
+      "iconFile": "0186_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/be/Menu_CP_0186_shiny.png",
+      "dHash": "333733131e0e0604"
+    },
+    {
+      "dexId": 196,
+      "formKey": "default",
+      "nameKo": "에브이",
+      "displayName": "에브이",
+      "iconFile": "0196_default.png",
+      "iconUrl": "sprite_poke.png#0196_00",
+      "dHash": "060e0e0729390000"
+    },
+    {
+      "dexId": 196,
+      "formKey": "defaultShiny",
+      "nameKo": "에브이",
+      "displayName": "에브이",
+      "iconFile": "0196_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4b/Menu_CP_0196_shiny.png",
+      "dHash": "060606072d390000"
+    },
+    {
+      "dexId": 197,
+      "formKey": "default",
+      "nameKo": "블래키",
+      "displayName": "블래키",
+      "iconFile": "0197_default.png",
+      "iconUrl": "sprite_poke.png#0197_00",
+      "dHash": "24040e063b1b5100"
+    },
+    {
+      "dexId": 197,
+      "formKey": "defaultShiny",
+      "nameKo": "블래키",
+      "displayName": "블래키",
+      "iconFile": "0197_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8a/Menu_CP_0197_shiny.png",
+      "dHash": "240c0e163b1b5100"
+    },
+    {
+      "dexId": 199,
+      "formKey": "default",
+      "nameKo": "야도킹",
+      "displayName": "야도킹",
+      "iconFile": "0199_default.png",
+      "iconUrl": "sprite_poke.png#0199_00",
+      "dHash": "1e133b0e1613130d"
+    },
+    {
+      "dexId": 199,
+      "formKey": "defaultShiny",
+      "nameKo": "야도킹",
+      "displayName": "야도킹",
+      "iconFile": "0199_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/55/Menu_CP_0199_shiny.png",
+      "dHash": "1e13170f1e17130f"
+    },
+    {
+      "dexId": 199,
+      "formKey": "galar",
+      "nameKo": "야도킹",
+      "displayName": "야도킹(가라르의 모습)",
+      "iconFile": "0199_galar.png",
+      "iconUrl": "sprite_poke.png#0199_01",
+      "dHash": "1616360e171f0c08"
+    },
+    {
+      "dexId": 199,
+      "formKey": "galarShiny",
+      "nameKo": "야도킹",
+      "displayName": "야도킹(가라르의 모습)",
+      "iconFile": "0199_galar_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/44/Menu_CP_0199-Galar_shiny.png",
+      "dHash": "1636160e170f0c08"
+    },
+    {
+      "dexId": 205,
+      "formKey": "default",
+      "nameKo": "쏘콘",
+      "displayName": "쏘콘",
+      "iconFile": "0205_default.png",
+      "iconUrl": "sprite_poke.png#0205_00",
+      "dHash": "000e33133b1f0e00"
+    },
+    {
+      "dexId": 205,
+      "formKey": "defaultShiny",
+      "nameKo": "쏘콘",
+      "displayName": "쏘콘",
+      "iconFile": "0205_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9a/Menu_CP_0205_shiny.png",
+      "dHash": "000e33333b1f0e00"
+    },
+    {
+      "dexId": 208,
+      "formKey": "default",
+      "nameKo": "강철톤",
+      "displayName": "강철톤",
+      "iconFile": "0208_default.png",
+      "iconUrl": "sprite_poke.png#0208_00",
+      "dHash": "181c0c1d0f14150b"
+    },
+    {
+      "dexId": 208,
+      "formKey": "defaultShiny",
+      "nameKo": "강철톤",
+      "displayName": "강철톤",
+      "iconFile": "0208_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/00/Menu_CP_0208_shiny.png",
+      "dHash": "181c0e1f0f14150b"
+    },
+    {
+      "dexId": 208,
+      "formKey": "mega",
+      "nameKo": "메가강철톤",
+      "displayName": "메가강철톤",
+      "iconFile": "0208_mega.png",
+      "iconUrl": "sprite_poke.png#0208_01",
+      "dHash": "1b3b0b17890f2634"
+    },
+    {
+      "dexId": 208,
+      "formKey": "megaShiny",
+      "nameKo": "메가강철톤",
+      "displayName": "메가강철톤",
+      "iconFile": "0208_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a8/Menu_CP_0208-Mega_shiny.png",
+      "dHash": "1f3b0b17890f2736"
+    },
+    {
+      "dexId": 212,
+      "formKey": "default",
+      "nameKo": "핫삼",
+      "displayName": "핫삼",
+      "iconFile": "0212_default.png",
+      "iconUrl": "sprite_poke.png#0212_00",
+      "dHash": "3636172b0f0c0e4e"
+    },
+    {
+      "dexId": 212,
+      "formKey": "defaultShiny",
+      "nameKo": "핫삼",
+      "displayName": "핫삼",
+      "iconFile": "0212_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ef/Menu_CP_0212_shiny.png",
+      "dHash": "36261f4b0f1c164e"
+    },
+    {
+      "dexId": 212,
+      "formKey": "mega",
+      "nameKo": "메가핫삼",
+      "displayName": "메가핫삼",
+      "iconFile": "0212_mega.png",
+      "iconUrl": "sprite_poke.png#0212_01",
+      "dHash": "1414574f0f0c0c4c"
+    },
+    {
+      "dexId": 212,
+      "formKey": "megaShiny",
+      "nameKo": "메가핫삼",
+      "displayName": "메가핫삼",
+      "iconFile": "0212_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3d/Menu_CP_0212-Mega_shiny.png",
+      "dHash": "1414591b0f1c0e4e"
+    },
+    {
+      "dexId": 214,
+      "formKey": "default",
+      "nameKo": "헤라크로스",
+      "displayName": "헤라크로스",
+      "iconFile": "0214_default.png",
+      "iconUrl": "sprite_poke.png#0214_00",
+      "dHash": "33160d070e06060a"
+    },
+    {
+      "dexId": 214,
+      "formKey": "defaultShiny",
+      "nameKo": "헤라크로스",
+      "displayName": "헤라크로스",
+      "iconFile": "0214_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8b/Menu_CP_0214_shiny.png",
+      "dHash": "334733170e06060a"
+    },
+    {
+      "dexId": 214,
+      "formKey": "mega",
+      "nameKo": "메가헤라크로스",
+      "displayName": "메가헤라크로스",
+      "iconFile": "0214_mega.png",
+      "iconUrl": "sprite_poke.png#0214_01",
+      "dHash": "70310f0e0e0c0404"
+    },
+    {
+      "dexId": 214,
+      "formKey": "megaShiny",
+      "nameKo": "메가헤라크로스",
+      "displayName": "메가헤라크로스",
+      "iconFile": "0214_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/07/Menu_CP_0214-Mega_shiny.png",
+      "dHash": "70310f0f0e0e0404"
+    },
+    {
+      "dexId": 227,
+      "formKey": "default",
+      "nameKo": "무장조",
+      "displayName": "무장조",
+      "iconFile": "0227_default.png",
+      "iconUrl": "sprite_poke.png#0227_00",
+      "dHash": "160e061633313202"
+    },
+    {
+      "dexId": 227,
+      "formKey": "defaultShiny",
+      "nameKo": "무장조",
+      "displayName": "무장조",
+      "iconFile": "0227_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/37/Menu_CP_0227_shiny.png",
+      "dHash": "160e061633313202"
+    },
+    {
+      "dexId": 227,
+      "formKey": "mega",
+      "nameKo": "메가무장조",
+      "displayName": "메가무장조",
+      "iconFile": "0227_form01.png",
+      "iconUrl": "sprite_poke.png#0227_01",
+      "dHash": "171b3a184f670604"
+    },
+    {
+      "dexId": 227,
+      "formKey": "megaShiny",
+      "nameKo": "메가무장조",
+      "displayName": "메가무장조",
+      "iconFile": "0227_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bc/Menu_CP_0227-Mega_shiny.png",
+      "dHash": "171b3e184f670606"
+    },
+    {
+      "dexId": 229,
+      "formKey": "default",
+      "nameKo": "헬가",
+      "displayName": "헬가",
+      "iconFile": "0229_default.png",
+      "iconUrl": "sprite_poke.png#0229_00",
+      "dHash": "0b0e0c0e07262b20"
+    },
+    {
+      "dexId": 229,
+      "formKey": "defaultShiny",
+      "nameKo": "헬가",
+      "displayName": "헬가",
+      "iconFile": "0229_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5e/Menu_CP_0229_shiny.png",
+      "dHash": "0b0f0c1f07232b20"
+    },
+    {
+      "dexId": 229,
+      "formKey": "mega",
+      "nameKo": "메가헬가",
+      "displayName": "메가헬가",
+      "iconFile": "0229_mega.png",
+      "iconUrl": "sprite_poke.png#0229_01",
+      "dHash": "161e0e1616060e06"
+    },
+    {
+      "dexId": 229,
+      "formKey": "megaShiny",
+      "nameKo": "메가헬가",
+      "displayName": "메가헬가",
+      "iconFile": "0229_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/28/Menu_CP_0229-Mega_shiny.png",
+      "dHash": "161e0e1e06060e06"
+    },
+    {
+      "dexId": 248,
+      "formKey": "default",
+      "nameKo": "마기라스",
+      "displayName": "마기라스",
+      "iconFile": "0248_default.png",
+      "iconUrl": "sprite_poke.png#0248_00",
+      "dHash": "133737172b160e0e"
+    },
+    {
+      "dexId": 248,
+      "formKey": "defaultShiny",
+      "nameKo": "마기라스",
+      "displayName": "마기라스",
+      "iconFile": "0248_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/78/Menu_CP_0248_shiny.png",
+      "dHash": "133737172b160e0e"
+    },
+    {
+      "dexId": 248,
+      "formKey": "mega",
+      "nameKo": "메가마기라스",
+      "displayName": "메가마기라스",
+      "iconFile": "0248_mega.png",
+      "iconUrl": "sprite_poke.png#0248_01",
+      "dHash": "1b07131b37276706"
+    },
+    {
+      "dexId": 248,
+      "formKey": "megaShiny",
+      "nameKo": "메가마기라스",
+      "displayName": "메가마기라스",
+      "iconFile": "0248_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/74/Menu_CP_0248-Mega_shiny.png",
+      "dHash": "1b07171b37276706"
+    },
+    {
+      "dexId": 279,
+      "formKey": "default",
+      "nameKo": "패리퍼",
+      "displayName": "패리퍼",
+      "iconFile": "0279_default.png",
+      "iconUrl": "sprite_poke.png#0279_00",
+      "dHash": "00464f5819070608"
+    },
+    {
+      "dexId": 279,
+      "formKey": "defaultShiny",
+      "nameKo": "패리퍼",
+      "displayName": "패리퍼",
+      "iconFile": "0279_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/85/Menu_CP_0279_shiny.png",
+      "dHash": "00465d50190f060c"
+    },
+    {
+      "dexId": 282,
+      "formKey": "default",
+      "nameKo": "가디안",
+      "displayName": "가디안",
+      "iconFile": "0282_default.png",
+      "iconUrl": "sprite_poke.png#0282_00",
+      "dHash": "171b0b0b06060e06"
+    },
+    {
+      "dexId": 282,
+      "formKey": "defaultShiny",
+      "nameKo": "가디안",
+      "displayName": "가디안",
+      "iconFile": "0282_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/35/Menu_CP_0282_shiny.png",
+      "dHash": "17170b0b06060e06"
+    },
+    {
+      "dexId": 282,
+      "formKey": "mega",
+      "nameKo": "메가가디안",
+      "displayName": "메가가디안",
+      "iconFile": "0282_mega.png",
+      "iconUrl": "sprite_poke.png#0282_01",
+      "dHash": "0e2b2b2b330e0e16"
+    },
+    {
+      "dexId": 282,
+      "formKey": "megaShiny",
+      "nameKo": "메가가디안",
+      "displayName": "메가가디안",
+      "iconFile": "0282_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bf/Menu_CP_0282-Mega_shiny.png",
+      "dHash": "0e070707070e0e16"
+    },
+    {
+      "dexId": 302,
+      "formKey": "default",
+      "nameKo": "깜까미",
+      "displayName": "깜까미",
+      "iconFile": "0302_default.png",
+      "iconUrl": "sprite_poke.png#0302_00",
+      "dHash": "1c1b1f1c2e362600"
+    },
+    {
+      "dexId": 302,
+      "formKey": "defaultShiny",
+      "nameKo": "깜까미",
+      "displayName": "깜까미",
+      "iconFile": "0302_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bf/Menu_CP_0302_shiny.png",
+      "dHash": "1c0b173426262600"
+    },
+    {
+      "dexId": 302,
+      "formKey": "mega",
+      "nameKo": "메가깜까미",
+      "displayName": "메가깜까미",
+      "iconFile": "0302_mega.png",
+      "iconUrl": "sprite_poke.png#0302_01",
+      "dHash": "030301010585030b"
+    },
+    {
+      "dexId": 302,
+      "formKey": "megaShiny",
+      "nameKo": "메가깜까미",
+      "displayName": "메가깜까미",
+      "iconFile": "0302_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/91/Menu_CP_0302-Mega_shiny.png",
+      "dHash": "03030d0505850d09"
+    },
+    {
+      "dexId": 306,
+      "formKey": "default",
+      "nameKo": "보스로라",
+      "displayName": "보스로라",
+      "iconFile": "0306_default.png",
+      "iconUrl": "sprite_poke.png#0306_00",
+      "dHash": "332b06071b090b05"
+    },
+    {
+      "dexId": 306,
+      "formKey": "defaultShiny",
+      "nameKo": "보스로라",
+      "displayName": "보스로라",
+      "iconFile": "0306_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c8/Menu_CP_0306_shiny.png",
+      "dHash": "332b46071b090b05"
+    },
+    {
+      "dexId": 306,
+      "formKey": "mega",
+      "nameKo": "메가보스로라",
+      "displayName": "메가보스로라",
+      "iconFile": "0306_mega.png",
+      "iconUrl": "sprite_poke.png#0306_01",
+      "dHash": "73f2b637336a0c00"
+    },
+    {
+      "dexId": 306,
+      "formKey": "megaShiny",
+      "nameKo": "메가보스로라",
+      "displayName": "메가보스로라",
+      "iconFile": "0306_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0f/Menu_CP_0306-Mega_shiny.png",
+      "dHash": "735a9a37374a0c00"
+    },
+    {
+      "dexId": 308,
+      "formKey": "default",
+      "nameKo": "요가램",
+      "displayName": "요가램",
+      "iconFile": "0308_default.png",
+      "iconUrl": "sprite_poke.png#0308_00",
+      "dHash": "0c060f2f0e0c0c0c"
+    },
+    {
+      "dexId": 308,
+      "formKey": "defaultShiny",
+      "nameKo": "요가램",
+      "displayName": "요가램",
+      "iconFile": "0308_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/cd/Menu_CP_0308_shiny.png",
+      "dHash": "0e160f2f0e0e0c0c"
+    },
+    {
+      "dexId": 308,
+      "formKey": "mega",
+      "nameKo": "메가요가램",
+      "displayName": "메가요가램",
+      "iconFile": "0308_mega.png",
+      "iconUrl": "sprite_poke.png#0308_01",
+      "dHash": "06060e8686256500"
+    },
+    {
+      "dexId": 308,
+      "formKey": "megaShiny",
+      "nameKo": "메가요가램",
+      "displayName": "메가요가램",
+      "iconFile": "0308_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fd/Menu_CP_0308-Mega_shiny.png",
+      "dHash": "06060f8686256500"
+    },
+    {
+      "dexId": 310,
+      "formKey": "default",
+      "nameKo": "썬더볼트",
+      "displayName": "썬더볼트",
+      "iconFile": "0310_default.png",
+      "iconUrl": "sprite_poke.png#0310_00",
+      "dHash": "0b2606061b0a0606"
+    },
+    {
+      "dexId": 310,
+      "formKey": "defaultShiny",
+      "nameKo": "썬더볼트",
+      "displayName": "썬더볼트",
+      "iconFile": "0310_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/26/Menu_CP_0310_shiny.png",
+      "dHash": "0b2706061b0a0606"
+    },
+    {
+      "dexId": 310,
+      "formKey": "mega",
+      "nameKo": "메가썬더볼트",
+      "displayName": "메가썬더볼트",
+      "iconFile": "0310_mega.png",
+      "iconUrl": "sprite_poke.png#0310_01",
+      "dHash": "161c1f3f3b36263e"
+    },
+    {
+      "dexId": 310,
+      "formKey": "megaShiny",
+      "nameKo": "메가썬더볼트",
+      "displayName": "메가썬더볼트",
+      "iconFile": "0310_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4e/Menu_CP_0310-Mega_shiny.png",
+      "dHash": "161c1f3f3b36261e"
+    },
+    {
+      "dexId": 319,
+      "formKey": "default",
+      "nameKo": "샤크니아",
+      "displayName": "샤크니아",
+      "iconFile": "0319_default.png",
+      "iconUrl": "sprite_poke.png#0319_00",
+      "dHash": "04060f0f0e040c0c"
+    },
+    {
+      "dexId": 319,
+      "formKey": "defaultShiny",
+      "nameKo": "샤크니아",
+      "displayName": "샤크니아",
+      "iconFile": "0319_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/be/Menu_CP_0319_shiny.png",
+      "dHash": "04060f0f0e040c0c"
+    },
+    {
+      "dexId": 319,
+      "formKey": "mega",
+      "nameKo": "메가샤크니아",
+      "displayName": "메가샤크니아",
+      "iconFile": "0319_mega.png",
+      "iconUrl": "sprite_poke.png#0319_01",
+      "dHash": "06070f4d07040c0c"
+    },
+    {
+      "dexId": 319,
+      "formKey": "megaShiny",
+      "nameKo": "메가샤크니아",
+      "displayName": "메가샤크니아",
+      "iconFile": "0319_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/90/Menu_CP_0319-Mega_shiny.png",
+      "dHash": "06070f4d07040c0c"
+    },
+    {
+      "dexId": 323,
+      "formKey": "default",
+      "nameKo": "폭타",
+      "displayName": "폭타",
+      "iconFile": "0323_default.png",
+      "iconUrl": "sprite_poke.png#0323_00",
+      "dHash": "4b4f0f09133b2c1c"
+    },
+    {
+      "dexId": 323,
+      "formKey": "defaultShiny",
+      "nameKo": "폭타",
+      "displayName": "폭타",
+      "iconFile": "0323_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Menu_CP_0323_shiny.png",
+      "dHash": "4b4f6f4b133b2c1c"
+    },
+    {
+      "dexId": 323,
+      "formKey": "mega",
+      "nameKo": "메가폭타",
+      "displayName": "메가폭타",
+      "iconFile": "0323_mega.png",
+      "iconUrl": "sprite_poke.png#0323_01",
+      "dHash": "0b010f0d11130e0c"
+    },
+    {
+      "dexId": 323,
+      "formKey": "megaShiny",
+      "nameKo": "메가폭타",
+      "displayName": "메가폭타",
+      "iconFile": "0323_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f2/Menu_CP_0323-Mega_shiny.png",
+      "dHash": "0b010f0d11130e0c"
+    },
+    {
+      "dexId": 324,
+      "formKey": "default",
+      "nameKo": "코터스",
+      "displayName": "코터스",
+      "iconFile": "0324_default.png",
+      "iconUrl": "sprite_poke.png#0324_00",
+      "dHash": "0b2f160706320c00"
+    },
+    {
+      "dexId": 324,
+      "formKey": "defaultShiny",
+      "nameKo": "코터스",
+      "displayName": "코터스",
+      "iconFile": "0324_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b9/Menu_CP_0324_shiny.png",
+      "dHash": "0b3b0f0f06320e00"
+    },
+    {
+      "dexId": 334,
+      "formKey": "default",
+      "nameKo": "파비코리",
+      "displayName": "파비코리",
+      "iconFile": "0334_default.png",
+      "iconUrl": "sprite_poke.png#0334_00",
+      "dHash": "000c23c9a64c0d00"
+    },
+    {
+      "dexId": 334,
+      "formKey": "defaultShiny",
+      "nameKo": "파비코리",
+      "displayName": "파비코리",
+      "iconFile": "0334_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/aa/Menu_CP_0334_shiny.png",
+      "dHash": "000c678cc64c0c00"
+    },
+    {
+      "dexId": 334,
+      "formKey": "mega",
+      "nameKo": "메가파비코리",
+      "displayName": "메가파비코리",
+      "iconFile": "0334_mega.png",
+      "iconUrl": "sprite_poke.png#0334_01",
+      "dHash": "0c0c0c0c1e6d4d1d"
+    },
+    {
+      "dexId": 334,
+      "formKey": "megaShiny",
+      "nameKo": "메가파비코리",
+      "displayName": "메가파비코리",
+      "iconFile": "0334_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3c/Menu_CP_0334-Mega_shiny.png",
+      "dHash": "0c0c0c0c1f6d4d1d"
+    },
+    {
+      "dexId": 350,
+      "formKey": "default",
+      "nameKo": "밀로틱",
+      "displayName": "밀로틱",
+      "iconFile": "0350_default.png",
+      "iconUrl": "sprite_poke.png#0350_00",
+      "dHash": "190d597b6e6e1b13"
+    },
+    {
+      "dexId": 350,
+      "formKey": "defaultShiny",
+      "nameKo": "밀로틱",
+      "displayName": "밀로틱",
+      "iconFile": "0350_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/06/Menu_CP_0350_shiny.png",
+      "dHash": "190c5b7b2e6e1b13"
+    },
+    {
+      "dexId": 351,
+      "formKey": "default",
+      "nameKo": "캐스퐁",
+      "displayName": "캐스퐁",
+      "iconFile": "0351_default.png",
+      "iconUrl": "sprite_poke.png#0351_00",
+      "dHash": "000c1e0e160c0c10"
+    },
+    {
+      "dexId": 351,
+      "formKey": "defaultShiny",
+      "nameKo": "캐스퐁",
+      "displayName": "캐스퐁",
+      "iconFile": "0351_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/af/Menu_CP_0351_shiny.png",
+      "dHash": "000e1e06160c0c10"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form01.png",
+      "iconUrl": "sprite_poke.png#0351_01",
+      "dHash": "080c1616170e0e00"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/cf/Menu_CP_0351-Rainy_shiny.png",
+      "dHash": "000e0e0e0e0c0800"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form02",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form02.png",
+      "iconUrl": "sprite_poke.png#0351_02",
+      "dHash": "000e1e161e0c0800"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form02Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/aa/Menu_CP_0351-Snowy_shiny.png",
+      "dHash": "000e0b2b16270f00"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form03",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form03.png",
+      "iconUrl": "sprite_poke.png#0351_03",
+      "dHash": "000e0b2b16270f00"
+    },
+    {
+      "dexId": 351,
+      "formKey": "form03Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0351_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c3/Menu_CP_0351-Sunny_shiny.png",
+      "dHash": "080e1617170e0e00"
+    },
+    {
+      "dexId": 354,
+      "formKey": "default",
+      "nameKo": "다크펫",
+      "displayName": "다크펫",
+      "iconFile": "0354_default.png",
+      "iconUrl": "sprite_poke.png#0354_00",
+      "dHash": "0747671b03070400"
+    },
+    {
+      "dexId": 354,
+      "formKey": "defaultShiny",
+      "nameKo": "다크펫",
+      "displayName": "다크펫",
+      "iconFile": "0354_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/ff/Menu_CP_0354_shiny.png",
+      "dHash": "0747671b03070400"
+    },
+    {
+      "dexId": 354,
+      "formKey": "mega",
+      "nameKo": "메가다크펫",
+      "displayName": "메가다크펫",
+      "iconFile": "0354_mega.png",
+      "iconUrl": "sprite_poke.png#0354_01",
+      "dHash": "0c1f290f0e080000"
+    },
+    {
+      "dexId": 354,
+      "formKey": "megaShiny",
+      "nameKo": "메가다크펫",
+      "displayName": "메가다크펫",
+      "iconFile": "0354_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5b/Menu_CP_0354-Mega_shiny.png",
+      "dHash": "0c1f290f0e080000"
+    },
+    {
+      "dexId": 358,
+      "formKey": "default",
+      "nameKo": "치렁",
+      "displayName": "치렁",
+      "iconFile": "0358_default.png",
+      "iconUrl": "sprite_poke.png#0358_00",
+      "dHash": "180c0c0c0e060c0c"
+    },
+    {
+      "dexId": 358,
+      "formKey": "defaultShiny",
+      "nameKo": "치렁",
+      "displayName": "치렁",
+      "iconFile": "0358_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/13/Menu_CP_0358_shiny.png",
+      "dHash": "1c0c0c0c0e060c0c"
+    },
+    {
+      "dexId": 358,
+      "formKey": "mega",
+      "nameKo": "메가치렁",
+      "displayName": "메가치렁",
+      "iconFile": "0358_form01.png",
+      "iconUrl": "sprite_poke.png#0358_01",
+      "dHash": "96365336072b3870"
+    },
+    {
+      "dexId": 358,
+      "formKey": "megaShiny",
+      "nameKo": "메가치렁",
+      "displayName": "메가치렁",
+      "iconFile": "0358_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6b/Menu_CP_0358-Mega_shiny.png",
+      "dHash": "96365336132b3870"
+    },
+    {
+      "dexId": 359,
+      "formKey": "default",
+      "nameKo": "앱솔",
+      "displayName": "앱솔",
+      "iconFile": "0359_default.png",
+      "iconUrl": "sprite_poke.png#0359_00",
+      "dHash": "261e1e1637236304"
+    },
+    {
+      "dexId": 359,
+      "formKey": "defaultShiny",
+      "nameKo": "앱솔",
+      "displayName": "앱솔",
+      "iconFile": "0359_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ea/Menu_CP_0359_shiny.png",
+      "dHash": "261e1e1637236304"
+    },
+    {
+      "dexId": 359,
+      "formKey": "mega",
+      "nameKo": "메가앱솔",
+      "displayName": "메가앱솔",
+      "iconFile": "0359_mega.png",
+      "iconUrl": "sprite_poke.png#0359_01",
+      "dHash": "061a060e1b434373"
+    },
+    {
+      "dexId": 359,
+      "formKey": "megaShiny",
+      "nameKo": "메가앱솔",
+      "displayName": "메가앱솔",
+      "iconFile": "0359_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/39/Menu_CP_0359-Mega_shiny.png",
+      "dHash": "071b0e0e1b434373"
+    },
+    {
+      "dexId": 362,
+      "formKey": "default",
+      "nameKo": "얼음귀신",
+      "displayName": "얼음귀신",
+      "iconFile": "0362_default.png",
+      "iconUrl": "sprite_poke.png#0362_00",
+      "dHash": "0e1f2959253569c0"
+    },
+    {
+      "dexId": 362,
+      "formKey": "defaultShiny",
+      "nameKo": "얼음귀신",
+      "displayName": "얼음귀신",
+      "iconFile": "0362_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c5/Menu_CP_0362_shiny.png",
+      "dHash": "0e1f2959253569c0"
+    },
+    {
+      "dexId": 362,
+      "formKey": "mega",
+      "nameKo": "메가얼음귀신",
+      "displayName": "메가얼음귀신",
+      "iconFile": "0362_mega.png",
+      "iconUrl": "sprite_poke.png#0362_01",
+      "dHash": "0f132f594b273773"
+    },
+    {
+      "dexId": 362,
+      "formKey": "megaShiny",
+      "nameKo": "메가얼음귀신",
+      "displayName": "메가얼음귀신",
+      "iconFile": "0362_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/90/Menu_CP_0362-Mega_shiny.png",
+      "dHash": "0f132f594b273373"
+    },
+    {
+      "dexId": 389,
+      "formKey": "default",
+      "nameKo": "토대부기",
+      "displayName": "토대부기",
+      "iconFile": "0389_default.png",
+      "iconUrl": "sprite_poke.png#0389_00",
+      "dHash": "1919330d1f2f1c18"
+    },
+    {
+      "dexId": 389,
+      "formKey": "defaultShiny",
+      "nameKo": "토대부기",
+      "displayName": "토대부기",
+      "iconFile": "0389_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9d/Menu_CP_0389_shiny.png",
+      "dHash": "1921232d1f3f1c18"
+    },
+    {
+      "dexId": 392,
+      "formKey": "default",
+      "nameKo": "초염몽",
+      "displayName": "초염몽",
+      "iconFile": "0392_default.png",
+      "iconUrl": "sprite_poke.png#0392_00",
+      "dHash": "0a1b3b1d236d4f0e"
+    },
+    {
+      "dexId": 392,
+      "formKey": "defaultShiny",
+      "nameKo": "초염몽",
+      "displayName": "초염몽",
+      "iconFile": "0392_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/89/Menu_CP_0392_shiny.png",
+      "dHash": "0a1b3b1d236d4f0e"
+    },
+    {
+      "dexId": 395,
+      "formKey": "default",
+      "nameKo": "엠페르트",
+      "displayName": "엠페르트",
+      "iconFile": "0395_default.png",
+      "iconUrl": "sprite_poke.png#0395_00",
+      "dHash": "161733130e0c0c0c"
+    },
+    {
+      "dexId": 395,
+      "formKey": "defaultShiny",
+      "nameKo": "엠페르트",
+      "displayName": "엠페르트",
+      "iconFile": "0395_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/82/Menu_CP_0395_shiny.png",
+      "dHash": "161733130e0c0c0c"
+    },
+    {
+      "dexId": 405,
+      "formKey": "default",
+      "nameKo": "렌트라",
+      "displayName": "렌트라",
+      "iconFile": "0405_default.png",
+      "iconUrl": "sprite_poke.png#0405_00",
+      "dHash": "0606461b0b0b1302"
+    },
+    {
+      "dexId": 405,
+      "formKey": "defaultShiny",
+      "nameKo": "렌트라",
+      "displayName": "렌트라",
+      "iconFile": "0405_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4b/Menu_CP_0405_shiny.png",
+      "dHash": "06064e1b0b0b1302"
+    },
+    {
+      "dexId": 407,
+      "formKey": "default",
+      "nameKo": "로즈레이드",
+      "displayName": "로즈레이드",
+      "iconFile": "0407_default.png",
+      "iconUrl": "sprite_poke.png#0407_00",
+      "dHash": "0c3c2f0b16320e18"
+    },
+    {
+      "dexId": 407,
+      "formKey": "defaultShiny",
+      "nameKo": "로즈레이드",
+      "displayName": "로즈레이드",
+      "iconFile": "0407_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ec/Menu_CP_0407_shiny.png",
+      "dHash": "1c3c370b17320e18"
+    },
+    {
+      "dexId": 409,
+      "formKey": "default",
+      "nameKo": "램펄드",
+      "displayName": "램펄드",
+      "iconFile": "0409_default.png",
+      "iconUrl": "sprite_poke.png#0409_00",
+      "dHash": "1216070647031306"
+    },
+    {
+      "dexId": 409,
+      "formKey": "defaultShiny",
+      "nameKo": "램펄드",
+      "displayName": "램펄드",
+      "iconFile": "0409_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/12/Menu_CP_0409_shiny.png",
+      "dHash": "1317070647031306"
+    },
+    {
+      "dexId": 411,
+      "formKey": "default",
+      "nameKo": "바리톱스",
+      "displayName": "바리톱스",
+      "iconFile": "0411_default.png",
+      "iconUrl": "sprite_poke.png#0411_00",
+      "dHash": "2b63c38717070300"
+    },
+    {
+      "dexId": 411,
+      "formKey": "defaultShiny",
+      "nameKo": "바리톱스",
+      "displayName": "바리톱스",
+      "iconFile": "0411_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/03/Menu_CP_0411_shiny.png",
+      "dHash": "2f63d38717070300"
+    },
+    {
+      "dexId": 428,
+      "formKey": "default",
+      "nameKo": "이어롭",
+      "displayName": "이어롭",
+      "iconFile": "0428_default.png",
+      "iconUrl": "sprite_poke.png#0428_00",
+      "dHash": "0c2d4f270f0e0e22"
+    },
+    {
+      "dexId": 428,
+      "formKey": "defaultShiny",
+      "nameKo": "이어롭",
+      "displayName": "이어롭",
+      "iconFile": "0428_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/75/Menu_CP_0428_shiny.png",
+      "dHash": "0c2f4f2707060e22"
+    },
+    {
+      "dexId": 428,
+      "formKey": "mega",
+      "nameKo": "메가이어롭",
+      "displayName": "메가이어롭",
+      "iconFile": "0428_mega.png",
+      "iconUrl": "sprite_poke.png#0428_01",
+      "dHash": "0c6c6d6d2b0f1e0f"
+    },
+    {
+      "dexId": 428,
+      "formKey": "megaShiny",
+      "nameKo": "메가이어롭",
+      "displayName": "메가이어롭",
+      "iconFile": "0428_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d0/Menu_CP_0428-Mega_shiny.png",
+      "dHash": "0c6e6d452f330f0b"
+    },
+    {
+      "dexId": 442,
+      "formKey": "default",
+      "nameKo": "화강돌",
+      "displayName": "화강돌",
+      "iconFile": "0442_default.png",
+      "iconUrl": "sprite_poke.png#0442_00",
+      "dHash": "0c0c0f0f0b170604"
+    },
+    {
+      "dexId": 442,
+      "formKey": "defaultShiny",
+      "nameKo": "화강돌",
+      "displayName": "화강돌",
+      "iconFile": "0442_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/64/Menu_CP_0442_shiny.png",
+      "dHash": "0c0e0f0303070604"
+    },
+    {
+      "dexId": 445,
+      "formKey": "default",
+      "nameKo": "한카리아스",
+      "displayName": "한카리아스",
+      "iconFile": "0445_default.png",
+      "iconUrl": "sprite_poke.png#0445_00",
+      "dHash": "33b61655492e470b"
+    },
+    {
+      "dexId": 445,
+      "formKey": "defaultShiny",
+      "nameKo": "한카리아스",
+      "displayName": "한카리아스",
+      "iconFile": "0445_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/04/Menu_CP_0445_shiny.png",
+      "dHash": "33b71655492e670b"
+    },
+    {
+      "dexId": 445,
+      "formKey": "mega",
+      "nameKo": "메가한카리아스",
+      "displayName": "메가한카리아스",
+      "iconFile": "0445_mega.png",
+      "iconUrl": "sprite_poke.png#0445_01",
+      "dHash": "23339694490d0e1e"
+    },
+    {
+      "dexId": 445,
+      "formKey": "megaShiny",
+      "nameKo": "메가한카리아스",
+      "displayName": "메가한카리아스",
+      "iconFile": "0445_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/62/Menu_CP_0445-Mega_shiny.png",
+      "dHash": "23339694490d0e1e"
+    },
+    {
+      "dexId": 448,
+      "formKey": "default",
+      "nameKo": "루카리오",
+      "displayName": "루카리오",
+      "iconFile": "0448_default.png",
+      "iconUrl": "sprite_poke.png#0448_00",
+      "dHash": "16140e161c0c0c0c"
+    },
+    {
+      "dexId": 448,
+      "formKey": "defaultShiny",
+      "nameKo": "루카리오",
+      "displayName": "루카리오",
+      "iconFile": "0448_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/53/Menu_CP_0448_shiny.png",
+      "dHash": "161616160c0c0c0c"
+    },
+    {
+      "dexId": 448,
+      "formKey": "mega",
+      "nameKo": "메가루카리오",
+      "displayName": "메가루카리오",
+      "iconFile": "0448_mega.png",
+      "iconUrl": "sprite_poke.png#0448_01",
+      "dHash": "16161c06160c0c0c"
+    },
+    {
+      "dexId": 448,
+      "formKey": "megaShiny",
+      "nameKo": "메가루카리오",
+      "displayName": "메가루카리오",
+      "iconFile": "0448_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/09/Menu_CP_0448-Mega_shiny.png",
+      "dHash": "16161e160e0c0c0c"
+    },
+    {
+      "dexId": 450,
+      "formKey": "default",
+      "nameKo": "하마돈",
+      "displayName": "하마돈",
+      "iconFile": "0450_default.png",
+      "iconUrl": "sprite_poke.png#0450_00",
+      "dHash": "1b11011b1b0e0000"
+    },
+    {
+      "dexId": 450,
+      "formKey": "defaultShiny",
+      "nameKo": "하마돈",
+      "displayName": "하마돈",
+      "iconFile": "0450_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e8/Menu_CP_0450_shiny.png",
+      "dHash": "196769691f0e0000"
+    },
+    {
+      "dexId": 454,
+      "formKey": "default",
+      "nameKo": "독개굴",
+      "displayName": "독개굴",
+      "iconFile": "0454_default.png",
+      "iconUrl": "sprite_poke.png#0454_00",
+      "dHash": "63662c091f4c0400"
+    },
+    {
+      "dexId": 454,
+      "formKey": "defaultShiny",
+      "nameKo": "독개굴",
+      "displayName": "독개굴",
+      "iconFile": "0454_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/63/Menu_CP_0454_shiny.png",
+      "dHash": "63660d0d1f560400"
+    },
+    {
+      "dexId": 460,
+      "formKey": "default",
+      "nameKo": "눈설왕",
+      "displayName": "눈설왕",
+      "iconFile": "0460_default.png",
+      "iconUrl": "sprite_poke.png#0460_00",
+      "dHash": "135b794936161600"
+    },
+    {
+      "dexId": 460,
+      "formKey": "defaultShiny",
+      "nameKo": "눈설왕",
+      "displayName": "눈설왕",
+      "iconFile": "0460_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1d/Menu_CP_0460_shiny.png",
+      "dHash": "135b794b36161600"
+    },
+    {
+      "dexId": 460,
+      "formKey": "mega",
+      "nameKo": "메가눈설왕",
+      "displayName": "메가눈설왕",
+      "iconFile": "0460_mega.png",
+      "iconUrl": "sprite_poke.png#0460_01",
+      "dHash": "7071710b33333720"
+    },
+    {
+      "dexId": 460,
+      "formKey": "megaShiny",
+      "nameKo": "메가눈설왕",
+      "displayName": "메가눈설왕",
+      "iconFile": "0460_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/45/Menu_CP_0460-Mega_shiny.png",
+      "dHash": "7071710333333720"
+    },
+    {
+      "dexId": 461,
+      "formKey": "default",
+      "nameKo": "포푸니라",
+      "displayName": "포푸니라",
+      "iconFile": "0461_default.png",
+      "iconUrl": "sprite_poke.png#0461_00",
+      "dHash": "16150f070f060e0c"
+    },
+    {
+      "dexId": 461,
+      "formKey": "defaultShiny",
+      "nameKo": "포푸니라",
+      "displayName": "포푸니라",
+      "iconFile": "0461_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/95/Menu_CP_0461_shiny.png",
+      "dHash": "17151f070f23130c"
+    },
+    {
+      "dexId": 464,
+      "formKey": "default",
+      "nameKo": "거대코뿌리",
+      "displayName": "거대코뿌리",
+      "iconFile": "0464_default.png",
+      "iconUrl": "sprite_poke.png#0464_00",
+      "dHash": "333343195b4b4b20"
+    },
+    {
+      "dexId": 464,
+      "formKey": "defaultShiny",
+      "nameKo": "거대코뿌리",
+      "displayName": "거대코뿌리",
+      "iconFile": "0464_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e0/Menu_CP_0464_shiny.png",
+      "dHash": "333353395b4b4300"
+    },
+    {
+      "dexId": 470,
+      "formKey": "default",
+      "nameKo": "리피아",
+      "displayName": "리피아",
+      "iconFile": "0470_default.png",
+      "iconUrl": "sprite_poke.png#0470_00",
+      "dHash": "160e16372b195100"
+    },
+    {
+      "dexId": 470,
+      "formKey": "defaultShiny",
+      "nameKo": "리피아",
+      "displayName": "리피아",
+      "iconFile": "0470_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8e/Menu_CP_0470_shiny.png",
+      "dHash": "160e16372b197100"
+    },
+    {
+      "dexId": 471,
+      "formKey": "default",
+      "nameKo": "글레이시아",
+      "displayName": "글레이시아",
+      "iconFile": "0471_default.png",
+      "iconUrl": "sprite_poke.png#0471_00",
+      "dHash": "0607071323696000"
+    },
+    {
+      "dexId": 471,
+      "formKey": "defaultShiny",
+      "nameKo": "글레이시아",
+      "displayName": "글레이시아",
+      "iconFile": "0471_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a3/Menu_CP_0471_shiny.png",
+      "dHash": "0607031327696000"
+    },
+    {
+      "dexId": 472,
+      "formKey": "default",
+      "nameKo": "글라이온",
+      "displayName": "글라이온",
+      "iconFile": "0472_default.png",
+      "iconUrl": "sprite_poke.png#0472_00",
+      "dHash": "060e1c1e37531712"
+    },
+    {
+      "dexId": 472,
+      "formKey": "defaultShiny",
+      "nameKo": "글라이온",
+      "displayName": "글라이온",
+      "iconFile": "0472_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fa/Menu_CP_0472_shiny.png",
+      "dHash": "060e1c3633531313"
+    },
+    {
+      "dexId": 473,
+      "formKey": "default",
+      "nameKo": "맘모꾸리",
+      "displayName": "맘모꾸리",
+      "iconFile": "0473_default.png",
+      "iconUrl": "sprite_poke.png#0473_00",
+      "dHash": "33667673271e0c00"
+    },
+    {
+      "dexId": 473,
+      "formKey": "defaultShiny",
+      "nameKo": "맘모꾸리",
+      "displayName": "맘모꾸리",
+      "iconFile": "0473_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/dd/Menu_CP_0473_shiny.png",
+      "dHash": "336676733b1e0c00"
+    },
+    {
+      "dexId": 475,
+      "formKey": "default",
+      "nameKo": "엘레이드",
+      "displayName": "엘레이드",
+      "iconFile": "0475_default.png",
+      "iconUrl": "sprite_poke.png#0475_00",
+      "dHash": "121606060e0c0c0c"
+    },
+    {
+      "dexId": 475,
+      "formKey": "defaultShiny",
+      "nameKo": "엘레이드",
+      "displayName": "엘레이드",
+      "iconFile": "0475_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1c/Menu_CP_0475_shiny.png",
+      "dHash": "121606060e0c0c0c"
+    },
+    {
+      "dexId": 475,
+      "formKey": "mega",
+      "nameKo": "메가엘레이드",
+      "displayName": "메가엘레이드",
+      "iconFile": "0475_mega.png",
+      "iconUrl": "sprite_poke.png#0475_01",
+      "dHash": "373303260e0c1c18"
+    },
+    {
+      "dexId": 475,
+      "formKey": "megaShiny",
+      "nameKo": "메가엘레이드",
+      "displayName": "메가엘레이드",
+      "iconFile": "0475_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/80/Menu_CP_0475-Mega_shiny.png",
+      "dHash": "373303260f0c1c1c"
+    },
+    {
+      "dexId": 478,
+      "formKey": "default",
+      "nameKo": "눈여아",
+      "displayName": "눈여아",
+      "iconFile": "0478_default.png",
+      "iconUrl": "sprite_poke.png#0478_00",
+      "dHash": "0c342f0b07030b03"
+    },
+    {
+      "dexId": 478,
+      "formKey": "defaultShiny",
+      "nameKo": "눈여아",
+      "displayName": "눈여아",
+      "iconFile": "0478_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/38/Menu_CP_0478_shiny.png",
+      "dHash": "0c342f0b07030b0b"
+    },
+    {
+      "dexId": 478,
+      "formKey": "mega",
+      "nameKo": "메가눈여아",
+      "displayName": "메가눈여아",
+      "iconFile": "0478_form01.png",
+      "iconUrl": "sprite_poke.png#0478_01",
+      "dHash": "1a0e0c17170e0606"
+    },
+    {
+      "dexId": 478,
+      "formKey": "megaShiny",
+      "nameKo": "메가눈여아",
+      "displayName": "메가눈여아",
+      "iconFile": "0478_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9c/Menu_CP_0478-Mega_shiny.png",
+      "dHash": "1b0f0e17170e0606"
+    },
+    {
+      "dexId": 479,
+      "formKey": "default",
+      "nameKo": "로토무",
+      "displayName": "로토무",
+      "iconFile": "0479_default.png",
+      "iconUrl": "sprite_poke.png#0479_00",
+      "dHash": "00002b0f0c0c0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "defaultShiny",
+      "nameKo": "로토무",
+      "displayName": "로토무",
+      "iconFile": "0479_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/74/Menu_CP_0479_shiny.png",
+      "dHash": "00002b0f0e0c0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomFan",
+      "nameKo": "로토무(스핀)",
+      "displayName": "로토무(스핀)",
+      "iconFile": "0479_rotomFan.png",
+      "iconUrl": "sprite_poke.png#0479_04",
+      "dHash": "00080c0c0f0f0b00"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomFanShiny",
+      "nameKo": "로토무(스핀)",
+      "displayName": "로토무(스핀)",
+      "iconFile": "0479_rotomFan_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6d/Menu_CP_0479-Fan_shiny.png",
+      "dHash": "00080c4c0f0f0b00"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomFrost",
+      "nameKo": "로토무(프로스트)",
+      "displayName": "로토무(프로스트)",
+      "iconFile": "0479_rotomFrost.png",
+      "iconUrl": "sprite_poke.png#0479_03",
+      "dHash": "000c0e06070d0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomFrostShiny",
+      "nameKo": "로토무(프로스트)",
+      "displayName": "로토무(프로스트)",
+      "iconFile": "0479_rotomFrost_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/72/Menu_CP_0479-Frost_shiny.png",
+      "dHash": "00080e0e0f4d0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomHeat",
+      "nameKo": "로토무(히트)",
+      "displayName": "로토무(히트)",
+      "iconFile": "0479_rotomHeat.png",
+      "iconUrl": "sprite_poke.png#0479_01",
+      "dHash": "00000e060f0b0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomHeatShiny",
+      "nameKo": "로토무(히트)",
+      "displayName": "로토무(히트)",
+      "iconFile": "0479_rotomHeat_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/81/Menu_CP_0479-Heat_shiny.png",
+      "dHash": "00000e060f0f0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomMow",
+      "nameKo": "로토무(커트)",
+      "displayName": "로토무(커트)",
+      "iconFile": "0479_rotomMow.png",
+      "iconUrl": "sprite_poke.png#0479_05",
+      "dHash": "00181e1f0d0c0c00"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomMowShiny",
+      "nameKo": "로토무(커트)",
+      "displayName": "로토무(커트)",
+      "iconFile": "0479_rotomMow_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/06/Menu_CP_0479-Mow_shiny.png",
+      "dHash": "00181f1f0d0c0c00"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomWash",
+      "nameKo": "로토무(워시)",
+      "displayName": "로토무(워시)",
+      "iconFile": "0479_rotomWash.png",
+      "iconUrl": "sprite_poke.png#0479_02",
+      "dHash": "00000b070e0c0000"
+    },
+    {
+      "dexId": 479,
+      "formKey": "rotomWashShiny",
+      "nameKo": "로토무(워시)",
+      "displayName": "로토무(워시)",
+      "iconFile": "0479_rotomWash_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1b/Menu_CP_0479-Wash_shiny.png",
+      "dHash": "00000b0f0e0c0000"
+    },
+    {
+      "dexId": 497,
+      "formKey": "default",
+      "nameKo": "샤로다",
+      "displayName": "샤로다",
+      "iconFile": "0497_default.png",
+      "iconUrl": "sprite_poke.png#0497_00",
+      "dHash": "1b2317cc560e0c0c"
+    },
+    {
+      "dexId": 497,
+      "formKey": "defaultShiny",
+      "nameKo": "샤로다",
+      "displayName": "샤로다",
+      "iconFile": "0497_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9a/Menu_CP_0497_shiny.png",
+      "dHash": "1b2317cc560e0c0c"
+    },
+    {
+      "dexId": 500,
+      "formKey": "default",
+      "nameKo": "염무왕",
+      "displayName": "염무왕",
+      "iconFile": "0500_default.png",
+      "iconUrl": "sprite_poke.png#0500_00",
+      "dHash": "323736e551170e2e"
+    },
+    {
+      "dexId": 500,
+      "formKey": "defaultShiny",
+      "nameKo": "염무왕",
+      "displayName": "염무왕",
+      "iconFile": "0500_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4b/Menu_CP_0500_shiny.png",
+      "dHash": "323736e551570e2e"
+    },
+    {
+      "dexId": 500,
+      "formKey": "mega",
+      "nameKo": "메가염무왕",
+      "displayName": "메가염무왕",
+      "iconFile": "0500_form01.png",
+      "iconUrl": "sprite_poke.png#0500_01",
+      "dHash": "16161313162b2d30"
+    },
+    {
+      "dexId": 500,
+      "formKey": "megaShiny",
+      "nameKo": "메가염무왕",
+      "displayName": "메가염무왕",
+      "iconFile": "0500_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0e/Menu_CP_0500-Mega_shiny.png",
+      "dHash": "1e1f131b162b2d30"
+    },
+    {
+      "dexId": 503,
+      "formKey": "default",
+      "nameKo": "대검귀",
+      "displayName": "대검귀",
+      "iconFile": "0503_default.png",
+      "iconUrl": "sprite_poke.png#0503_00",
+      "dHash": "3326260e260a0b01"
+    },
+    {
+      "dexId": 503,
+      "formKey": "defaultShiny",
+      "nameKo": "대검귀",
+      "displayName": "대검귀",
+      "iconFile": "0503_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d4/Menu_CP_0503_shiny.png",
+      "dHash": "33273e1e260b0b01"
+    },
+    {
+      "dexId": 503,
+      "formKey": "hisui",
+      "nameKo": "대검귀",
+      "displayName": "대검귀(히스이의 모습)",
+      "iconFile": "0503_hisui.png",
+      "iconUrl": "sprite_poke.png#0503_01",
+      "dHash": "3333062e33230705"
+    },
+    {
+      "dexId": 503,
+      "formKey": "hisuiShiny",
+      "nameKo": "대검귀",
+      "displayName": "대검귀(히스이의 모습)",
+      "iconFile": "0503_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/24/Menu_CP_0503-Hisui_shiny.png",
+      "dHash": "3333062e272b0d05"
+    },
+    {
+      "dexId": 505,
+      "formKey": "default",
+      "nameKo": "보르그",
+      "displayName": "보르그",
+      "iconFile": "0505_default.png",
+      "iconUrl": "sprite_poke.png#0505_00",
+      "dHash": "0c0e16161e0e0c00"
+    },
+    {
+      "dexId": 505,
+      "formKey": "defaultShiny",
+      "nameKo": "보르그",
+      "displayName": "보르그",
+      "iconFile": "0505_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/12/Menu_CP_0505_shiny.png",
+      "dHash": "0c0e161e0e0e0c00"
+    },
+    {
+      "dexId": 510,
+      "formKey": "default",
+      "nameKo": "레파르다스",
+      "displayName": "레파르다스",
+      "iconFile": "0510_default.png",
+      "iconUrl": "sprite_poke.png#0510_00",
+      "dHash": "0c0c1c0e060e1010"
+    },
+    {
+      "dexId": 510,
+      "formKey": "defaultShiny",
+      "nameKo": "레파르다스",
+      "displayName": "레파르다스",
+      "iconFile": "0510_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8b/Menu_CP_0510_shiny.png",
+      "dHash": "0c0c1e0e060e1810"
+    },
+    {
+      "dexId": 512,
+      "formKey": "default",
+      "nameKo": "야나키",
+      "displayName": "야나키",
+      "iconFile": "0512_default.png",
+      "iconUrl": "sprite_poke.png#0512_00",
+      "dHash": "160616372f040404"
+    },
+    {
+      "dexId": 512,
+      "formKey": "defaultShiny",
+      "nameKo": "야나키",
+      "displayName": "야나키",
+      "iconFile": "0512_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5d/Menu_CP_0512_shiny.png",
+      "dHash": "1606161727040404"
+    },
+    {
+      "dexId": 514,
+      "formKey": "default",
+      "nameKo": "바오키",
+      "displayName": "바오키",
+      "iconFile": "0514_default.png",
+      "iconUrl": "sprite_poke.png#0514_00",
+      "dHash": "1617333623070e08"
+    },
+    {
+      "dexId": 514,
+      "formKey": "defaultShiny",
+      "nameKo": "바오키",
+      "displayName": "바오키",
+      "iconFile": "0514_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6e/Menu_CP_0514_shiny.png",
+      "dHash": "1617333623070e08"
+    },
+    {
+      "dexId": 516,
+      "formKey": "default",
+      "nameKo": "앗차키",
+      "displayName": "앗차키",
+      "iconFile": "0516_default.png",
+      "iconUrl": "sprite_poke.png#0516_00",
+      "dHash": "16162e0613131e1c"
+    },
+    {
+      "dexId": 516,
+      "formKey": "defaultShiny",
+      "nameKo": "앗차키",
+      "displayName": "앗차키",
+      "iconFile": "0516_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c7/Menu_CP_0516_shiny.png",
+      "dHash": "16172f0613130e1c"
+    },
+    {
+      "dexId": 530,
+      "formKey": "default",
+      "nameKo": "몰드류",
+      "displayName": "몰드류",
+      "iconFile": "0530_default.png",
+      "iconUrl": "sprite_poke.png#0530_00",
+      "dHash": "5605070e0e040000"
+    },
+    {
+      "dexId": 530,
+      "formKey": "defaultShiny",
+      "nameKo": "몰드류",
+      "displayName": "몰드류",
+      "iconFile": "0530_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e1/Menu_CP_0530_shiny.png",
+      "dHash": "5f05070e0e060000"
+    },
+    {
+      "dexId": 530,
+      "formKey": "mega",
+      "nameKo": "메가몰드류",
+      "displayName": "메가몰드류",
+      "iconFile": "0530_form01.png",
+      "iconUrl": "sprite_poke.png#0530_01",
+      "dHash": "3b79331e1c000000"
+    },
+    {
+      "dexId": 530,
+      "formKey": "megaShiny",
+      "nameKo": "메가몰드류",
+      "displayName": "메가몰드류",
+      "iconFile": "0530_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/79/Menu_CP_0530-Mega_shiny.png",
+      "dHash": "3b39331e1c000000"
+    },
+    {
+      "dexId": 531,
+      "formKey": "default",
+      "nameKo": "다부니",
+      "displayName": "다부니",
+      "iconFile": "0531_default.png",
+      "iconUrl": "sprite_poke.png#0531_00",
+      "dHash": "0e12331213271600"
+    },
+    {
+      "dexId": 531,
+      "formKey": "defaultShiny",
+      "nameKo": "다부니",
+      "displayName": "다부니",
+      "iconFile": "0531_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/cb/Menu_CP_0531_shiny.png",
+      "dHash": "0e12331213271600"
+    },
+    {
+      "dexId": 531,
+      "formKey": "mega",
+      "nameKo": "메가다부니",
+      "displayName": "메가다부니",
+      "iconFile": "0531_mega.png",
+      "iconUrl": "sprite_poke.png#0531_01",
+      "dHash": "0e32233333133333"
+    },
+    {
+      "dexId": 531,
+      "formKey": "megaShiny",
+      "nameKo": "메가다부니",
+      "displayName": "메가다부니",
+      "iconFile": "0531_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7a/Menu_CP_0531-Mega_shiny.png",
+      "dHash": "0e32233333133333"
+    },
+    {
+      "dexId": 534,
+      "formKey": "default",
+      "nameKo": "노보청",
+      "displayName": "노보청",
+      "iconFile": "0534_default.png",
+      "iconUrl": "sprite_poke.png#0534_00",
+      "dHash": "6179495d594d0000"
+    },
+    {
+      "dexId": 534,
+      "formKey": "defaultShiny",
+      "nameKo": "노보청",
+      "displayName": "노보청",
+      "iconFile": "0534_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ac/Menu_CP_0534_shiny.png",
+      "dHash": "6179595d694d0000"
+    },
+    {
+      "dexId": 547,
+      "formKey": "default",
+      "nameKo": "엘풍",
+      "displayName": "엘풍",
+      "iconFile": "0547_default.png",
+      "iconUrl": "sprite_poke.png#0547_00",
+      "dHash": "062f4f1b392b1e00"
+    },
+    {
+      "dexId": 547,
+      "formKey": "defaultShiny",
+      "nameKo": "엘풍",
+      "displayName": "엘풍",
+      "iconFile": "0547_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b3/Menu_CP_0547_shiny.png",
+      "dHash": "072f4f5b592b1e00"
+    },
+    {
+      "dexId": 553,
+      "formKey": "default",
+      "nameKo": "악비아르",
+      "displayName": "악비아르",
+      "iconFile": "0553_default.png",
+      "iconUrl": "sprite_poke.png#0553_00",
+      "dHash": "627637313347464e"
+    },
+    {
+      "dexId": 553,
+      "formKey": "defaultShiny",
+      "nameKo": "악비아르",
+      "displayName": "악비아르",
+      "iconFile": "0553_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3b/Menu_CP_0553_shiny.png",
+      "dHash": "62763731335f5646"
+    },
+    {
+      "dexId": 563,
+      "formKey": "default",
+      "nameKo": "데스니칸",
+      "displayName": "데스니칸",
+      "iconFile": "0563_default.png",
+      "iconUrl": "sprite_poke.png#0563_00",
+      "dHash": "00dde99f1b5b6100"
+    },
+    {
+      "dexId": 563,
+      "formKey": "defaultShiny",
+      "nameKo": "데스니칸",
+      "displayName": "데스니칸",
+      "iconFile": "0563_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f6/Menu_CP_0563_shiny.png",
+      "dHash": "00dde99f7b7b6100"
+    },
+    {
+      "dexId": 569,
+      "formKey": "default",
+      "nameKo": "더스트나",
+      "displayName": "더스트나",
+      "iconFile": "0569_default.png",
+      "iconUrl": "sprite_poke.png#0569_00",
+      "dHash": "364717150d2d2c00"
+    },
+    {
+      "dexId": 569,
+      "formKey": "defaultShiny",
+      "nameKo": "더스트나",
+      "displayName": "더스트나",
+      "iconFile": "0569_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/00/Menu_CP_0569_shiny.png",
+      "dHash": "36471b050d2d2c00"
+    },
+    {
+      "dexId": 571,
+      "formKey": "default",
+      "nameKo": "조로아크",
+      "displayName": "조로아크",
+      "iconFile": "0571_default.png",
+      "iconUrl": "sprite_poke.png#0571_00",
+      "dHash": "23330f0f03030700"
+    },
+    {
+      "dexId": 571,
+      "formKey": "defaultShiny",
+      "nameKo": "조로아크",
+      "displayName": "조로아크",
+      "iconFile": "0571_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d4/Menu_CP_0571_shiny.png",
+      "dHash": "23330f0f03031700"
+    },
+    {
+      "dexId": 571,
+      "formKey": "hisui",
+      "nameKo": "조로아크",
+      "displayName": "조로아크(히스이의 모습)",
+      "iconFile": "0571_hisui.png",
+      "iconUrl": "sprite_poke.png#0571_01",
+      "dHash": "3337130f151b1e34"
+    },
+    {
+      "dexId": 571,
+      "formKey": "hisuiShiny",
+      "nameKo": "조로아크",
+      "displayName": "조로아크(히스이의 모습)",
+      "iconFile": "0571_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/25/Menu_CP_0571-Hisui_shiny.png",
+      "dHash": "33170f07151b1e34"
+    },
+    {
+      "dexId": 579,
+      "formKey": "default",
+      "nameKo": "란쿨루스",
+      "displayName": "란쿨루스",
+      "iconFile": "0579_default.png",
+      "iconUrl": "sprite_poke.png#0579_00",
+      "dHash": "000c0e1331514100"
+    },
+    {
+      "dexId": 579,
+      "formKey": "defaultShiny",
+      "nameKo": "란쿨루스",
+      "displayName": "란쿨루스",
+      "iconFile": "0579_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bd/Menu_CP_0579_shiny.png",
+      "dHash": "00040e1333514100"
+    },
+    {
+      "dexId": 584,
+      "formKey": "default",
+      "nameKo": "배바닐라",
+      "displayName": "배바닐라",
+      "iconFile": "0584_default.png",
+      "iconUrl": "sprite_poke.png#0584_00",
+      "dHash": "0c0c0e67156b6e06"
+    },
+    {
+      "dexId": 584,
+      "formKey": "defaultShiny",
+      "nameKo": "배바닐라",
+      "displayName": "배바닐라",
+      "iconFile": "0584_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/72/Menu_CP_0584_shiny.png",
+      "dHash": "0c0c0e67156b6e06"
+    },
+    {
+      "dexId": 587,
+      "formKey": "default",
+      "nameKo": "에몽가",
+      "displayName": "에몽가",
+      "iconFile": "0587_default.png",
+      "iconUrl": "sprite_poke.png#0587_00",
+      "dHash": "001c361b16061600"
+    },
+    {
+      "dexId": 587,
+      "formKey": "defaultShiny",
+      "nameKo": "에몽가",
+      "displayName": "에몽가",
+      "iconFile": "0587_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4a/Menu_CP_0587_shiny.png",
+      "dHash": "001c371b16061600"
+    },
+    {
+      "dexId": 609,
+      "formKey": "default",
+      "nameKo": "샹델라",
+      "displayName": "샹델라",
+      "iconFile": "0609_default.png",
+      "iconUrl": "sprite_poke.png#0609_00",
+      "dHash": "6d4dc5cd8d081810"
+    },
+    {
+      "dexId": 609,
+      "formKey": "defaultShiny",
+      "nameKo": "샹델라",
+      "displayName": "샹델라",
+      "iconFile": "0609_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/17/Menu_CP_0609_shiny.png",
+      "dHash": "6d45cdcdd50c1810"
+    },
+    {
+      "dexId": 609,
+      "formKey": "mega",
+      "nameKo": "메가샹델라",
+      "displayName": "메가샹델라",
+      "iconFile": "0609_form01.png",
+      "iconUrl": "sprite_poke.png#0609_01",
+      "dHash": "0f1717270e0c0c08"
+    },
+    {
+      "dexId": 609,
+      "formKey": "megaShiny",
+      "nameKo": "메가샹델라",
+      "displayName": "메가샹델라",
+      "iconFile": "0609_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/65/Menu_CP_0609-Mega_shiny.png",
+      "dHash": "0f1f07270f0c0c08"
+    },
+    {
+      "dexId": 614,
+      "formKey": "default",
+      "nameKo": "툰베어",
+      "displayName": "툰베어",
+      "iconFile": "0614_default.png",
+      "iconUrl": "sprite_poke.png#0614_00",
+      "dHash": "264e262621654d4c"
+    },
+    {
+      "dexId": 614,
+      "formKey": "defaultShiny",
+      "nameKo": "툰베어",
+      "displayName": "툰베어",
+      "iconFile": "0614_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0d/Menu_CP_0614_shiny.png",
+      "dHash": "264f262621654d4c"
+    },
+    {
+      "dexId": 618,
+      "formKey": "default",
+      "nameKo": "메더",
+      "displayName": "메더",
+      "iconFile": "0618_default.png",
+      "iconUrl": "sprite_poke.png#0618_00",
+      "dHash": "071355160e080000"
+    },
+    {
+      "dexId": 618,
+      "formKey": "defaultShiny",
+      "nameKo": "메더",
+      "displayName": "메더",
+      "iconFile": "0618_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/92/Menu_CP_0618_shiny.png",
+      "dHash": "071355160e080000"
+    },
+    {
+      "dexId": 618,
+      "formKey": "galar",
+      "nameKo": "메더",
+      "displayName": "메더(가라르의 모습)",
+      "iconFile": "0618_galar.png",
+      "iconUrl": "sprite_poke.png#0618_01",
+      "dHash": "4f07160c08000000"
+    },
+    {
+      "dexId": 618,
+      "formKey": "galarShiny",
+      "nameKo": "메더",
+      "displayName": "메더(가라르의 모습)",
+      "iconFile": "0618_galar_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e2/Menu_CP_0618-Galar_shiny.png",
+      "dHash": "4f07160c08000000"
+    },
+    {
+      "dexId": 623,
+      "formKey": "default",
+      "nameKo": "골루그",
+      "displayName": "골루그",
+      "iconFile": "0623_default.png",
+      "iconUrl": "sprite_poke.png#0623_00",
+      "dHash": "1b173733270f4b69"
+    },
+    {
+      "dexId": 623,
+      "formKey": "defaultShiny",
+      "nameKo": "골루그",
+      "displayName": "골루그",
+      "iconFile": "0623_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1b/Menu_CP_0623_shiny.png",
+      "dHash": "1b173733270f0b69"
+    },
+    {
+      "dexId": 623,
+      "formKey": "mega",
+      "nameKo": "메가골루그",
+      "displayName": "메가골루그",
+      "iconFile": "0623_form01.png",
+      "iconUrl": "sprite_poke.png#0623_01",
+      "dHash": "0e27251b1b973361"
+    },
+    {
+      "dexId": 623,
+      "formKey": "megaShiny",
+      "nameKo": "메가골루그",
+      "displayName": "메가골루그",
+      "iconFile": "0623_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6a/Menu_CP_0623-Mega_shiny.png",
+      "dHash": "0a3725191b973361"
+    },
+    {
+      "dexId": 635,
+      "formKey": "default",
+      "nameKo": "삼삼드래",
+      "displayName": "삼삼드래",
+      "iconFile": "0635_default.png",
+      "iconUrl": "sprite_poke.png#0635_00",
+      "dHash": "080e0d05c3131930"
+    },
+    {
+      "dexId": 635,
+      "formKey": "defaultShiny",
+      "nameKo": "삼삼드래",
+      "displayName": "삼삼드래",
+      "iconFile": "0635_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/93/Menu_CP_0635_shiny.png",
+      "dHash": "080e0d05c3131930"
+    },
+    {
+      "dexId": 637,
+      "formKey": "default",
+      "nameKo": "불카모스",
+      "displayName": "불카모스",
+      "iconFile": "0637_default.png",
+      "iconUrl": "sprite_poke.png#0637_00",
+      "dHash": "0111091b1b0b1931"
+    },
+    {
+      "dexId": 637,
+      "formKey": "defaultShiny",
+      "nameKo": "불카모스",
+      "displayName": "불카모스",
+      "iconFile": "0637_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c7/Menu_CP_0637_shiny.png",
+      "dHash": "01110d091b0b1931"
+    },
+    {
+      "dexId": 652,
+      "formKey": "default",
+      "nameKo": "브리가론",
+      "displayName": "브리가론",
+      "iconFile": "0652_default.png",
+      "iconUrl": "sprite_poke.png#0652_00",
+      "dHash": "b6e6cc1d372e6200"
+    },
+    {
+      "dexId": 652,
+      "formKey": "defaultShiny",
+      "nameKo": "브리가론",
+      "displayName": "브리가론",
+      "iconFile": "0652_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f0/Menu_CP_0652_shiny.png",
+      "dHash": "b6b6dc0d17266200"
+    },
+    {
+      "dexId": 652,
+      "formKey": "mega",
+      "nameKo": "메가브리가론",
+      "displayName": "메가브리가론",
+      "iconFile": "0652_form01.png",
+      "iconUrl": "sprite_poke.png#0652_01",
+      "dHash": "12666c6d1b270c00"
+    },
+    {
+      "dexId": 652,
+      "formKey": "megaShiny",
+      "nameKo": "메가브리가론",
+      "displayName": "메가브리가론",
+      "iconFile": "0652_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/97/Menu_CP_0652-Mega_shiny.png",
+      "dHash": "12360c1b1b0f0c00"
+    },
+    {
+      "dexId": 655,
+      "formKey": "default",
+      "nameKo": "마폭시",
+      "displayName": "마폭시",
+      "iconFile": "0655_default.png",
+      "iconUrl": "sprite_poke.png#0655_00",
+      "dHash": "1e060e4e0e131708"
+    },
+    {
+      "dexId": 655,
+      "formKey": "defaultShiny",
+      "nameKo": "마폭시",
+      "displayName": "마폭시",
+      "iconFile": "0655_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/28/Menu_CP_0655_shiny.png",
+      "dHash": "1e060e0e0e171708"
+    },
+    {
+      "dexId": 655,
+      "formKey": "mega",
+      "nameKo": "메가마폭시",
+      "displayName": "메가마폭시",
+      "iconFile": "0655_form01.png",
+      "iconUrl": "sprite_poke.png#0655_01",
+      "dHash": "2447272f2f56579a"
+    },
+    {
+      "dexId": 655,
+      "formKey": "megaShiny",
+      "nameKo": "메가마폭시",
+      "displayName": "메가마폭시",
+      "iconFile": "0655_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/33/Menu_CP_0655-Mega_shiny.png",
+      "dHash": "2c47272f2f5657da"
+    },
+    {
+      "dexId": 658,
+      "formKey": "default",
+      "nameKo": "개굴닌자",
+      "displayName": "개굴닌자",
+      "iconFile": "0658_default.png",
+      "iconUrl": "sprite_poke.png#0658_00",
+      "dHash": "131bc6c783190000"
+    },
+    {
+      "dexId": 658,
+      "formKey": "defaultShiny",
+      "nameKo": "개굴닌자",
+      "displayName": "개굴닌자",
+      "iconFile": "0658_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/01/Menu_CP_0658_shiny.png",
+      "dHash": "131bc6c78b180000"
+    },
+    {
+      "dexId": 658,
+      "formKey": "mega",
+      "nameKo": "메가개굴닌자",
+      "displayName": "메가개굴닌자",
+      "iconFile": "0658_form03.png",
+      "iconUrl": "sprite_poke.png#0658_03",
+      "dHash": "0c0c0c0c0c0c0f1b"
+    },
+    {
+      "dexId": 658,
+      "formKey": "megaShiny",
+      "nameKo": "메가개굴닌자",
+      "displayName": "메가개굴닌자",
+      "iconFile": "0658_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9c/Menu_CP_0658-Mega_shiny.png",
+      "dHash": "0c0c0c0e0e0c2f1b"
+    },
+    {
+      "dexId": 660,
+      "formKey": "default",
+      "nameKo": "파르토",
+      "displayName": "파르토",
+      "iconFile": "0660_default.png",
+      "iconUrl": "sprite_poke.png#0660_00",
+      "dHash": "1c1c154971752000"
+    },
+    {
+      "dexId": 660,
+      "formKey": "defaultShiny",
+      "nameKo": "파르토",
+      "displayName": "파르토",
+      "iconFile": "0660_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/52/Menu_CP_0660_shiny.png",
+      "dHash": "1c0c0d1993332000"
+    },
+    {
+      "dexId": 663,
+      "formKey": "default",
+      "nameKo": "파이어로",
+      "displayName": "파이어로",
+      "iconFile": "0663_default.png",
+      "iconUrl": "sprite_poke.png#0663_00",
+      "dHash": "0f0f060f0d030306"
+    },
+    {
+      "dexId": 663,
+      "formKey": "defaultShiny",
+      "nameKo": "파이어로",
+      "displayName": "파이어로",
+      "iconFile": "0663_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6d/Menu_CP_0663_shiny.png",
+      "dHash": "0f070e0f0d030306"
+    },
+    {
+      "dexId": 666,
+      "formKey": "default",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_default.png",
+      "iconUrl": "sprite_poke.png#0666_00",
+      "dHash": "336b4dc4d5553120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "defaultShiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/26/Menu_CP_0666_shiny.png",
+      "dHash": "3223274153713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form01.png",
+      "iconUrl": "sprite_poke.png#0666_01",
+      "dHash": "3357071173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/56/Menu_CP_0666-Archipelago_shiny.png",
+      "dHash": "3233131153313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form02",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form02.png",
+      "iconUrl": "sprite_poke.png#0666_02",
+      "dHash": "331707c5d3513120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form02Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/82/Menu_CP_0666-Continental_shiny.png",
+      "dHash": "3233234173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form03",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form03.png",
+      "iconUrl": "sprite_poke.png#0666_03",
+      "dHash": "3233234171313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form03Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/82/Menu_CP_0666-Elegant_shiny.png",
+      "dHash": "3317131313713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form04",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form04.png",
+      "iconUrl": "sprite_poke.png#0666_04",
+      "dHash": "3233131151313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form04Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form04_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b3/Menu_CP_0666-Fancy_shiny.png",
+      "dHash": "32332b6571713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form05",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form05.png",
+      "iconUrl": "sprite_poke.png#0666_05",
+      "dHash": "3317131313713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form05Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form05_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/68/Menu_CP_0666-Garden_shiny.png",
+      "dHash": "3233131153313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form06",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form06.png",
+      "iconUrl": "sprite_poke.png#0666_06",
+      "dHash": "3233274151713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form06Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form06_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fb/Menu_CP_0666-High_Plains_shiny.png",
+      "dHash": "32332381d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form07",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form07.png",
+      "iconUrl": "sprite_poke.png#0666_07",
+      "dHash": "3217131313313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form07Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form07_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/67/Menu_CP_0666-Icy_Snow_shiny.png",
+      "dHash": "336b4dc4d5553120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form08",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form08.png",
+      "iconUrl": "sprite_poke.png#0666_08",
+      "dHash": "32332b2131313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form08Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form08_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/04/Menu_CP_0666-Jungle_shiny.png",
+      "dHash": "3233135173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form09",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form09.png",
+      "iconUrl": "sprite_poke.png#0666_09",
+      "dHash": "3233031153313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form09Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form09_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/42/Menu_CP_0666-Marine_shiny.png",
+      "dHash": "32332b3133313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form10",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form10.png",
+      "iconUrl": "sprite_poke.png#0666_10",
+      "dHash": "32332381d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form10Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form10_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fa/Menu_CP_0666-Modern_shiny.png",
+      "dHash": "3317131313313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form11",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form11.png",
+      "iconUrl": "sprite_poke.png#0666_11",
+      "dHash": "323323c1d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form11Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form11_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a1/Menu_CP_0666-Monsoon_shiny.png",
+      "dHash": "3223236175753120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form12",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form12.png",
+      "iconUrl": "sprite_poke.png#0666_12",
+      "dHash": "32332381d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form12Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form12_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/53/Menu_CP_0666-Ocean_shiny.png",
+      "dHash": "3233234353713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form13",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form13.png",
+      "iconUrl": "sprite_poke.png#0666_13",
+      "dHash": "3223236175753120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form13Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form13_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3c/Menu_CP_0666-Pok%C3%A9_Ball_shiny.png",
+      "dHash": "3313073133313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form14",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form14.png",
+      "iconUrl": "sprite_poke.png#0666_14",
+      "dHash": "3233034173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form14Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form14_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/aa/Menu_CP_0666-Polar_shiny.png",
+      "dHash": "3357171173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form15",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form15.png",
+      "iconUrl": "sprite_poke.png#0666_15",
+      "dHash": "3233232133313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form15Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form15_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f8/Menu_CP_0666-River_shiny.png",
+      "dHash": "32332381d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form16",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form16.png",
+      "iconUrl": "sprite_poke.png#0666_16",
+      "dHash": "3233234153713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form16Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form16_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/87/Menu_CP_0666-Sandstorm_shiny.png",
+      "dHash": "323323c3d3713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form17",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form17.png",
+      "iconUrl": "sprite_poke.png#0666_17",
+      "dHash": "3233335151313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form17Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form17_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6c/Menu_CP_0666-Savanna_shiny.png",
+      "dHash": "32330b5173313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form18",
+      "nameKo": "비비용",
+      "displayName": "비비용",
+      "iconFile": "0666_form18.png",
+      "iconUrl": "sprite_poke.png#0666_18",
+      "dHash": "32332b6571713120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form18Shiny",
+      "nameKo": "비비용",
+      "displayName": "비비용",
+      "iconFile": "0666_form18_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/38/Menu_CP_0666-Sun_shiny.png",
+      "dHash": "3233232133313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form19",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form19.png",
+      "iconUrl": "sprite_poke.png#0666_19",
+      "dHash": "3213073133313120"
+    },
+    {
+      "dexId": 666,
+      "formKey": "form19Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0666_form19_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b2/Menu_CP_0666-Tundra_shiny.png",
+      "dHash": "331703c1d3513120"
+    },
+    {
+      "dexId": 670,
+      "formKey": "form05",
+      "nameKo": "플라엣테",
+      "displayName": "플라엣테",
+      "iconFile": "0670_form05.png",
+      "iconUrl": "sprite_poke.png#0670_05",
+      "dHash": "0007460f0c060600"
+    },
+    {
+      "dexId": 670,
+      "formKey": "form05Shiny",
+      "nameKo": "플라엣테",
+      "displayName": "플라엣테",
+      "iconFile": "0670_form05_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/53/Menu_CP_0670-Eternal_shiny.png",
+      "dHash": "0007070f0c060600"
+    },
+    {
+      "dexId": 670,
+      "formKey": "mega",
+      "nameKo": "메가플라엣테",
+      "displayName": "메가플라엣테",
+      "iconFile": "0670_form06.png",
+      "iconUrl": "sprite_poke.png#0670_06",
+      "dHash": "0004060403210100"
+    },
+    {
+      "dexId": 670,
+      "formKey": "megaShiny",
+      "nameKo": "메가플라엣테",
+      "displayName": "메가플라엣테",
+      "iconFile": "0670_form06_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b9/Menu_CP_0670-Mega_shiny.png",
+      "dHash": "0004060403210100"
+    },
+    {
+      "dexId": 671,
+      "formKey": "default",
+      "nameKo": "플라제스",
+      "displayName": "플라제스",
+      "iconFile": "0671_default.png",
+      "iconUrl": "sprite_poke.png#0671_00",
+      "dHash": "04061637474b0e0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "defaultShiny",
+      "nameKo": "플라제스",
+      "displayName": "플라제스",
+      "iconFile": "0671_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1e/Menu_CP_0671_shiny.png",
+      "dHash": "06061737434b0f0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form01.png",
+      "iconUrl": "sprite_poke.png#0671_01",
+      "dHash": "04061637430b0b0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f0/Menu_CP_0671-Blue_shiny.png",
+      "dHash": "06061737434b0f0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form02",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form02.png",
+      "iconUrl": "sprite_poke.png#0671_02",
+      "dHash": "04061637474b0e0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form02Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/84/Menu_CP_0671-Orange_shiny.png",
+      "dHash": "06061737434b0f0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form03",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form03.png",
+      "iconUrl": "sprite_poke.png#0671_03",
+      "dHash": "04061637474b0e0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form03Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/ba/Menu_CP_0671-White_shiny.png",
+      "dHash": "06061737430b0b0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form04",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form04.png",
+      "iconUrl": "sprite_poke.png#0671_04",
+      "dHash": "04061617430b0a0c"
+    },
+    {
+      "dexId": 671,
+      "formKey": "form04Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0671_form04_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fb/Menu_CP_0671-Yellow_shiny.png",
+      "dHash": "06061717430b0b0c"
+    },
+    {
+      "dexId": 675,
+      "formKey": "default",
+      "nameKo": "부란다",
+      "displayName": "부란다",
+      "iconFile": "0675_default.png",
+      "iconUrl": "sprite_poke.png#0675_00",
+      "dHash": "33331b393b0b0b06"
+    },
+    {
+      "dexId": 675,
+      "formKey": "defaultShiny",
+      "nameKo": "부란다",
+      "displayName": "부란다",
+      "iconFile": "0675_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bb/Menu_CP_0675_shiny.png",
+      "dHash": "33331b39390b0b06"
+    },
+    {
+      "dexId": 676,
+      "formKey": "default",
+      "nameKo": "트리미앙",
+      "displayName": "트리미앙",
+      "iconFile": "0676_default.png",
+      "iconUrl": "sprite_poke.png#0676_00",
+      "dHash": "0e1c1616061e0604"
+    },
+    {
+      "dexId": 676,
+      "formKey": "defaultShiny",
+      "nameKo": "트리미앙",
+      "displayName": "트리미앙",
+      "iconFile": "0676_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c6/Menu_CP_0676_shiny.png",
+      "dHash": "0e0c0e060e0e0604"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form01.png",
+      "iconUrl": "sprite_poke.png#0676_01",
+      "dHash": "0e1c1e1a1e06060c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6c/Menu_CP_0676-Dandy_shiny.png",
+      "dHash": "0c0e1e0e0e0e0e0c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form02",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form02.png",
+      "iconUrl": "sprite_poke.png#0676_02",
+      "dHash": "0e1c1e1a1e060e0c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form02Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/57/Menu_CP_0676-Debutante_shiny.png",
+      "dHash": "0c0e16161e060602"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form03",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form03.png",
+      "iconUrl": "sprite_poke.png#0676_03",
+      "dHash": "0c0c1e1a16060e0c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form03Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/11/Menu_CP_0676-Diamond_shiny.png",
+      "dHash": "0e1c0e06060e0e0c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form04",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form04.png",
+      "iconUrl": "sprite_poke.png#0676_04",
+      "dHash": "0c1e160e0e060602"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form04Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form04_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9c/Menu_CP_0676-Heart_shiny.png",
+      "dHash": "0e1c0e060e0e0e04"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form05",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form05.png",
+      "iconUrl": "sprite_poke.png#0676_05",
+      "dHash": "06161a1206070302"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form05Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form05_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b6/Menu_CP_0676-Kabuki_shiny.png",
+      "dHash": "0e0c1e160e0e0606"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form06",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form06.png",
+      "iconUrl": "sprite_poke.png#0676_06",
+      "dHash": "0c1e16360606060c"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form06Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form06_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/64/Menu_CP_0676-La_Reine_shiny.png",
+      "dHash": "0c1e0e160e0e0602"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form07",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form07.png",
+      "iconUrl": "sprite_poke.png#0676_07",
+      "dHash": "0c1c161606060602"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form07Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form07_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/85/Menu_CP_0676-Matron_shiny.png",
+      "dHash": "06161e1a0e0f0302"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form08",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form08.png",
+      "iconUrl": "sprite_poke.png#0676_08",
+      "dHash": "0c1c16160e060606"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form08Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form08_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/64/Menu_CP_0676-Pharaoh_shiny.png",
+      "dHash": "0c0c0e060e0e0606"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form09",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form09.png",
+      "iconUrl": "sprite_poke.png#0676_09",
+      "dHash": "0c1c161606060606"
+    },
+    {
+      "dexId": 676,
+      "formKey": "form09Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0676_form09_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/92/Menu_CP_0676-Star_shiny.png",
+      "dHash": "0e1c0e06060e0e0c"
+    },
+    {
+      "dexId": 678,
+      "formKey": "default",
+      "nameKo": "냐오닉스",
+      "displayName": "냐오닉스(수컷의 모습)",
+      "iconFile": "0678_default.png",
+      "iconUrl": "sprite_poke.png#0678_00",
+      "dHash": "2c0e1e0e1b133300"
+    },
+    {
+      "dexId": 678,
+      "formKey": "defaultShiny",
+      "nameKo": "냐오닉스",
+      "displayName": "냐오닉스(수컷의 모습)",
+      "iconFile": "0678_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2e/Menu_CP_0678_shiny.png",
+      "dHash": "2c16160e1b1b3300"
+    },
+    {
+      "dexId": 678,
+      "formKey": "female",
+      "nameKo": "냐오닉스",
+      "displayName": "냐오닉스(암컷의 모습)",
+      "iconFile": "0678_female.png",
+      "iconUrl": "sprite_poke.png#0678_01",
+      "dHash": "244e0e0707031100"
+    },
+    {
+      "dexId": 678,
+      "formKey": "femaleShiny",
+      "nameKo": "냐오닉스",
+      "displayName": "냐오닉스(암컷의 모습)",
+      "iconFile": "0678_female_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/68/Menu_CP_0678-Female_shiny.png",
+      "dHash": "26460a0b0b1b1300"
+    },
+    {
+      "dexId": 678,
+      "formKey": "mega",
+      "nameKo": "메가냐오닉스",
+      "displayName": "메가냐오닉스",
+      "iconFile": "0678_form02.png",
+      "iconUrl": "sprite_poke.png#0678_02",
+      "dHash": "1e0e0c1c060e1616"
+    },
+    {
+      "dexId": 678,
+      "formKey": "megaShiny",
+      "nameKo": "메가냐오닉스",
+      "displayName": "메가냐오닉스",
+      "iconFile": "0678_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3c/Menu_CP_0678-Mega_shiny.png",
+      "dHash": "1e1e1c1e06061616"
+    },
+    {
+      "dexId": 681,
+      "formKey": "default",
+      "nameKo": "킬가르도",
+      "displayName": "킬가르도",
+      "iconFile": "0681_default.png",
+      "iconUrl": "sprite_poke.png#0681_00",
+      "dHash": "042e3b332f0e0c0c"
+    },
+    {
+      "dexId": 681,
+      "formKey": "defaultShiny",
+      "nameKo": "킬가르도",
+      "displayName": "킬가르도",
+      "iconFile": "0681_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/71/Menu_CP_0681_shiny.png",
+      "dHash": "042f27032b0f0c0c"
+    },
+    {
+      "dexId": 681,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0681_form01.png",
+      "iconUrl": "sprite_poke.png#0681_01",
+      "dHash": "0329193b1b1e0c08"
+    },
+    {
+      "dexId": 681,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0681_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a8/Menu_CP_0681-Blade_shiny.png",
+      "dHash": "03092d2b2b0e0c08"
+    },
+    {
+      "dexId": 683,
+      "formKey": "default",
+      "nameKo": "프레프티르",
+      "displayName": "프레프티르",
+      "iconFile": "0683_default.png",
+      "iconUrl": "sprite_poke.png#0683_00",
+      "dHash": "0e1b331616163200"
+    },
+    {
+      "dexId": 683,
+      "formKey": "defaultShiny",
+      "nameKo": "프레프티르",
+      "displayName": "프레프티르",
+      "iconFile": "0683_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f5/Menu_CP_0683_shiny.png",
+      "dHash": "0f0f071616163200"
+    },
+    {
+      "dexId": 685,
+      "formKey": "default",
+      "nameKo": "나루림",
+      "displayName": "나루림",
+      "iconFile": "0685_default.png",
+      "iconUrl": "sprite_poke.png#0685_00",
+      "dHash": "17171b5b160c0c00"
+    },
+    {
+      "dexId": 685,
+      "formKey": "defaultShiny",
+      "nameKo": "나루림",
+      "displayName": "나루림",
+      "iconFile": "0685_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/33/Menu_CP_0685_shiny.png",
+      "dHash": "17171b3b0e0c0c00"
+    },
+    {
+      "dexId": 693,
+      "formKey": "default",
+      "nameKo": "블로스터",
+      "displayName": "블로스터",
+      "iconFile": "0693_default.png",
+      "iconUrl": "sprite_poke.png#0693_00",
+      "dHash": "12322703068c1820"
+    },
+    {
+      "dexId": 693,
+      "formKey": "defaultShiny",
+      "nameKo": "블로스터",
+      "displayName": "블로스터",
+      "iconFile": "0693_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2d/Menu_CP_0693_shiny.png",
+      "dHash": "12322703160c1820"
+    },
+    {
+      "dexId": 695,
+      "formKey": "default",
+      "nameKo": "일레도리자드",
+      "displayName": "일레도리자드",
+      "iconFile": "0695_default.png",
+      "iconUrl": "sprite_poke.png#0695_00",
+      "dHash": "161616060c06060a"
+    },
+    {
+      "dexId": 695,
+      "formKey": "defaultShiny",
+      "nameKo": "일레도리자드",
+      "displayName": "일레도리자드",
+      "iconFile": "0695_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Menu_CP_0695_shiny.png",
+      "dHash": "16160e0e0c060e0a"
+    },
+    {
+      "dexId": 697,
+      "formKey": "default",
+      "nameKo": "견고라스",
+      "displayName": "견고라스",
+      "iconFile": "0697_default.png",
+      "iconUrl": "sprite_poke.png#0697_00",
+      "dHash": "36160e0f490b0707"
+    },
+    {
+      "dexId": 697,
+      "formKey": "defaultShiny",
+      "nameKo": "견고라스",
+      "displayName": "견고라스",
+      "iconFile": "0697_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bb/Menu_CP_0697_shiny.png",
+      "dHash": "3616061f69030707"
+    },
+    {
+      "dexId": 699,
+      "formKey": "default",
+      "nameKo": "아마루르가",
+      "displayName": "아마루르가",
+      "iconFile": "0699_default.png",
+      "iconUrl": "sprite_poke.png#0699_00",
+      "dHash": "1c1c1c1c0c0c0e0a"
+    },
+    {
+      "dexId": 699,
+      "formKey": "defaultShiny",
+      "nameKo": "아마루르가",
+      "displayName": "아마루르가",
+      "iconFile": "0699_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4a/Menu_CP_0699_shiny.png",
+      "dHash": "1c3c3c1c0c0c0e0b"
+    },
+    {
+      "dexId": 700,
+      "formKey": "default",
+      "nameKo": "님피아",
+      "displayName": "님피아",
+      "iconFile": "0700_default.png",
+      "iconUrl": "sprite_poke.png#0700_00",
+      "dHash": "0c0c161e06061600"
+    },
+    {
+      "dexId": 700,
+      "formKey": "defaultShiny",
+      "nameKo": "님피아",
+      "displayName": "님피아",
+      "iconFile": "0700_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5e/Menu_CP_0700_shiny.png",
+      "dHash": "0c0e161e06061600"
+    },
+    {
+      "dexId": 701,
+      "formKey": "default",
+      "nameKo": "루차불",
+      "displayName": "루차불",
+      "iconFile": "0701_default.png",
+      "iconUrl": "sprite_poke.png#0701_00",
+      "dHash": "4433134d0c080000"
+    },
+    {
+      "dexId": 701,
+      "formKey": "defaultShiny",
+      "nameKo": "루차불",
+      "displayName": "루차불",
+      "iconFile": "0701_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/13/Menu_CP_0701_shiny.png",
+      "dHash": "442f0b4d0c080000"
+    },
+    {
+      "dexId": 701,
+      "formKey": "mega",
+      "nameKo": "메가루차불",
+      "displayName": "메가루차불",
+      "iconFile": "0701_form01.png",
+      "iconUrl": "sprite_poke.png#0701_01",
+      "dHash": "1c1f336d4c180000"
+    },
+    {
+      "dexId": 701,
+      "formKey": "megaShiny",
+      "nameKo": "메가루차불",
+      "displayName": "메가루차불",
+      "iconFile": "0701_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/93/Menu_CP_0701-Mega_shiny.png",
+      "dHash": "1c0f336d0c180000"
+    },
+    {
+      "dexId": 702,
+      "formKey": "default",
+      "nameKo": "데덴네",
+      "displayName": "데덴네",
+      "iconFile": "0702_default.png",
+      "iconUrl": "sprite_poke.png#0702_00",
+      "dHash": "0e0f07271a000000"
+    },
+    {
+      "dexId": 702,
+      "formKey": "defaultShiny",
+      "nameKo": "데덴네",
+      "displayName": "데덴네",
+      "iconFile": "0702_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Menu_CP_0702_shiny.png",
+      "dHash": "0e0f07271a000000"
+    },
+    {
+      "dexId": 706,
+      "formKey": "default",
+      "nameKo": "미끄래곤",
+      "displayName": "미끄래곤",
+      "iconFile": "0706_default.png",
+      "iconUrl": "sprite_poke.png#0706_00",
+      "dHash": "1c0606160e0c1c0e"
+    },
+    {
+      "dexId": 706,
+      "formKey": "defaultShiny",
+      "nameKo": "미끄래곤",
+      "displayName": "미끄래곤",
+      "iconFile": "0706_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/14/Menu_CP_0706_shiny.png",
+      "dHash": "1c162a16060c1e0e"
+    },
+    {
+      "dexId": 706,
+      "formKey": "hisui",
+      "nameKo": "미끄래곤",
+      "displayName": "미끄래곤(히스이의 모습)",
+      "iconFile": "0706_hisui.png",
+      "iconUrl": "sprite_poke.png#0706_01",
+      "dHash": "140e16142626130b"
+    },
+    {
+      "dexId": 706,
+      "formKey": "hisuiShiny",
+      "nameKo": "미끄래곤",
+      "displayName": "미끄래곤(히스이의 모습)",
+      "iconFile": "0706_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/59/Menu_CP_0706-Hisui_shiny.png",
+      "dHash": "140e161e1e1f1b0b"
+    },
+    {
+      "dexId": 707,
+      "formKey": "default",
+      "nameKo": "클레피",
+      "displayName": "클레피",
+      "iconFile": "0707_default.png",
+      "iconUrl": "sprite_poke.png#0707_00",
+      "dHash": "000e0e0e0e0e0c00"
+    },
+    {
+      "dexId": 707,
+      "formKey": "defaultShiny",
+      "nameKo": "클레피",
+      "displayName": "클레피",
+      "iconFile": "0707_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d1/Menu_CP_0707_shiny.png",
+      "dHash": "000e0e0e0e0e0c00"
+    },
+    {
+      "dexId": 709,
+      "formKey": "default",
+      "nameKo": "대로트",
+      "displayName": "대로트",
+      "iconFile": "0709_default.png",
+      "iconUrl": "sprite_poke.png#0709_00",
+      "dHash": "5a0a0e292b0e1600"
+    },
+    {
+      "dexId": 709,
+      "formKey": "defaultShiny",
+      "nameKo": "대로트",
+      "displayName": "대로트",
+      "iconFile": "0709_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c1/Menu_CP_0709_shiny.png",
+      "dHash": "5a2a37392b0f1600"
+    },
+    {
+      "dexId": 711,
+      "formKey": "default",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(중과종)",
+      "iconFile": "0711_default.png",
+      "iconUrl": "sprite_poke.png#0711_00",
+      "dHash": "0c160706160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "defaultShiny",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(중과종)",
+      "iconFile": "0711_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5f/Menu_CP_0711_shiny.png",
+      "dHash": "0c171716160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinLarge",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(대과종)",
+      "iconFile": "0711_pumpkinLarge.png",
+      "iconUrl": "sprite_poke.png#0711_02",
+      "dHash": "0e170716160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinLargeShiny",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(대과종)",
+      "iconFile": "0711_pumpkinLarge_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/01/Menu_CP_0711-Large_shiny.png",
+      "dHash": "1e131716160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinSmall",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(소과종)",
+      "iconFile": "0711_pumpkinSmall.png",
+      "iconUrl": "sprite_poke.png#0711_01",
+      "dHash": "0c1e0606060c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinSmallShiny",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(소과종)",
+      "iconFile": "0711_pumpkinSmall_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2b/Menu_CP_0711-Small_shiny.png",
+      "dHash": "0c1e1616160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinSuper",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(특대과종)",
+      "iconFile": "0711_pumpkinSuper.png",
+      "iconUrl": "sprite_poke.png#0711_03",
+      "dHash": "1e170717160c0c0c"
+    },
+    {
+      "dexId": 711,
+      "formKey": "pumpkinSuperShiny",
+      "nameKo": "펌킨인",
+      "displayName": "펌킨인(특대과종)",
+      "iconFile": "0711_pumpkinSuper_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/91/Menu_CP_0711-Jumbo_shiny.png",
+      "dHash": "1e131313160c0c0c"
+    },
+    {
+      "dexId": 713,
+      "formKey": "default",
+      "nameKo": "크레베이스",
+      "displayName": "크레베이스",
+      "iconFile": "0713_default.png",
+      "iconUrl": "sprite_poke.png#0713_00",
+      "dHash": "70395167691f1000"
+    },
+    {
+      "dexId": 713,
+      "formKey": "defaultShiny",
+      "nameKo": "크레베이스",
+      "displayName": "크레베이스",
+      "iconFile": "0713_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/38/Menu_CP_0713_shiny.png",
+      "dHash": "703949676d1f1000"
+    },
+    {
+      "dexId": 713,
+      "formKey": "hisui",
+      "nameKo": "크레베이스",
+      "displayName": "크레베이스(히스이의 모습)",
+      "iconFile": "0713_hisui.png",
+      "iconUrl": "sprite_poke.png#0713_01",
+      "dHash": "6467737a1c000000"
+    },
+    {
+      "dexId": 713,
+      "formKey": "hisuiShiny",
+      "nameKo": "크레베이스",
+      "displayName": "크레베이스(히스이의 모습)",
+      "iconFile": "0713_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2b/Menu_CP_0713-Hisui_shiny.png",
+      "dHash": "646d637a3e000000"
+    },
+    {
+      "dexId": 715,
+      "formKey": "default",
+      "nameKo": "음번",
+      "displayName": "음번",
+      "iconFile": "0715_default.png",
+      "iconUrl": "sprite_poke.png#0715_00",
+      "dHash": "133d3927060e0000"
+    },
+    {
+      "dexId": 715,
+      "formKey": "defaultShiny",
+      "nameKo": "음번",
+      "displayName": "음번",
+      "iconFile": "0715_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3d/Menu_CP_0715_shiny.png",
+      "dHash": "133d3927060e0000"
+    },
+    {
+      "dexId": 724,
+      "formKey": "default",
+      "nameKo": "모크나이퍼",
+      "displayName": "모크나이퍼",
+      "iconFile": "0724_default.png",
+      "iconUrl": "sprite_poke.png#0724_00",
+      "dHash": "0e2b26061e0e0e0c"
+    },
+    {
+      "dexId": 724,
+      "formKey": "defaultShiny",
+      "nameKo": "모크나이퍼",
+      "displayName": "모크나이퍼",
+      "iconFile": "0724_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3f/Menu_CP_0724_shiny.png",
+      "dHash": "1e1b1b1e0e0e0e0e"
+    },
+    {
+      "dexId": 724,
+      "formKey": "hisui",
+      "nameKo": "모크나이퍼",
+      "displayName": "모크나이퍼(히스이의 모습)",
+      "iconFile": "0724_hisui.png",
+      "iconUrl": "sprite_poke.png#0724_01",
+      "dHash": "1e060c1b1e0e0e0c"
+    },
+    {
+      "dexId": 724,
+      "formKey": "hisuiShiny",
+      "nameKo": "모크나이퍼",
+      "displayName": "모크나이퍼(히스이의 모습)",
+      "iconFile": "0724_hisui_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/91/Menu_CP_0724-Hisui_shiny.png",
+      "dHash": "1e060c1b1f060e0c"
+    },
+    {
+      "dexId": 727,
+      "formKey": "default",
+      "nameKo": "어흥염",
+      "displayName": "어흥염",
+      "iconFile": "0727_default.png",
+      "iconUrl": "sprite_poke.png#0727_00",
+      "dHash": "32160e4f050c0000"
+    },
+    {
+      "dexId": 727,
+      "formKey": "defaultShiny",
+      "nameKo": "어흥염",
+      "displayName": "어흥염",
+      "iconFile": "0727_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d7/Menu_CP_0727_shiny.png",
+      "dHash": "32160e4fdd1e0000"
+    },
+    {
+      "dexId": 730,
+      "formKey": "default",
+      "nameKo": "누리레느",
+      "displayName": "누리레느",
+      "iconFile": "0730_default.png",
+      "iconUrl": "sprite_poke.png#0730_00",
+      "dHash": "4e73191f161c1c38"
+    },
+    {
+      "dexId": 730,
+      "formKey": "defaultShiny",
+      "nameKo": "누리레느",
+      "displayName": "누리레느",
+      "iconFile": "0730_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fb/Menu_CP_0730_shiny.png",
+      "dHash": "4e73091f161e1c38"
+    },
+    {
+      "dexId": 733,
+      "formKey": "default",
+      "nameKo": "왕큰부리",
+      "displayName": "왕큰부리",
+      "iconFile": "0733_default.png",
+      "iconUrl": "sprite_poke.png#0733_00",
+      "dHash": "1c3c1c3c21131308"
+    },
+    {
+      "dexId": 733,
+      "formKey": "defaultShiny",
+      "nameKo": "왕큰부리",
+      "displayName": "왕큰부리",
+      "iconFile": "0733_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/28/Menu_CP_0733_shiny.png",
+      "dHash": "1c3c3c3c31030f00"
+    },
+    {
+      "dexId": 740,
+      "formKey": "default",
+      "nameKo": "모단단게",
+      "displayName": "모단단게",
+      "iconFile": "0740_default.png",
+      "iconUrl": "sprite_poke.png#0740_00",
+      "dHash": "1d0d2c3874000000"
+    },
+    {
+      "dexId": 740,
+      "formKey": "defaultShiny",
+      "nameKo": "모단단게",
+      "displayName": "모단단게",
+      "iconFile": "0740_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/98/Menu_CP_0740_shiny.png",
+      "dHash": "1d2d2c3874000000"
+    },
+    {
+      "dexId": 740,
+      "formKey": "mega",
+      "nameKo": "메가모단단게",
+      "displayName": "메가모단단게",
+      "iconFile": "0740_form01.png",
+      "iconUrl": "sprite_poke.png#0740_01",
+      "dHash": "131a17073b333121"
+    },
+    {
+      "dexId": 740,
+      "formKey": "megaShiny",
+      "nameKo": "메가모단단게",
+      "displayName": "메가모단단게",
+      "iconFile": "0740_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ec/Menu_CP_0740-Mega_shiny.png",
+      "dHash": "131a3f373d333121"
+    },
+    {
+      "dexId": 745,
+      "formKey": "default",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(한낮의 모습)",
+      "iconFile": "0745_default.png",
+      "iconUrl": "sprite_poke.png#0745_00",
+      "dHash": "060c1e5b1b060600"
+    },
+    {
+      "dexId": 745,
+      "formKey": "defaultShiny",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(한낮의 모습)",
+      "iconFile": "0745_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8c/Menu_CP_0745_shiny.png",
+      "dHash": "060c0e1b0b060600"
+    },
+    {
+      "dexId": 745,
+      "formKey": "lugaDusk",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(황혼의 모습)",
+      "iconFile": "0745_lugaDusk.png",
+      "iconUrl": "sprite_poke.png#0745_02",
+      "dHash": "040c0e0b0e060400"
+    },
+    {
+      "dexId": 745,
+      "formKey": "lugaDuskShiny",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(황혼의 모습)",
+      "iconFile": "0745_lugaDusk_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e6/Menu_CP_0745-Dusk_shiny.png",
+      "dHash": "060c0e0b07060400"
+    },
+    {
+      "dexId": 745,
+      "formKey": "lugaMidnight",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(한밤중의 모습)",
+      "iconFile": "0745_lugaMidnight.png",
+      "iconUrl": "sprite_poke.png#0745_01",
+      "dHash": "2b160e0e0e060400"
+    },
+    {
+      "dexId": 745,
+      "formKey": "lugaMidnightShiny",
+      "nameKo": "루가루암",
+      "displayName": "루가루암(한밤중의 모습)",
+      "iconFile": "0745_lugaMidnight_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/02/Menu_CP_0745-Midnight_shiny.png",
+      "dHash": "231716060e0e0400"
+    },
+    {
+      "dexId": 748,
+      "formKey": "default",
+      "nameKo": "더시마사리",
+      "displayName": "더시마사리",
+      "iconFile": "0748_default.png",
+      "iconUrl": "sprite_poke.png#0748_00",
+      "dHash": "51470f1f1b120000"
+    },
+    {
+      "dexId": 748,
+      "formKey": "defaultShiny",
+      "nameKo": "더시마사리",
+      "displayName": "더시마사리",
+      "iconFile": "0748_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/aa/Menu_CP_0748_shiny.png",
+      "dHash": "3133171713120000"
+    },
+    {
+      "dexId": 750,
+      "formKey": "default",
+      "nameKo": "만마드",
+      "displayName": "만마드",
+      "iconFile": "0750_default.png",
+      "iconUrl": "sprite_poke.png#0750_00",
+      "dHash": "0f07060703030303"
+    },
+    {
+      "dexId": 750,
+      "formKey": "defaultShiny",
+      "nameKo": "만마드",
+      "displayName": "만마드",
+      "iconFile": "0750_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0a/Menu_CP_0750_shiny.png",
+      "dHash": "0f070e0703070303"
+    },
+    {
+      "dexId": 752,
+      "formKey": "default",
+      "nameKo": "깨비물거미",
+      "displayName": "깨비물거미",
+      "iconFile": "0752_default.png",
+      "iconUrl": "sprite_poke.png#0752_00",
+      "dHash": "60644d4d67630000"
+    },
+    {
+      "dexId": 752,
+      "formKey": "defaultShiny",
+      "nameKo": "깨비물거미",
+      "displayName": "깨비물거미",
+      "iconFile": "0752_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/1b/Menu_CP_0752_shiny.png",
+      "dHash": "60644d4d67630000"
+    },
+    {
+      "dexId": 758,
+      "formKey": "default",
+      "nameKo": "염뉴트",
+      "displayName": "염뉴트",
+      "iconFile": "0758_default.png",
+      "iconUrl": "sprite_poke.png#0758_00",
+      "dHash": "333b0b0706060604"
+    },
+    {
+      "dexId": 758,
+      "formKey": "defaultShiny",
+      "nameKo": "염뉴트",
+      "displayName": "염뉴트",
+      "iconFile": "0758_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/31/Menu_CP_0758_shiny.png",
+      "dHash": "331b0b0706060604"
+    },
+    {
+      "dexId": 763,
+      "formKey": "default",
+      "nameKo": "달코퀸",
+      "displayName": "달코퀸",
+      "iconFile": "0763_default.png",
+      "iconUrl": "sprite_poke.png#0763_00",
+      "dHash": "0c27071e0e0f0f04"
+    },
+    {
+      "dexId": 763,
+      "formKey": "defaultShiny",
+      "nameKo": "달코퀸",
+      "displayName": "달코퀸",
+      "iconFile": "0763_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f3/Menu_CP_0763_shiny.png",
+      "dHash": "0c27071e0e0f0f04"
+    },
+    {
+      "dexId": 765,
+      "formKey": "default",
+      "nameKo": "하랑우탄",
+      "displayName": "하랑우탄",
+      "iconFile": "0765_default.png",
+      "iconUrl": "sprite_poke.png#0765_00",
+      "dHash": "181f0d191b1b1600"
+    },
+    {
+      "dexId": 765,
+      "formKey": "defaultShiny",
+      "nameKo": "하랑우탄",
+      "displayName": "하랑우탄",
+      "iconFile": "0765_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/db/Menu_CP_0765_shiny.png",
+      "dHash": "181f0d0b1b1b1600"
+    },
+    {
+      "dexId": 766,
+      "formKey": "default",
+      "nameKo": "내던숭이",
+      "displayName": "내던숭이",
+      "iconFile": "0766_default.png",
+      "iconUrl": "sprite_poke.png#0766_00",
+      "dHash": "0e2b23371b1b0706"
+    },
+    {
+      "dexId": 766,
+      "formKey": "defaultShiny",
+      "nameKo": "내던숭이",
+      "displayName": "내던숭이",
+      "iconFile": "0766_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d8/Menu_CP_0766_shiny.png",
+      "dHash": "062b2b1b1b0b0706"
+    },
+    {
+      "dexId": 778,
+      "formKey": "default",
+      "nameKo": "따라큐",
+      "displayName": "따라큐",
+      "iconFile": "0778_default.png",
+      "iconUrl": "sprite_poke.png#0778_00",
+      "dHash": "0b0a1e160c0c0000"
+    },
+    {
+      "dexId": 778,
+      "formKey": "defaultShiny",
+      "nameKo": "따라큐",
+      "displayName": "따라큐",
+      "iconFile": "0778_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6f/Menu_CP_0778_shiny.png",
+      "dHash": "0b0f1e160c0c0000"
+    },
+    {
+      "dexId": 780,
+      "formKey": "default",
+      "nameKo": "할비롱",
+      "displayName": "할비롱",
+      "iconFile": "0780_default.png",
+      "iconUrl": "sprite_poke.png#0780_00",
+      "dHash": "003b6939331f0c00"
+    },
+    {
+      "dexId": 780,
+      "formKey": "defaultShiny",
+      "nameKo": "할비롱",
+      "displayName": "할비롱",
+      "iconFile": "0780_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/dc/Menu_CP_0780_shiny.png",
+      "dHash": "003b694b230f0c00"
+    },
+    {
+      "dexId": 780,
+      "formKey": "mega",
+      "nameKo": "메가할비롱",
+      "displayName": "메가할비롱",
+      "iconFile": "0780_form01.png",
+      "iconUrl": "sprite_poke.png#0780_01",
+      "dHash": "1f17161c0606060e"
+    },
+    {
+      "dexId": 780,
+      "formKey": "megaShiny",
+      "nameKo": "메가할비롱",
+      "displayName": "메가할비롱",
+      "iconFile": "0780_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/de/Menu_CP_0780-Mega_shiny.png",
+      "dHash": "1f17161c0606060e"
+    },
+    {
+      "dexId": 784,
+      "formKey": "default",
+      "nameKo": "짜랑고우거",
+      "displayName": "짜랑고우거",
+      "iconFile": "0784_default.png",
+      "iconUrl": "sprite_poke.png#0784_00",
+      "dHash": "1315130e2e262604"
+    },
+    {
+      "dexId": 784,
+      "formKey": "defaultShiny",
+      "nameKo": "짜랑고우거",
+      "displayName": "짜랑고우거",
+      "iconFile": "0784_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f1/Menu_CP_0784_shiny.png",
+      "dHash": "33371b07272e2604"
+    },
+    {
+      "dexId": 823,
+      "formKey": "default",
+      "nameKo": "아머까오",
+      "displayName": "아머까오",
+      "iconFile": "0823_default.png",
+      "iconUrl": "sprite_poke.png#0823_00",
+      "dHash": "3317160703070f0c"
+    },
+    {
+      "dexId": 823,
+      "formKey": "defaultShiny",
+      "nameKo": "아머까오",
+      "displayName": "아머까오",
+      "iconFile": "0823_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/17/Menu_CP_0823_shiny.png",
+      "dHash": "3317160703070f0c"
+    },
+    {
+      "dexId": 841,
+      "formKey": "default",
+      "nameKo": "애프룡",
+      "displayName": "애프룡",
+      "iconFile": "0841_default.png",
+      "iconUrl": "sprite_poke.png#0841_00",
+      "dHash": "0004060e07170000"
+    },
+    {
+      "dexId": 841,
+      "formKey": "defaultShiny",
+      "nameKo": "애프룡",
+      "displayName": "애프룡",
+      "iconFile": "0841_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b0/Menu_CP_0841_shiny.png",
+      "dHash": "0004070f07170000"
+    },
+    {
+      "dexId": 842,
+      "formKey": "default",
+      "nameKo": "단지래플",
+      "displayName": "단지래플",
+      "iconFile": "0842_default.png",
+      "iconUrl": "sprite_poke.png#0842_00",
+      "dHash": "06060e330e1c0000"
+    },
+    {
+      "dexId": 842,
+      "formKey": "defaultShiny",
+      "nameKo": "단지래플",
+      "displayName": "단지래플",
+      "iconFile": "0842_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f4/Menu_CP_0842_shiny.png",
+      "dHash": "070e0f330e1c0000"
+    },
+    {
+      "dexId": 844,
+      "formKey": "default",
+      "nameKo": "사다이사",
+      "displayName": "사다이사",
+      "iconFile": "0844_default.png",
+      "iconUrl": "sprite_poke.png#0844_00",
+      "dHash": "0703091c18010706"
+    },
+    {
+      "dexId": 844,
+      "formKey": "defaultShiny",
+      "nameKo": "사다이사",
+      "displayName": "사다이사",
+      "iconFile": "0844_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9a/Menu_CP_0844_shiny.png",
+      "dHash": "0703091818010706"
+    },
+    {
+      "dexId": 855,
+      "formKey": "default",
+      "nameKo": "포트데스",
+      "displayName": "포트데스",
+      "iconFile": "0855_default.png",
+      "iconUrl": "sprite_poke.png#0855_00",
+      "dHash": "000e0e1b0f060400"
+    },
+    {
+      "dexId": 855,
+      "formKey": "defaultShiny",
+      "nameKo": "포트데스",
+      "displayName": "포트데스",
+      "iconFile": "0855_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c0/Menu_CP_0855_shiny.png",
+      "dHash": "000e0f1b0f070400"
+    },
+    {
+      "dexId": 858,
+      "formKey": "default",
+      "nameKo": "브리무음",
+      "displayName": "브리무음",
+      "iconFile": "0858_default.png",
+      "iconUrl": "sprite_poke.png#0858_00",
+      "dHash": "1c1c1c0c1c16160c"
+    },
+    {
+      "dexId": 858,
+      "formKey": "defaultShiny",
+      "nameKo": "브리무음",
+      "displayName": "브리무음",
+      "iconFile": "0858_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/61/Menu_CP_0858_shiny.png",
+      "dHash": "0c1c1c0c0c16160c"
+    },
+    {
+      "dexId": 866,
+      "formKey": "default",
+      "nameKo": "마임꽁꽁",
+      "displayName": "마임꽁꽁",
+      "iconFile": "0866_default.png",
+      "iconUrl": "sprite_poke.png#0866_00",
+      "dHash": "564e160f0f172d28"
+    },
+    {
+      "dexId": 866,
+      "formKey": "defaultShiny",
+      "nameKo": "마임꽁꽁",
+      "displayName": "마임꽁꽁",
+      "iconFile": "0866_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/65/Menu_CP_0866_shiny.png",
+      "dHash": "564e171f0f172d28"
+    },
+    {
+      "dexId": 867,
+      "formKey": "default",
+      "nameKo": "데스판",
+      "displayName": "데스판",
+      "iconFile": "0867_default.png",
+      "iconUrl": "sprite_poke.png#0867_00",
+      "dHash": "06246d2d2e000000"
+    },
+    {
+      "dexId": 867,
+      "formKey": "defaultShiny",
+      "nameKo": "데스판",
+      "displayName": "데스판",
+      "iconFile": "0867_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7a/Menu_CP_0867_shiny.png",
+      "dHash": "16246d2f6e000000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "default",
+      "nameKo": "마휘핑",
+      "displayName": "마휘핑",
+      "iconFile": "0869_default.png",
+      "iconUrl": "sprite_poke.png#0869_00",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "defaultShiny",
+      "nameKo": "마휘핑",
+      "displayName": "마휘핑",
+      "iconFile": "0869_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ef/Menu_CP_0869_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form01.png",
+      "iconUrl": "sprite_poke.png#0869_01",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/43/Menu_CP_0869-Caramel_Swirl_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form02",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form02.png",
+      "iconUrl": "sprite_poke.png#0869_02",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form02Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form02_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b1/Menu_CP_0869-Lemon_Cream_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form03",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form03.png",
+      "iconUrl": "sprite_poke.png#0869_03",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form03Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form03_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/07/Menu_CP_0869-Matcha_Cream_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form04",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form04.png",
+      "iconUrl": "sprite_poke.png#0869_04",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form04Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form04_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e4/Menu_CP_0869-Mint_Cream_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form05",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form05.png",
+      "iconUrl": "sprite_poke.png#0869_05",
+      "dHash": "14160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form05Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form05_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a6/Menu_CP_0869-Rainbow_Swirl_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form06",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form06.png",
+      "iconUrl": "sprite_poke.png#0869_06",
+      "dHash": "0c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form06Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form06_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/dc/Menu_CP_0869-Ruby_Cream_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form07",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form07.png",
+      "iconUrl": "sprite_poke.png#0869_07",
+      "dHash": "1c160e16160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form07Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form07_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/91/Menu_CP_0869-Ruby_Swirl_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form08",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form08.png",
+      "iconUrl": "sprite_poke.png#0869_08",
+      "dHash": "0c160616160c0000"
+    },
+    {
+      "dexId": 869,
+      "formKey": "form08Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0869_form08_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/2f/Menu_CP_0869-Salted_Cream_shiny.png",
+      "dHash": "0c0e0e060e040000"
+    },
+    {
+      "dexId": 877,
+      "formKey": "default",
+      "nameKo": "모르페코",
+      "displayName": "모르페코",
+      "iconFile": "0877_default.png",
+      "iconUrl": "sprite_poke.png#0877_00",
+      "dHash": "1616161616160000"
+    },
+    {
+      "dexId": 877,
+      "formKey": "defaultShiny",
+      "nameKo": "모르페코",
+      "displayName": "모르페코",
+      "iconFile": "0877_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/40/Menu_CP_0877_shiny.png",
+      "dHash": "1616161616160000"
+    },
+    {
+      "dexId": 877,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0877_form01.png",
+      "iconUrl": "sprite_poke.png#0877_01",
+      "dHash": "0e0e160e16160000"
+    },
+    {
+      "dexId": 877,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0877_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/33/Menu_CP_0877-Hangry_shiny.png",
+      "dHash": "0e0e160e16160000"
+    },
+    {
+      "dexId": 887,
+      "formKey": "default",
+      "nameKo": "드래펄트",
+      "displayName": "드래펄트",
+      "iconFile": "0887_default.png",
+      "iconUrl": "sprite_poke.png#0887_00",
+      "dHash": "0603090d0c0e1794"
+    },
+    {
+      "dexId": 887,
+      "formKey": "defaultShiny",
+      "nameKo": "드래펄트",
+      "displayName": "드래펄트",
+      "iconFile": "0887_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fa/Menu_CP_0887_shiny.png",
+      "dHash": "0603090d0c0e1794"
+    },
+    {
+      "dexId": 899,
+      "formKey": "default",
+      "nameKo": "신비록",
+      "displayName": "신비록",
+      "iconFile": "0899_default.png",
+      "iconUrl": "sprite_poke.png#0899_00",
+      "dHash": "0c0c1c1604061614"
+    },
+    {
+      "dexId": 899,
+      "formKey": "defaultShiny",
+      "nameKo": "신비록",
+      "displayName": "신비록",
+      "iconFile": "0899_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5d/Menu_CP_0899_shiny.png",
+      "dHash": "0c0c1e1606061614"
+    },
+    {
+      "dexId": 900,
+      "formKey": "default",
+      "nameKo": "사마자르",
+      "displayName": "사마자르",
+      "iconFile": "0900_default.png",
+      "iconUrl": "sprite_poke.png#0900_00",
+      "dHash": "616b2b3b1e1c1818"
+    },
+    {
+      "dexId": 900,
+      "formKey": "defaultShiny",
+      "nameKo": "사마자르",
+      "displayName": "사마자르",
+      "iconFile": "0900_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bd/Menu_CP_0900_shiny.png",
+      "dHash": "616b2b3b1e1c1818"
+    },
+    {
+      "dexId": 902,
+      "formKey": "default",
+      "nameKo": "대쓰여너",
+      "displayName": "대쓰여너(수컷의 모습)",
+      "iconFile": "0902_default.png",
+      "iconUrl": "sprite_poke.png#0902_00",
+      "dHash": "1847210d039f0808"
+    },
+    {
+      "dexId": 902,
+      "formKey": "defaultShiny",
+      "nameKo": "대쓰여너",
+      "displayName": "대쓰여너(수컷의 모습)",
+      "iconFile": "0902_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fe/Menu_CP_0902_shiny.png",
+      "dHash": "9827210d039f0808"
+    },
+    {
+      "dexId": 902,
+      "formKey": "female",
+      "nameKo": "대쓰여너",
+      "displayName": "대쓰여너(암컷의 모습)",
+      "iconFile": "0902_female.png",
+      "iconUrl": "sprite_poke.png#0902_01",
+      "dHash": "9826271d199f0808"
+    },
+    {
+      "dexId": 902,
+      "formKey": "femaleShiny",
+      "nameKo": "대쓰여너",
+      "displayName": "대쓰여너(암컷의 모습)",
+      "iconFile": "0902_female_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/24/Menu_CP_0902-Female_shiny.png",
+      "dHash": "9c26271d199f0808"
+    },
+    {
+      "dexId": 903,
+      "formKey": "default",
+      "nameKo": "포푸니크",
+      "displayName": "포푸니크",
+      "iconFile": "0903_default.png",
+      "iconUrl": "sprite_poke.png#0903_00",
+      "dHash": "0e0c16161c0c1e18"
+    },
+    {
+      "dexId": 903,
+      "formKey": "defaultShiny",
+      "nameKo": "포푸니크",
+      "displayName": "포푸니크",
+      "iconFile": "0903_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4b/Menu_CP_0903_shiny.png",
+      "dHash": "0e0c16160e0c1e18"
+    },
+    {
+      "dexId": 908,
+      "formKey": "default",
+      "nameKo": "마스카나",
+      "displayName": "마스카나",
+      "iconFile": "0908_default.png",
+      "iconUrl": "sprite_poke.png#0908_00",
+      "dHash": "040c2f332f0c0c0c"
+    },
+    {
+      "dexId": 908,
+      "formKey": "defaultShiny",
+      "nameKo": "마스카나",
+      "displayName": "마스카나",
+      "iconFile": "0908_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c2/Menu_CP_0908_shiny.png",
+      "dHash": "040c2f332f0e0e0c"
+    },
+    {
+      "dexId": 911,
+      "formKey": "default",
+      "nameKo": "라우드본",
+      "displayName": "라우드본",
+      "iconFile": "0911_default.png",
+      "iconUrl": "sprite_poke.png#0911_00",
+      "dHash": "5971574b02000000"
+    },
+    {
+      "dexId": 911,
+      "formKey": "defaultShiny",
+      "nameKo": "라우드본",
+      "displayName": "라우드본",
+      "iconFile": "0911_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d5/Menu_CP_0911_shiny.png",
+      "dHash": "5b73574b02000000"
+    },
+    {
+      "dexId": 914,
+      "formKey": "default",
+      "nameKo": "웨이니발",
+      "displayName": "웨이니발",
+      "iconFile": "0914_default.png",
+      "iconUrl": "sprite_poke.png#0914_00",
+      "dHash": "0e0c0e0e0f0c0e0c"
+    },
+    {
+      "dexId": 914,
+      "formKey": "defaultShiny",
+      "nameKo": "웨이니발",
+      "displayName": "웨이니발",
+      "iconFile": "0914_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/65/Menu_CP_0914_shiny.png",
+      "dHash": "0e0e0e0f0f0e0e0e"
+    },
+    {
+      "dexId": 925,
+      "formKey": "default",
+      "nameKo": "파밀리쥐",
+      "displayName": "파밀리쥐",
+      "iconFile": "0925_default.png",
+      "iconUrl": "sprite_poke.png#0925_00",
+      "dHash": "1613290f00000000"
+    },
+    {
+      "dexId": 925,
+      "formKey": "defaultShiny",
+      "nameKo": "파밀리쥐",
+      "displayName": "파밀리쥐",
+      "iconFile": "0925_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d3/Menu_CP_0925_shiny.png",
+      "dHash": "17132b0300000000"
+    },
+    {
+      "dexId": 925,
+      "formKey": "form01",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0925_form01.png",
+      "iconUrl": "sprite_poke.png#0925_01",
+      "dHash": "17132b0300000000"
+    },
+    {
+      "dexId": 925,
+      "formKey": "form01Shiny",
+      "nameKo": "",
+      "displayName": "",
+      "iconFile": "0925_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4c/Menu_CP_0925-Three_shiny.png",
+      "dHash": "1713290f00000000"
+    },
+    {
+      "dexId": 934,
+      "formKey": "default",
+      "nameKo": "콜로솔트",
+      "displayName": "콜로솔트",
+      "iconFile": "0934_default.png",
+      "iconUrl": "sprite_poke.png#0934_00",
+      "dHash": "2d490f174f4f0e0c"
+    },
+    {
+      "dexId": 934,
+      "formKey": "defaultShiny",
+      "nameKo": "콜로솔트",
+      "displayName": "콜로솔트",
+      "iconFile": "0934_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c9/Menu_CP_0934_shiny.png",
+      "dHash": "6d490f174f2f2e0c"
+    },
+    {
+      "dexId": 936,
+      "formKey": "default",
+      "nameKo": "카디나르마",
+      "displayName": "카디나르마",
+      "iconFile": "0936_default.png",
+      "iconUrl": "sprite_poke.png#0936_00",
+      "dHash": "181606162e0e0c0c"
+    },
+    {
+      "dexId": 936,
+      "formKey": "defaultShiny",
+      "nameKo": "카디나르마",
+      "displayName": "카디나르마",
+      "iconFile": "0936_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/85/Menu_CP_0936_shiny.png",
+      "dHash": "181606162f0f0c0c"
+    },
+    {
+      "dexId": 937,
+      "formKey": "default",
+      "nameKo": "파라블레이즈",
+      "displayName": "파라블레이즈",
+      "iconFile": "0937_default.png",
+      "iconUrl": "sprite_poke.png#0937_00",
+      "dHash": "5e0f07060e0e0c04"
+    },
+    {
+      "dexId": 937,
+      "formKey": "defaultShiny",
+      "nameKo": "파라블레이즈",
+      "displayName": "파라블레이즈",
+      "iconFile": "0937_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fc/Menu_CP_0937_shiny.png",
+      "dHash": "1e0f07060e0e0c04"
+    },
+    {
+      "dexId": 939,
+      "formKey": "default",
+      "nameKo": "찌리배리",
+      "displayName": "찌리배리",
+      "iconFile": "0939_default.png",
+      "iconUrl": "sprite_poke.png#0939_00",
+      "dHash": "3e0b1b0b030e1e08"
+    },
+    {
+      "dexId": 939,
+      "formKey": "defaultShiny",
+      "nameKo": "찌리배리",
+      "displayName": "찌리배리",
+      "iconFile": "0939_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/41/Menu_CP_0939_shiny.png",
+      "dHash": "3e0f0b4b47330f0c"
+    },
+    {
+      "dexId": 952,
+      "formKey": "default",
+      "nameKo": "스코빌런",
+      "displayName": "스코빌런",
+      "iconFile": "0952_default.png",
+      "iconUrl": "sprite_poke.png#0952_00",
+      "dHash": "2c2c1c1b13133b30"
+    },
+    {
+      "dexId": 952,
+      "formKey": "defaultShiny",
+      "nameKo": "스코빌런",
+      "displayName": "스코빌런",
+      "iconFile": "0952_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/39/Menu_CP_0952_shiny.png",
+      "dHash": "2c2c1c1b13133b30"
+    },
+    {
+      "dexId": 952,
+      "formKey": "mega",
+      "nameKo": "메가스코빌런",
+      "displayName": "메가스코빌런",
+      "iconFile": "0952_form01.png",
+      "iconUrl": "sprite_poke.png#0952_01",
+      "dHash": "260e0c1c7b236382"
+    },
+    {
+      "dexId": 952,
+      "formKey": "megaShiny",
+      "nameKo": "메가스코빌런",
+      "displayName": "메가스코빌런",
+      "iconFile": "0952_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b4/Menu_CP_0952-Mega_shiny.png",
+      "dHash": "260e0c1c7b276383"
+    },
+    {
+      "dexId": 956,
+      "formKey": "default",
+      "nameKo": "클레스퍼트라",
+      "displayName": "클레스퍼트라",
+      "iconFile": "0956_default.png",
+      "iconUrl": "sprite_poke.png#0956_00",
+      "dHash": "0e2c0c1633330303"
+    },
+    {
+      "dexId": 956,
+      "formKey": "defaultShiny",
+      "nameKo": "클레스퍼트라",
+      "displayName": "클레스퍼트라",
+      "iconFile": "0956_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/75/Menu_CP_0956_shiny.png",
+      "dHash": "0e2e0c363b0f0303"
+    },
+    {
+      "dexId": 959,
+      "formKey": "default",
+      "nameKo": "두드리짱",
+      "displayName": "두드리짱",
+      "iconFile": "0959_default.png",
+      "iconUrl": "sprite_poke.png#0959_00",
+      "dHash": "03131b1f0e061e10"
+    },
+    {
+      "dexId": 959,
+      "formKey": "defaultShiny",
+      "nameKo": "두드리짱",
+      "displayName": "두드리짱",
+      "iconFile": "0959_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/51/Menu_CP_0959_shiny.png",
+      "dHash": "03131b1f0e061e10"
+    },
+    {
+      "dexId": 964,
+      "formKey": "default",
+      "nameKo": "돌핀맨",
+      "displayName": "돌핀맨",
+      "iconFile": "0964_default.png",
+      "iconUrl": "sprite_poke.png#0964_00",
+      "dHash": "00111909294b0700"
+    },
+    {
+      "dexId": 964,
+      "formKey": "defaultShiny",
+      "nameKo": "돌핀맨",
+      "displayName": "돌핀맨",
+      "iconFile": "0964_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/70/Menu_CP_0964_shiny.png",
+      "dHash": "00111909294b0300"
+    },
+    {
+      "dexId": 964,
+      "formKey": "form01",
+      "nameKo": "돌핀맨",
+      "displayName": "돌핀맨(마이티폼)",
+      "iconFile": "0964_form01.png",
+      "iconUrl": "sprite_poke.png#0964_01",
+      "dHash": "160e0c0e160e0e12"
+    },
+    {
+      "dexId": 964,
+      "formKey": "form01Shiny",
+      "nameKo": "돌핀맨",
+      "displayName": "돌핀맨(마이티폼)",
+      "iconFile": "0964_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b8/Menu_CP_0964-Hero_shiny.png",
+      "dHash": "160e0c0f070e0e12"
+    },
+    {
+      "dexId": 968,
+      "formKey": "default",
+      "nameKo": "꿈트렁",
+      "displayName": "꿈트렁",
+      "iconFile": "0968_default.png",
+      "iconUrl": "sprite_poke.png#0968_00",
+      "dHash": "1c1a2e0a0e030b07"
+    },
+    {
+      "dexId": 968,
+      "formKey": "defaultShiny",
+      "nameKo": "꿈트렁",
+      "displayName": "꿈트렁",
+      "iconFile": "0968_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d2/Menu_CP_0968_shiny.png",
+      "dHash": "1e3a2e0a0e030d0f"
+    },
+    {
+      "dexId": 970,
+      "formKey": "default",
+      "nameKo": "킬라플로르",
+      "displayName": "킬라플로르",
+      "iconFile": "0970_default.png",
+      "iconUrl": "sprite_poke.png#0970_00",
+      "dHash": "000e070d03070c00"
+    },
+    {
+      "dexId": 970,
+      "formKey": "defaultShiny",
+      "nameKo": "킬라플로르",
+      "displayName": "킬라플로르",
+      "iconFile": "0970_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e1/Menu_CP_0970_shiny.png",
+      "dHash": "000e070f03070e00"
+    },
+    {
+      "dexId": 970,
+      "formKey": "mega",
+      "nameKo": "메가킬라플로르",
+      "displayName": "메가킬라플로르",
+      "iconFile": "0970_form01.png",
+      "iconUrl": "sprite_poke.png#0970_01",
+      "dHash": "0e37390f1d393706"
+    },
+    {
+      "dexId": 970,
+      "formKey": "megaShiny",
+      "nameKo": "메가킬라플로르",
+      "displayName": "메가킬라플로르",
+      "iconFile": "0970_form01_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f8/Menu_CP_0970-Mega_shiny.png",
+      "dHash": "0e37390f1d393706"
+    },
+    {
+      "dexId": 981,
+      "formKey": "default",
+      "nameKo": "키키링",
+      "displayName": "키키링",
+      "iconFile": "0981_default.png",
+      "iconUrl": "sprite_poke.png#0981_00",
+      "dHash": "1c1c1c1c0c060606"
+    },
+    {
+      "dexId": 981,
+      "formKey": "defaultShiny",
+      "nameKo": "키키링",
+      "displayName": "키키링",
+      "iconFile": "0981_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d4/Menu_CP_0981_shiny.png",
+      "dHash": "1c1c1c1c0c060606"
+    },
+    {
+      "dexId": 983,
+      "formKey": "default",
+      "nameKo": "대도각참",
+      "displayName": "대도각참",
+      "iconFile": "0983_default.png",
+      "iconUrl": "sprite_poke.png#0983_00",
+      "dHash": "0e0e0f1e0f670606"
+    },
+    {
+      "dexId": 983,
+      "formKey": "defaultShiny",
+      "nameKo": "대도각참",
+      "displayName": "대도각참",
+      "iconFile": "0983_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ae/Menu_CP_0983_shiny.png",
+      "dHash": "0e0f0f1e0f670606"
+    },
+    {
+      "dexId": 1013,
+      "formKey": "default",
+      "nameKo": "그우린차",
+      "displayName": "그우린차",
+      "iconFile": "1013_default.png",
+      "iconUrl": "sprite_poke.png#1013_00",
+      "dHash": "000c06060e0c0c00"
+    },
+    {
+      "dexId": 1013,
+      "formKey": "defaultShiny",
+      "nameKo": "그우린차",
+      "displayName": "그우린차",
+      "iconFile": "1013_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/2/26/Menu_CP_1013_shiny.png",
+      "dHash": "000c06060e0c0c00"
+    },
+    {
+      "dexId": 1018,
+      "formKey": "default",
+      "nameKo": "브리두라스",
+      "displayName": "브리두라스",
+      "iconFile": "1018_default.png",
+      "iconUrl": "sprite_poke.png#1018_00",
+      "dHash": "131713032f4d4d04"
+    },
+    {
+      "dexId": 1018,
+      "formKey": "defaultShiny",
+      "nameKo": "브리두라스",
+      "displayName": "브리두라스",
+      "iconFile": "1018_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/bd/Menu_CP_1018_shiny.png",
+      "dHash": "13130b0b27654d06"
+    },
+    {
+      "dexId": 1019,
+      "formKey": "default",
+      "nameKo": "과미드라",
+      "displayName": "과미드라",
+      "iconFile": "1019_default.png",
+      "iconUrl": "sprite_poke.png#1019_00",
+      "dHash": "0e0e060c0e06040c"
+    },
+    {
+      "dexId": 1019,
+      "formKey": "defaultShiny",
+      "nameKo": "과미드라",
+      "displayName": "과미드라",
+      "iconFile": "1019_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/df/Menu_CP_1019_shiny.png",
+      "dHash": "0e0e0e0c0606060c"
+    },
+    {
+      "dexId": 45,
+      "formKey": "default",
+      "nameKo": "라플레시아",
+      "displayName": "라플레시아",
+      "iconFile": "0045_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4c/Menu_CP_0045.png",
+      "dHash": "060f0717170e0000"
+    },
+    {
+      "dexId": 45,
+      "formKey": "defaultShiny",
+      "nameKo": "라플레시아",
+      "displayName": "라플레시아",
+      "iconFile": "0045_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/00/Menu_CP_0045_shiny.png",
+      "dHash": "060f0717170e0000"
+    },
+    {
+      "dexId": 211,
+      "formKey": "default",
+      "nameKo": "침바루",
+      "displayName": "침바루",
+      "iconFile": "0211_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/69/Menu_CP_0211.png",
+      "dHash": "000d3b2b1b071d00"
+    },
+    {
+      "dexId": 211,
+      "formKey": "defaultShiny",
+      "nameKo": "침바루",
+      "displayName": "침바루",
+      "iconFile": "0211_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e9/Menu_CP_0211_shiny.png",
+      "dHash": "000d0b3b1b071d00"
+    },
+    {
+      "dexId": 254,
+      "formKey": "default",
+      "nameKo": "나무킹",
+      "displayName": "나무킹",
+      "iconFile": "0254_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f7/Menu_CP_0254.png",
+      "dHash": "0b0b060533830300"
+    },
+    {
+      "dexId": 254,
+      "formKey": "defaultShiny",
+      "nameKo": "나무킹",
+      "displayName": "나무킹",
+      "iconFile": "0254_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c5/Menu_CP_0254_shiny.png",
+      "dHash": "0b07363d37830501"
+    },
+    {
+      "dexId": 257,
+      "formKey": "default",
+      "nameKo": "번치코",
+      "displayName": "번치코",
+      "iconFile": "0257_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a1/Menu_CP_0257.png",
+      "dHash": "733716174d160c0e"
+    },
+    {
+      "dexId": 257,
+      "formKey": "defaultShiny",
+      "nameKo": "번치코",
+      "displayName": "번치코",
+      "iconFile": "0257_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5e/Menu_CP_0257_shiny.png",
+      "dHash": "733716174d160c0e"
+    },
+    {
+      "dexId": 260,
+      "formKey": "default",
+      "nameKo": "대짱이",
+      "displayName": "대짱이",
+      "iconFile": "0260_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/80/Menu_CP_0260.png",
+      "dHash": "35753313170f0b08"
+    },
+    {
+      "dexId": 260,
+      "formKey": "defaultShiny",
+      "nameKo": "대짱이",
+      "displayName": "대짱이",
+      "iconFile": "0260_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/1/18/Menu_CP_0260_shiny.png",
+      "dHash": "31752717070f0b08"
+    },
+    {
+      "dexId": 303,
+      "formKey": "default",
+      "nameKo": "입치트",
+      "displayName": "입치트",
+      "iconFile": "0303_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7b/Menu_CP_0303.png",
+      "dHash": "33474e1c1c180000"
+    },
+    {
+      "dexId": 303,
+      "formKey": "defaultShiny",
+      "nameKo": "입치트",
+      "displayName": "입치트",
+      "iconFile": "0303_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/84/Menu_CP_0303_shiny.png",
+      "dHash": "33474e1c1c180000"
+    },
+    {
+      "dexId": 376,
+      "formKey": "default",
+      "nameKo": "메타그로스",
+      "displayName": "메타그로스",
+      "iconFile": "0376_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0e/Menu_CP_0376.png",
+      "dHash": "7064681d0d000000"
+    },
+    {
+      "dexId": 376,
+      "formKey": "defaultShiny",
+      "nameKo": "메타그로스",
+      "displayName": "메타그로스",
+      "iconFile": "0376_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/74/Menu_CP_0376_shiny.png",
+      "dHash": "70e4cd5915000000"
+    },
+    {
+      "dexId": 398,
+      "formKey": "default",
+      "nameKo": "찌르호크",
+      "displayName": "찌르호크",
+      "iconFile": "0398_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f2/Menu_CP_0398.png",
+      "dHash": "0b070f0b2f470303"
+    },
+    {
+      "dexId": 398,
+      "formKey": "defaultShiny",
+      "nameKo": "찌르호크",
+      "displayName": "찌르호크",
+      "iconFile": "0398_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/92/Menu_CP_0398_shiny.png",
+      "dHash": "0b070f0b2d470303"
+    },
+    {
+      "dexId": 518,
+      "formKey": "default",
+      "nameKo": "몽얌나",
+      "displayName": "몽얌나",
+      "iconFile": "0518_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/aa/Menu_CP_0518.png",
+      "dHash": "0707396161330e08"
+    },
+    {
+      "dexId": 518,
+      "formKey": "defaultShiny",
+      "nameKo": "몽얌나",
+      "displayName": "몽얌나",
+      "iconFile": "0518_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/77/Menu_CP_0518_shiny.png",
+      "dHash": "0707316161330e08"
+    },
+    {
+      "dexId": 545,
+      "formKey": "default",
+      "nameKo": "펜드라",
+      "displayName": "펜드라",
+      "iconFile": "0545_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/ff/Menu_CP_0545.png",
+      "dHash": "1c0c0c0c0c0e0305"
+    },
+    {
+      "dexId": 545,
+      "formKey": "defaultShiny",
+      "nameKo": "펜드라",
+      "displayName": "펜드라",
+      "iconFile": "0545_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/71/Menu_CP_0545_shiny.png",
+      "dHash": "1c0c0c0c0c0e0305"
+    },
+    {
+      "dexId": 560,
+      "formKey": "default",
+      "nameKo": "곤율거니",
+      "displayName": "곤율거니",
+      "iconFile": "0560_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/34/Menu_CP_0560.png",
+      "dHash": "160e0e0e0e060606"
+    },
+    {
+      "dexId": 560,
+      "formKey": "defaultShiny",
+      "nameKo": "곤율거니",
+      "displayName": "곤율거니",
+      "iconFile": "0560_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ef/Menu_CP_0560_shiny.png",
+      "dHash": "160e0e0e1a060606"
+    },
+    {
+      "dexId": 604,
+      "formKey": "default",
+      "nameKo": "저리더프",
+      "displayName": "저리더프",
+      "iconFile": "0604_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/32/Menu_CP_0604.png",
+      "dHash": "303969672c2e164c"
+    },
+    {
+      "dexId": 604,
+      "formKey": "defaultShiny",
+      "nameKo": "저리더프",
+      "displayName": "저리더프",
+      "iconFile": "0604_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d2/Menu_CP_0604_shiny.png",
+      "dHash": "303969672c1e164c"
+    },
+    {
+      "dexId": 668,
+      "formKey": "default",
+      "nameKo": "화염레오",
+      "displayName": "화염레오",
+      "iconFile": "0668_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/48/Menu_CP_0668.png",
+      "dHash": "0606171b47572f2c"
+    },
+    {
+      "dexId": 668,
+      "formKey": "defaultShiny",
+      "nameKo": "화염레오",
+      "displayName": "화염레오",
+      "iconFile": "0668_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f2/Menu_CP_0668_shiny.png",
+      "dHash": "0606071b4b572f2c"
+    },
+    {
+      "dexId": 687,
+      "formKey": "default",
+      "nameKo": "칼라마네로",
+      "displayName": "칼라마네로",
+      "iconFile": "0687_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/da/Menu_CP_0687.png",
+      "dHash": "3d0b06060e0e1e10"
+    },
+    {
+      "dexId": 687,
+      "formKey": "defaultShiny",
+      "nameKo": "칼라마네로",
+      "displayName": "칼라마네로",
+      "iconFile": "0687_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9d/Menu_CP_0687_shiny.png",
+      "dHash": "3d0b06060e1e1e10"
+    },
+    {
+      "dexId": 689,
+      "formKey": "default",
+      "nameKo": "거북손데스",
+      "displayName": "거북손데스",
+      "iconFile": "0689_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3c/Menu_CP_0689.png",
+      "dHash": "37b6cd1f062b2b61"
+    },
+    {
+      "dexId": 689,
+      "formKey": "defaultShiny",
+      "nameKo": "거북손데스",
+      "displayName": "거북손데스",
+      "iconFile": "0689_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/de/Menu_CP_0689_shiny.png",
+      "dHash": "37b6cc1f062b2b61"
+    },
+    {
+      "dexId": 691,
+      "formKey": "default",
+      "nameKo": "드래캄",
+      "displayName": "드래캄",
+      "iconFile": "0691_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7d/Menu_CP_0691.png",
+      "dHash": "0c0c6d0f06070f0e"
+    },
+    {
+      "dexId": 691,
+      "formKey": "defaultShiny",
+      "nameKo": "드래캄",
+      "displayName": "드래캄",
+      "iconFile": "0691_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/df/Menu_CP_0691_shiny.png",
+      "dHash": "0c0c6d0f06070f0e"
+    },
+    {
+      "dexId": 861,
+      "formKey": "default",
+      "nameKo": "오롱털",
+      "displayName": "오롱털",
+      "iconFile": "0861_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/4e/Menu_CP_0861.png",
+      "dHash": "3635490f060e1000"
+    },
+    {
+      "dexId": 861,
+      "formKey": "defaultShiny",
+      "nameKo": "오롱털",
+      "displayName": "오롱털",
+      "iconFile": "0861_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/e9/Menu_CP_0861_shiny.png",
+      "dHash": "3665490f2e161000"
+    },
+    {
+      "dexId": 870,
+      "formKey": "default",
+      "nameKo": "대여르",
+      "displayName": "대여르",
+      "iconFile": "0870_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/56/Menu_CP_0870.png",
+      "dHash": "0717733b33000000"
+    },
+    {
+      "dexId": 870,
+      "formKey": "defaultShiny",
+      "nameKo": "대여르",
+      "displayName": "대여르",
+      "iconFile": "0870_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a6/Menu_CP_0870_shiny.png",
+      "dHash": "0707253733010000"
+    },
+    {
+      "dexId": 904,
+      "formKey": "default",
+      "nameKo": "장침바루",
+      "displayName": "장침바루",
+      "iconFile": "0904_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f0/Menu_CP_0904.png",
+      "dHash": "0c091f170f052c0c"
+    },
+    {
+      "dexId": 904,
+      "formKey": "defaultShiny",
+      "nameKo": "장침바루",
+      "displayName": "장침바루",
+      "iconFile": "0904_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/3/3b/Menu_CP_0904_shiny.png",
+      "dHash": "0c0d0f571b152c0c"
+    },
+    {
+      "dexId": 972,
+      "formKey": "default",
+      "nameKo": "묘두기",
+      "displayName": "묘두기",
+      "iconFile": "0972_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/01/Menu_CP_0972.png",
+      "dHash": "0f6e6395c3cea604"
+    },
+    {
+      "dexId": 972,
+      "formKey": "defaultShiny",
+      "nameKo": "묘두기",
+      "displayName": "묘두기",
+      "iconFile": "0972_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f8/Menu_CP_0972_shiny.png",
+      "dHash": "0d6e63854f2ea604"
+    },
+    {
+      "dexId": 979,
+      "formKey": "default",
+      "nameKo": "저승갓숭",
+      "displayName": "저승갓숭",
+      "iconFile": "0979_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/09/Menu_CP_0979.png",
+      "dHash": "370d2f060f2b4a0a"
+    },
+    {
+      "dexId": 979,
+      "formKey": "defaultShiny",
+      "nameKo": "저승갓숭",
+      "displayName": "저승갓숭",
+      "iconFile": "0979_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/7f/Menu_CP_0979_shiny.png",
+      "dHash": "3775233333334a0a"
+    },
+    {
+      "dexId": 1000,
+      "formKey": "default",
+      "nameKo": "타부자고",
+      "displayName": "타부자고",
+      "iconFile": "1000_default.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Menu_CP_1000.png",
+      "dHash": "0c1717040e0e0c0c"
+    },
+    {
+      "dexId": 1000,
+      "formKey": "defaultShiny",
+      "nameKo": "타부자고",
+      "displayName": "타부자고",
+      "iconFile": "1000_default_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6d/Menu_CP_1000_shiny.png",
+      "dHash": "0c1f171c0e0e0c0c"
+    },
+    {
+      "dexId": 26,
+      "formKey": "megaX",
+      "nameKo": "메가라이츄X",
+      "displayName": "메가라이츄X",
+      "iconFile": "0026_megaX.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/d8/Menu_CP_0026-Mega_X.png",
+      "dHash": "0b0d1dc5ccc88000"
+    },
+    {
+      "dexId": 26,
+      "formKey": "megaXShiny",
+      "nameKo": "메가라이츄X",
+      "displayName": "메가라이츄X",
+      "iconFile": "0026_megaX_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/ae/Menu_CP_0026-Mega_X_shiny.png",
+      "dHash": "0b0d1d856dd88000"
+    },
+    {
+      "dexId": 26,
+      "formKey": "megaY",
+      "nameKo": "메가라이츄Y",
+      "displayName": "메가라이츄Y",
+      "iconFile": "0026_megaY.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/5c/Menu_CP_0026-Mega_Y.png",
+      "dHash": "070d1715019db0c0"
+    },
+    {
+      "dexId": 26,
+      "formKey": "megaYShiny",
+      "nameKo": "메가라이츄Y",
+      "displayName": "메가라이츄Y",
+      "iconFile": "0026_megaY_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a5/Menu_CP_0026-Mega_Y_shiny.png",
+      "dHash": "070d1715019db0c0"
+    },
+    {
+      "dexId": 604,
+      "formKey": "mega",
+      "nameKo": "메가저리더프",
+      "displayName": "메가저리더프",
+      "iconFile": "0604_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f5/Menu_CP_0604-Mega.png",
+      "dHash": "000c0d03468d1000"
+    },
+    {
+      "dexId": 604,
+      "formKey": "megaShiny",
+      "nameKo": "메가저리더프",
+      "displayName": "메가저리더프",
+      "iconFile": "0604_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b3/Menu_CP_0604-Mega_shiny.png",
+      "dHash": "000c0d03468d1000"
+    },
+    {
+      "dexId": 668,
+      "formKey": "mega",
+      "nameKo": "메가화염레오",
+      "displayName": "메가화염레오",
+      "iconFile": "0668_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fa/Menu_CP_0668-Mega.png",
+      "dHash": "0e17171b0f0f0f0c"
+    },
+    {
+      "dexId": 668,
+      "formKey": "megaShiny",
+      "nameKo": "메가화염레오",
+      "displayName": "메가화염레오",
+      "iconFile": "0668_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b6/Menu_CP_0668-Mega_shiny.png",
+      "dHash": "0e171727131b0b0c"
+    },
+    {
+      "dexId": 545,
+      "formKey": "mega",
+      "nameKo": "메가펜드라",
+      "displayName": "메가펜드라",
+      "iconFile": "0545_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ef/Menu_CP_0545-Mega.png",
+      "dHash": "341c0c0c0e060705"
+    },
+    {
+      "dexId": 545,
+      "formKey": "megaShiny",
+      "nameKo": "메가펜드라",
+      "displayName": "메가펜드라",
+      "iconFile": "0545_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/6/6b/Menu_CP_0545-Mega_shiny.png",
+      "dHash": "341c0c0c0e060705"
+    },
+    {
+      "dexId": 560,
+      "formKey": "mega",
+      "nameKo": "메가곤율거니",
+      "displayName": "메가곤율거니",
+      "iconFile": "0560_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/96/Menu_CP_0560-Mega.png",
+      "dHash": "1f1327060606160c"
+    },
+    {
+      "dexId": 560,
+      "formKey": "megaShiny",
+      "nameKo": "메가곤율거니",
+      "displayName": "메가곤율거니",
+      "iconFile": "0560_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b7/Menu_CP_0560-Mega_shiny.png",
+      "dHash": "1f07060e06060e0c"
+    },
+    {
+      "dexId": 687,
+      "formKey": "mega",
+      "nameKo": "메가칼라마네로",
+      "displayName": "메가칼라마네로",
+      "iconFile": "0687_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/99/Menu_CP_0687-Mega.png",
+      "dHash": "082be58d0c1e0e0c"
+    },
+    {
+      "dexId": 687,
+      "formKey": "megaShiny",
+      "nameKo": "메가칼라마네로",
+      "displayName": "메가칼라마네로",
+      "iconFile": "0687_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/d/da/Menu_CP_0687-Mega_shiny.png",
+      "dHash": "082bc58d0c1e1e0c"
+    },
+    {
+      "dexId": 689,
+      "formKey": "mega",
+      "nameKo": "메가거북손데스",
+      "displayName": "메가거북손데스",
+      "iconFile": "0689_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f2/Menu_CP_0689-Mega.png",
+      "dHash": "0c0c290b550f2734"
+    },
+    {
+      "dexId": 689,
+      "formKey": "megaShiny",
+      "nameKo": "메가거북손데스",
+      "displayName": "메가거북손데스",
+      "iconFile": "0689_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/9/9f/Menu_CP_0689-Mega_shiny.png",
+      "dHash": "0c0c290b550f2f34"
+    },
+    {
+      "dexId": 691,
+      "formKey": "mega",
+      "nameKo": "메가드래캄",
+      "displayName": "메가드래캄",
+      "iconFile": "0691_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/f6/Menu_CP_0691-Mega.png",
+      "dHash": "201b291113070708"
+    },
+    {
+      "dexId": 691,
+      "formKey": "megaShiny",
+      "nameKo": "메가드래캄",
+      "displayName": "메가드래캄",
+      "iconFile": "0691_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c4/Menu_CP_0691-Mega_shiny.png",
+      "dHash": "201b291113030708"
+    },
+    {
+      "dexId": 398,
+      "formKey": "mega",
+      "nameKo": "메가찌르호크",
+      "displayName": "메가찌르호크",
+      "iconFile": "0398_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/b/b0/Menu_CP_0398-Mega.png",
+      "dHash": "4f671f150c090b04"
+    },
+    {
+      "dexId": 398,
+      "formKey": "megaShiny",
+      "nameKo": "메가찌르호크",
+      "displayName": "메가찌르호크",
+      "iconFile": "0398_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/86/Menu_CP_0398-Mega_shiny.png",
+      "dHash": "4f671f150c090b04"
+    },
+    {
+      "dexId": 870,
+      "formKey": "mega",
+      "nameKo": "메가대여르",
+      "displayName": "메가대여르",
+      "iconFile": "0870_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/c/c2/Menu_CP_0870-Mega.png",
+      "dHash": "1c4e8f8f4e040000"
+    },
+    {
+      "dexId": 870,
+      "formKey": "megaShiny",
+      "nameKo": "메가대여르",
+      "displayName": "메가대여르",
+      "iconFile": "0870_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/fe/Menu_CP_0870-Mega_shiny.png",
+      "dHash": "1c4c2f4f4e040000"
+    },
+    {
+      "dexId": 376,
+      "formKey": "mega",
+      "nameKo": "메가메타그로스",
+      "displayName": "메가메타그로스",
+      "iconFile": "0376_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/50/Menu_CP_0376-Mega.png",
+      "dHash": "70b121272d737361"
+    },
+    {
+      "dexId": 376,
+      "formKey": "megaShiny",
+      "nameKo": "메가메타그로스",
+      "displayName": "메가메타그로스",
+      "iconFile": "0376_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/7/78/Menu_CP_0376-Mega_shiny.png",
+      "dHash": "70b1312d2f333361"
+    },
+    {
+      "dexId": 303,
+      "formKey": "mega",
+      "nameKo": "메가입치트",
+      "displayName": "메가입치트",
+      "iconFile": "0303_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/8/8d/Menu_CP_0303-Mega.png",
+      "dHash": "59112337341e1c18"
+    },
+    {
+      "dexId": 303,
+      "formKey": "megaShiny",
+      "nameKo": "메가입치트",
+      "displayName": "메가입치트",
+      "iconFile": "0303_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0b/Menu_CP_0303-Mega_shiny.png",
+      "dHash": "59112337341e1c18"
+    },
+    {
+      "dexId": 257,
+      "formKey": "mega",
+      "nameKo": "메가번치코",
+      "displayName": "메가번치코",
+      "iconFile": "0257_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/f/ff/Menu_CP_0257-Mega.png",
+      "dHash": "0c0e46260e4bcf14"
+    },
+    {
+      "dexId": 257,
+      "formKey": "megaShiny",
+      "nameKo": "메가번치코",
+      "displayName": "메가번치코",
+      "iconFile": "0257_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/a/a6/Menu_CP_0257-Mega_shiny.png",
+      "dHash": "0c0e46260e4bcf14"
+    },
+    {
+      "dexId": 260,
+      "formKey": "mega",
+      "nameKo": "메가대짱이",
+      "displayName": "메가대짱이",
+      "iconFile": "0260_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/0/0c/Menu_CP_0260-Mega.png",
+      "dHash": "2d1d130b4b000000"
+    },
+    {
+      "dexId": 260,
+      "formKey": "megaShiny",
+      "nameKo": "메가대짱이",
+      "displayName": "메가대짱이",
+      "iconFile": "0260_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/4/40/Menu_CP_0260-Mega_shiny.png",
+      "dHash": "2d0d270b4b000000"
+    },
+    {
+      "dexId": 254,
+      "formKey": "mega",
+      "nameKo": "메가나무킹",
+      "displayName": "메가나무킹",
+      "iconFile": "0254_mega.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/e/ea/Menu_CP_0254-Mega.png",
+      "dHash": "ce071f3e10300000"
+    },
+    {
+      "dexId": 254,
+      "formKey": "megaShiny",
+      "nameKo": "메가나무킹",
+      "displayName": "메가나무킹",
+      "iconFile": "0254_mega_shiny.png",
+      "iconUrl": "https://archives.bulbagarden.net/media/upload/5/58/Menu_CP_0254-Mega_shiny.png",
+      "dHash": "ce070f3e10300000"
+    }
+  ]
+}
