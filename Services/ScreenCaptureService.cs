@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Text;
 
 namespace PokemonHelper.Services
@@ -34,7 +35,9 @@ namespace PokemonHelper.Services
 
         private CancellationTokenSource? _pickCts;
 
-        private Dictionary<string, long> _lastRankChangeMap = new Dictionary<string, long>();
+        private Dictionary<string, (long Timestamp, string Description)> _lastEventMap = new Dictionary<string, (long Timestamp, string Description)>();
+        
+
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
         private string _lastSentJson = "";
@@ -87,8 +90,17 @@ namespace PokemonHelper.Services
         private BattleLogAnalyzer _logAnalyzer;
         private LogTextCorrector _logCorrector;
 
+        public static ScreenCaptureService? Instance { get; private set; }
+
+        public void ResetBattleState()
+        {
+            IsPartyRecognitionEnabled = true;
+            _logAnalyzer.Reset();
+        }
+
         public ScreenCaptureService(IHubContext<PokemonHub> hubContext)
         {
+            Instance = this;
             _hubContext = hubContext;
             LoadPokemonData();
             
@@ -296,11 +308,14 @@ namespace PokemonHelper.Services
 
         private async Task CaptureLoop()
         {
+            int loopCount = 0;
             while (!_cts.Token.IsCancellationRequested)
             {
-                await Task.Delay(100, _cts.Token);
+                // HP OCR 주기를 100ms에서 33ms로 단축 (약 3배 빠름)
+                await Task.Delay(33, _cts.Token);
                 if (!IsRunning || TargetHwnd == IntPtr.Zero) continue;
                 
+                loopCount++;
                 try
                 {
                     // 설정값을 매 루프마다 반영
@@ -308,153 +323,145 @@ namespace PokemonHelper.Services
                     _pickDetector.StatsRegion = Settings.StatsDisplay;
                     _logOcr.LogRegion = Settings.Log;
 
-                    // 1. 선택 화면 인식
-                    if (IsPartyRecognitionEnabled)
+                    if (loopCount % 3 == 0)
                     {
-                        var pickEntry = _pickDetector.Analyze(TargetHwnd);
-                        
-                        if (!string.IsNullOrWhiteSpace(pickEntry.Raw) && pickEntry.Raw != _lastDebugRaw)
+                        if (IsPartyRecognitionEnabled)
                         {
-                            _lastDebugRaw = pickEntry.Raw;
-                            Console.WriteLine($"[OCR DEBUG] {pickEntry.Raw}");
-                        }
-
-                        if (pickEntry.Shown)
-                        {
-                            Console.WriteLine("Pick Entry Detected!");
+                            var pickEntry = _pickDetector.Analyze(TargetHwnd);
                             
-                            var slots = Settings.OpponentPartySlots.ToList();
-                            var typeSlots = Settings.OpponentPartyTypeSlots.ToList();
-
-                            var allDexIds = _pokemonList.Select(x => x.Id).ToList();
-                            
-                            var result = _partyRecognizer.Recognize(TargetHwnd, slots, allDexIds, typeSlots, _dexTypes);
-                            
-                            var partyData = result.Slots.Select((s, index) => {
-                                var sprite = _spritesProvider.AllSprites.FirstOrDefault(x => x.DexId == s.DexId && x.FormKey == s.FormKey);
-                                var pkmn = _pokemonList.FirstOrDefault(x => x.Id == s.DexId);
-                                var dict = new Dictionary<string, object>();
-                                dict["index"] = index + 1;
-                                dict["name"] = s.DisplayName;
-                                dict["dexId"] = s.DexId ?? 0;
-                                dict["formKey"] = s.FormKey;
-                                dict["score"] = s.Score;
-                                dict["iconFile"] = sprite?.IconFile ?? $"{s.DexId}-default.png";
-                                dict["types"] = pkmn?.Types ?? new List<string>();
-                                return dict;
-                            }).ToList();
-
-                            var json = JsonSerializer.Serialize(partyData);
-                            if (json != _lastSentJson)
+                            if (!string.IsNullOrWhiteSpace(pickEntry.Raw) && pickEntry.Raw != _lastDebugRaw)
                             {
-                                _lastSentJson = json;
-                                LastPartyData = partyData;
-                                Console.WriteLine($"상대 파티 인식 완료: {json}");
+                                _lastDebugRaw = pickEntry.Raw;
+                                Console.WriteLine($"[OCR DEBUG] {pickEntry.Raw}");
+                            }
+
+                            if (pickEntry.Shown)
+                            {
+                                Console.WriteLine("Pick Entry Detected!");
                                 
-                                // 파티 인식 성공 시 인식 중단 (배틀 상태 초기화 버튼을 눌러야 다시 활성화됨)
-                                IsPartyRecognitionEnabled = false;
-                                Console.WriteLine("[Party] 파티 인식 완료, 재인식 차단됨 (배틀 상태 초기화 필요)");
+                                var slots = Settings.OpponentPartySlots.ToList();
+                                var typeSlots = Settings.OpponentPartyTypeSlots.ToList();
+
+                                var allDexIds = _pokemonList.Select(x => x.Id).ToList();
                                 
-                                await _hubContext.Clients.All.SendAsync("UpdateOpponentParty", partyData);
+                                var result = _partyRecognizer.Recognize(TargetHwnd, slots, allDexIds, typeSlots, _dexTypes);
+                                
+                                var partyData = result.Slots.Select((s, index) => {
+                                    var sprite = _spritesProvider.AllSprites.FirstOrDefault(x => x.DexId == s.DexId && x.FormKey == s.FormKey);
+                                    var pkmn = _pokemonList.FirstOrDefault(x => x.Id == s.DexId);
+                                    var dict = new Dictionary<string, object>();
+                                    dict["index"] = index + 1;
+                                    dict["name"] = s.DisplayName;
+                                    dict["dexId"] = s.DexId ?? 0;
+                                    dict["formKey"] = s.FormKey;
+                                    dict["score"] = s.Score;
+                                    dict["iconFile"] = sprite?.IconFile ?? $"{s.DexId}-default.png";
+                                    dict["types"] = pkmn?.Types ?? new List<string>();
+                                    return dict;
+                                }).ToList();
+
+                                var json = System.Text.Json.JsonSerializer.Serialize(partyData);
+                                if (json != _lastSentJson)
+                                {
+                                    _lastSentJson = json;
+                                    LastPartyData = partyData;
+                                    Console.WriteLine($"상대 파티 인식 완료: {json}");
+                                    
+                                    IsPartyRecognitionEnabled = false;
+                                    Console.WriteLine("[Party] 파티 인식 완료, 재인식 차단됨 (배틀 상태 초기화 필요)");
+                                    
+                                    await _hubContext.Clients.All.SendAsync("UpdateOpponentParty", partyData);
+                                }
+                            }
+                        }
+                        else if (!IsPartyRecognitionEnabled)
+                        {
+                            long nowMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                            using var logBmp = _logOcr.CaptureLogRegion(TargetHwnd);
+                            
+                            ulong fp = LogOcr.ComputeFingerprint(logBmp);
+                            bool changed = (fp != _lastLogFingerprint);
+                            if (changed) _lastLogFingerprint = fp;
+
+                            var results = _logVoter.Advance(changed ? logBmp : null, changed, nowMs, bmp =>
+                            {
+                                var raw = _logOcr.RecognizeLogRaw(bmp);
+                                if (!string.IsNullOrWhiteSpace(raw) && raw != _lastDebugRaw)
+                                {
+                                    _lastDebugRaw = raw;
+                                    Console.WriteLine($"[LogOCR_RAW] '{raw}'");
+                                }
+                                return raw;
+                            });
+                            
+                            var pendingCascade = _logVoter.TakePendingCascade();
+                            if (pendingCascade != null)
+                            {
+                                DispatchLogCascade(pendingCascade);
+                            }
+
+                            if (results != null)
+                            {
+                                foreach (var rawRes in results)
+                                {
+                                    var finals = _logEmitGate.Submit(rawRes, nowMs);
+                                    EmitBatch(finals);
+                                }
                             }
                         }
                     }
-                    else if (!IsPartyRecognitionEnabled)
+
+                    try
                     {
-                        // 파티 인식이 끝났다면 초기화 전까지는 항상 배틀 상태로 간주
-                        long nowMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-                        using var logBmp = _logOcr.CaptureLogRegion(TargetHwnd);
+                        Bitmap PadAndEnhance(Bitmap src)
+                        {
+                            if (src.Width <= 0 || src.Height <= 0) return new Bitmap(src);
+                            int padding = 10;
+                            using var padded = new Bitmap(src.Width + padding * 2, src.Height + padding * 2, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                            using (Graphics g = Graphics.FromImage(padded))
+                            {
+                                g.Clear(Color.Black);
+                                g.DrawImage(src, padding, padding, src.Width, src.Height);
+                            }
+                            using var hsvFiltered = PokemonHelper.Services.Recognition.ImagePreprocessor.BinarizeByHsv(padded, new OpenCvSharp.Scalar(0, 0, 170), new OpenCvSharp.Scalar(180, 80, 255), 1);
+                            var finalBmp = PokemonHelper.Services.Recognition.ImagePreprocessor.UpscaleAndEnhance(hsvFiltered, 3);
+                            return finalBmp;
+                        }
+                        string myHpText = null;
+                        if (Settings.MyHp.Width > 0 && Settings.MyHp.Height > 0)
+                        {
+                            using var myHpBmp = CaptureWindowRegion(TargetHwnd, Settings.MyHp);
+                            using var enhanced = PadAndEnhance(myHpBmp);
+                            myHpText = _windowsOcrEngine.Recognize(enhanced);
+                        }
+
+                        string oppHpText = null;
+                        if (Settings.OpponentHp.Width > 0 && Settings.OpponentHp.Height > 0)
+                        {
+                            using var oppHpBmp = CaptureWindowRegion(TargetHwnd, Settings.OpponentHp);
+                            using var enhanced = PadAndEnhance(oppHpBmp);
+                            oppHpText = _windowsOcrEngine.Recognize(enhanced);
+                            if (!string.IsNullOrWhiteSpace(oppHpText) && !oppHpText.Contains('%'))
+                            {
+                                oppHpText = null;
+                            }
+                        }
                         
-                        // [진단용] 로그 캡처 영역 5초에 한 번씩 이미지로 저장 (위치/크기 문제인지 확인용)
-                        if (nowMs % 5000 < 600)
+                        if (!string.IsNullOrWhiteSpace(myHpText) || !string.IsNullOrWhiteSpace(oppHpText))
                         {
-
-                        }
-
-                        ulong fp = LogOcr.ComputeFingerprint(logBmp);
-                        bool changed = (fp != _lastLogFingerprint);
-                        if (changed) _lastLogFingerprint = fp;
-
-                        var results = _logVoter.Advance(changed ? logBmp : null, changed, nowMs, bmp =>
-                        {
-                            var raw = _logOcr.RecognizeLogRaw(bmp);
-                            if (!string.IsNullOrWhiteSpace(raw) && raw != _lastDebugRaw)
+                            string currentHpNameLog = $"MyHP: '{myHpText}', OppHP: '{oppHpText}'";
+                            if (currentHpNameLog != _lastHpNameLog)
                             {
-                                _lastDebugRaw = raw;
-                                Console.WriteLine($"[LogOCR_RAW] '{raw}'");
-                            }
-                            return raw;
-                        });
-                        
-                        var pendingCascade = _logVoter.TakePendingCascade();
-                        if (pendingCascade != null)
-                        {
-                            DispatchLogCascade(pendingCascade);
-                        }
-
-                        if (results != null)
-                        {
-                            foreach (var rawRes in results)
-                            {
-                                var finals = _logEmitGate.Submit(rawRes, nowMs);
-                                EmitBatch(finals);
+                                _lastHpNameLog = currentHpNameLog;
+                                Console.WriteLine($"[OCR HP] {currentHpNameLog}");
+                                var hpDict = new Dictionary<string, string>();
+                                hpDict["myHp"] = myHpText?.Trim();
+                                hpDict["opponentHp"] = oppHpText?.Trim();
+                                _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
                             }
                         }
-
-                        // HP OCR
-                        try
-                        {
-                            Bitmap PadAndEnhance(Bitmap src)
-                            {
-                                if (src.Width <= 0 || src.Height <= 0) return new Bitmap(src);
-                                int padding = 10;
-                                using var padded = new Bitmap(src.Width + padding * 2, src.Height + padding * 2, PixelFormat.Format32bppArgb);
-                                using (Graphics g = Graphics.FromImage(padded))
-                                {
-                                    g.Clear(Color.Black);
-                                    g.DrawImage(src, padding, padding, src.Width, src.Height);
-                                }
-                                using var hsvFiltered = PokemonHelper.Services.Recognition.ImagePreprocessor.BinarizeByHsv(padded, new OpenCvSharp.Scalar(0, 0, 170), new OpenCvSharp.Scalar(180, 80, 255), 1);
-                                var finalBmp = ImagePreprocessor.UpscaleAndEnhance(hsvFiltered, 3);
-                                return finalBmp;
-                            }
-                            string myHpText = null;
-                            if (Settings.MyHp.Width > 0 && Settings.MyHp.Height > 0)
-                            {
-                                using var myHpBmp = CaptureWindowRegion(TargetHwnd, Settings.MyHp);
-                                using var enhanced = PadAndEnhance(myHpBmp);
-                                myHpText = _windowsOcrEngine.Recognize(enhanced);
-                            }
-
-                            string oppHpText = null;
-                            if (Settings.OpponentHp.Width > 0 && Settings.OpponentHp.Height > 0)
-                            {
-                                using var oppHpBmp = CaptureWindowRegion(TargetHwnd, Settings.OpponentHp);
-                                using var enhanced = PadAndEnhance(oppHpBmp);
-                                oppHpText = _windowsOcrEngine.Recognize(enhanced);
-                                // 중간 타이머 등 엉뚱한 숫자가 인식되는 것을 막기 위해 '%' 기호가 포함된 경우만 유효한 HP로 취급합니다.
-                                if (!string.IsNullOrWhiteSpace(oppHpText) && !oppHpText.Contains('%'))
-                                {
-                                    oppHpText = null;
-                                }
-                            }
-                            
-                            if (!string.IsNullOrWhiteSpace(myHpText) || !string.IsNullOrWhiteSpace(oppHpText))
-                            {
-                                string currentHpNameLog = $"MyHP: '{myHpText}', OppHP: '{oppHpText}'";
-                                if (currentHpNameLog != _lastHpNameLog)
-                                {
-                                    _lastHpNameLog = currentHpNameLog;
-                                    Console.WriteLine($"[OCR HP] {currentHpNameLog}");
-                                    var hpDict = new Dictionary<string, string>();
-                                    hpDict["myHp"] = myHpText?.Trim();
-                                    hpDict["opponentHp"] = oppHpText?.Trim();
-                                    _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
-                                }
-                            }
-                        }
-                        catch (Exception) { }
                     }
+                    catch (Exception) { }
                 }
                 catch (Exception ex)
                 {
@@ -463,7 +470,7 @@ namespace PokemonHelper.Services
             }
         }
 
-        private void DispatchLogCascade(LogCascadeRequest req)
+private void DispatchLogCascade(LogCascadeRequest req)
         {
             if (Interlocked.CompareExchange(ref _logCascadeInFlight, 1, 0) != 0)
             {
@@ -525,18 +532,34 @@ namespace PokemonHelper.Services
                 var ev = _logAnalyzer.Analyze(res);
                 if (ev != null)
                 {
-                    if (ev.EventType == "RankChange" && ev.Payload is PokemonHelper.Models.RankChangePayload payload)
+                    string payloadStr = "";
+                    if (ev.Payload is PokemonHelper.Models.RankChangePayload rcp)
                     {
-                        string sig = $"{ev.EventType}_{ev.Source}_{payload.Stat}_{payload.Stages}";
-                        if (_lastRankChangeMap.TryGetValue(sig, out long lastMs) && now - lastMs < 3000)
+                        payloadStr = $"{rcp.Stat}_{rcp.Stages}";
+                    }
+                    else if (ev.Payload != null)
+                    {
+                        payloadStr = ev.Payload.ToString();
+                    }
+
+                    string sig = $"{ev.EventType}_{ev.Source}_{ev.Name}_{payloadStr}";
+                    if (_lastEventMap.TryGetValue(sig, out var lastEvent) && now - lastEvent.Timestamp < 3000)
+                    {
+                        if (ev.EventType == "Switch" && ev.Description != null && ev.Description.Length > (lastEvent.Description?.Length ?? 0) + 1)
+                        {
+                            // Allow better Switch event to pass
+                        }
+                        else
                         {
                             Console.WriteLine($"[BattleLog Event Debounce] 중복 기각 — {sig}");
                             return;
                         }
-                        _lastRankChangeMap[sig] = now;
                     }
+                    _lastEventMap[sig] = (now, ev.Description ?? "");
 
                     Console.WriteLine($"[BattleLog Event] {ev.EventType} - {ev.Name}");
+
+
                     _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", ev);
                 }
             }

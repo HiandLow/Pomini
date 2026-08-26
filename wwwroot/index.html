@@ -569,6 +569,31 @@
             font-size: 0.8em;
             cursor: pointer;
         }
+
+        /* Battle Logger Area */
+        #battle-logger {
+            flex: 1;
+            overflow-y: auto;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 0.85em;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .log-entry {
+            color: var(--text-main);
+            word-break: break-all;
+        }
+        
+        .log-time {
+            color: var(--text-muted);
+            margin-right: 6px;
+        }
     </style>
 </head>
 
@@ -676,6 +701,9 @@
         <button>선출 정보</button>
     </div>
 
+    <!-- Battle Logger -->
+    <div id="battle-logger"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script>
         // State
@@ -684,6 +712,28 @@
         let opponentParty = [];
         let myActiveIndex = -1;
         let opponentActiveIndex = -1;
+
+        // Logger Function
+        function addLog(msg) {
+            const logger = document.getElementById("battle-logger");
+            if (!logger) return;
+            const time = new Date().toLocaleTimeString('ko-KR', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            const logEntry = document.createElement("div");
+            logEntry.className = "log-entry";
+            
+            const timeSpan = document.createElement("span");
+            timeSpan.className = "log-time";
+            timeSpan.innerText = `[${time}]`;
+            
+            logEntry.appendChild(timeSpan);
+            logEntry.appendChild(document.createTextNode(msg));
+            
+            logger.appendChild(logEntry);
+            
+            // Auto scroll to bottom
+            logger.scrollTop = logger.scrollHeight;
+        }
 
         function changeMyActive(index) {
             myActiveIndex = index;
@@ -698,8 +748,15 @@
             opponentActiveIndex = index;
             oppMaxHpKnown = NaN;
             if (index >= 0 && opponentParty[index]) {
-                currentHpFractionOpp = opponentParty[index].currentHpFraction !== undefined ? opponentParty[index].currentHpFraction : 1.0;
-                currentOpponentHpText = opponentParty[index].currentHpText !== undefined ? opponentParty[index].currentHpText : "HP -%";
+                if (opponentParty[index].currentHpFraction === undefined) {
+                    opponentParty[index].currentHpFraction = 1.0;
+                    opponentParty[index].currentHpText = "HP 100%";
+                    if (typeof oppHpHistories !== 'undefined' && oppHpHistories[index]) {
+                        oppHpHistories[index] = [100, 100, 100, 100, 100];
+                    }
+                }
+                currentHpFractionOpp = opponentParty[index].currentHpFraction;
+                currentOpponentHpText = opponentParty[index].currentHpText;
             }
         }
 
@@ -945,12 +1002,21 @@
             return eff;
         }
 
-        function calculateDamage(attackerStats, defenderStats, move, attackerTypes, defenderTypes, attackerItem, defenderItem, attackerAbility, defenderAbility, attackerHpFraction, defenderHpFraction) {
+        function calculateDamage(attackerStats, defenderStats, move, attackerTypes, defenderTypes, attackerItem, defenderItem, attackerAbility, defenderAbility, attackerHpFraction, defenderHpFraction, attackerStatus) {
             if (!move || move.category === 'STATUS' || move.power === 0) return { minRaw: 0, maxRaw: 0, min: '0.0', max: '0.0' };
 
             let atkStat = move.category === 'PHYSICAL' ? attackerStats.atk : attackerStats.spa;
             let defStat = move.category === 'PHYSICAL' ? defenderStats.def : defenderStats.spd;
             if (!atkStat || !defStat || !defenderStats.hp) return { minRaw: 0, maxRaw: 0, min: '0.0', max: '0.0', minScalar: 0, maxScalar: 0 };
+            
+            // Sandstorm boosts Sp.Def for Rock types
+            if (currentWeather === 'Sand' && move.category === 'SPECIAL' && defenderTypes.includes('ROCK')) {
+                defStat = Math.floor(defStat * 1.5);
+            }
+            // Snow boosts Def for Ice types
+            if (currentWeather === 'Snow' && move.category === 'PHYSICAL' && defenderTypes.includes('ICE')) {
+                defStat = Math.floor(defStat * 1.5);
+            }
 
             const mods = applyItemModifiers(move, attackerItem, defenderItem);
             const eff = getTypeEffectiveness(move.type, defenderTypes);
@@ -961,6 +1027,20 @@
 
             let basePower = Math.floor(move.power * aMods.bpMult);
             let baseDamage = Math.floor(Math.floor(Math.floor(22) * basePower * atkStat / defStat) / 50) + 2;
+            
+            // Weather damage modifiers
+            if (currentWeather === 'Rain') {
+                if (move.type === 'WATER') baseDamage = Math.floor(baseDamage * 1.5);
+                if (move.type === 'FIRE') baseDamage = Math.floor(baseDamage * 0.5);
+            } else if (currentWeather === 'Sun') {
+                if (move.type === 'FIRE') baseDamage = Math.floor(baseDamage * 1.5);
+                if (move.type === 'WATER') baseDamage = Math.floor(baseDamage * 0.5);
+            }
+
+            // Burn status halves physical damage (except Guts)
+            if (attackerStatus === 'BRN' && move.category === 'PHYSICAL' && attackerAbility !== '근성') {
+                baseDamage = Math.floor(baseDamage * 0.5);
+            }
 
             if (attackerTypes.some(t => t.toUpperCase() === move.type.toUpperCase())) {
                 baseDamage = Math.floor(baseDamage * 1.5);
@@ -1028,13 +1108,14 @@
             };
         }
 
-        function getSpeeds(baseSpe, item) {
+        function getSpeeds(baseSpe, item, status) {
             if (!baseSpe) return { max: 'ERR', semi: 'ERR', uninvested: 'ERR' };
             const uninvested = Math.floor((baseSpe * 2 + 31) / 2) + 5;
             const semi = Math.floor((baseSpe * 2 + 31 + 63) / 2) + 5;
             const max = Math.floor(semi * 1.1);
 
             let mult = (item === "구애스카프") ? 1.5 : 1.0;
+            if (status === "PRZ") mult *= 0.5;
             return {
                 max: Math.floor(max * mult),
                 semi: Math.floor(semi * mult),
@@ -1042,7 +1123,7 @@
             };
         }
 
-        function getMyActualSpeed(myActive, item) {
+        function getMyActualSpeed(myActive, item, status) {
             if (!myActive) return "-";
             let spe = 0;
             if (myActive.Stats && myActive.Stats.Spe) spe = myActive.Stats.Spe;
@@ -1063,7 +1144,8 @@
 
                 spe = Math.floor((uninvested + evBump) * natureMult);
             }
-            if (item === "구애스카프") return Math.floor(spe * 1.5);
+            if (item === "구애스카프") spe = Math.floor(spe * 1.5);
+            if (status === "PRZ") spe = Math.floor(spe * 0.5);
             return spe;
         }
 
@@ -1250,9 +1332,9 @@
                                         const oppAbility = getOpponentAbility(oppActive, opponentActiveIndex);
                                         const myAbility = getMyAbility(p, i);
 
-                                        const dMax = calculateDamage(atkMax, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
-                                        const dSemi = calculateDamage(atkSemi, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
-                                        const dZero = calculateDamage(atkZero, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
+                                        const dMax = calculateDamage(atkMax, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
+                                        const dSemi = calculateDamage(atkSemi, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
+                                        const dZero = calculateDamage(atkZero, defStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
 
                                         const isPhys = move.category === 'PHYSICAL';
                                         const isSpec = move.category === 'SPECIAL';
@@ -1284,9 +1366,9 @@
                                         const myAbility = getMyAbility(myActive, myActiveIndex);
                                         const oppAbility = getOpponentAbility(p, i);
 
-                                        const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
-                                        const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
-                                        const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
+                                        const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
+                                        const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
+                                        const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
 
                                         const isPhys = move.category === 'PHYSICAL';
                                         const isSpec = move.category === 'SPECIAL';
@@ -1343,12 +1425,14 @@
                 return;
             }
 
-            const myIcon = myActive ? (String(myActive.SpeciesId).padStart(4, '0') + "_default.png") : "";
-            const myName = myActive ? (dummyNames[myActive.SpeciesId] || "내 포켓몬") : "";
+            let safeMyId = (myActive && (myActive.SpeciesId || myActive.dexId || 0) > 0) ? String(myActive.SpeciesId || myActive.dexId).padStart(4, '0') : "0000";
+            let myIcon = myActive ? (myActive.iconFile || (safeMyId + "_default.png")) : "";
+            const myName = myActive ? (myActive.name || myActive.NameKo || dummyNames[myActive.SpeciesId || myActive.dexId] || "내 포켓몬") : "";
             const myMoves = myActive ? myActive.MovesKo : ["-", "-", "-", "-"];
 
-            const oppIcon = oppActive ? oppActive.iconFile : "";
-            const oppName = oppActive ? oppActive.name : "상대 포켓몬";
+            let safeOppId = (oppActive && (oppActive.SpeciesId || oppActive.dexId || 0) > 0) ? String(oppActive.SpeciesId || oppActive.dexId).padStart(4, '0') : "0000";
+            const oppIcon = oppActive ? (oppActive.iconFile || (safeOppId + "_default.png")) : "";
+            const oppName = oppActive ? (oppActive.name || oppActive.NameKo || dummyNames[oppActive.SpeciesId || oppActive.dexId] || "상대 포켓몬") : "상대 포켓몬";
 
             let oppUsage = oppActive ? getUsageForDexId(oppActive.dexId || oppActive.DexId || oppActive.SpeciesId) : null;
             let oppMoves = getTopMoves(oppUsage);
@@ -1391,9 +1475,9 @@
                             myStats.def = applyRank(myStats.def, myRanks.def);
                             myStats.spd = applyRank(myStats.spd, myRanks.spd);
 
-                            const dMax = calculateDamage(oppStatsAtk, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
-                            const dSemi = calculateDamage(oppStatsSemi, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
-                            const dZero = calculateDamage(oppStatsZero, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy);
+                            const dMax = calculateDamage(oppStatsAtk, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
+                            const dSemi = calculateDamage(oppStatsSemi, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
+                            const dZero = calculateDamage(oppStatsZero, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
 
                             const isPhys = move.category === 'PHYSICAL';
                             const isSpec = move.category === 'SPECIAL';
@@ -1427,9 +1511,9 @@
                             const myAbility = getMyAbility(myActive, myActiveIndex);
                             const oppAbility = getOpponentAbility(oppActive, opponentActiveIndex);
 
-                            const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
-                            const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
-                            const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp);
+                            const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
+                            const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
+                            const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
 
                             const isPhys = move.category === 'PHYSICAL';
                             const isSpec = move.category === 'SPECIAL';
@@ -1454,11 +1538,11 @@
 
             const myItemSim = getMyItem(myActive, myActiveIndex);
             const oppItemSim = getOpponentItem(oppActive, opponentActiveIndex);
-            let mySpeed = getMyActualSpeed(myActive, myItemSim);
+            let mySpeed = getMyActualSpeed(myActive, myItemSim, myStatus);
             mySpeed = applyRank(mySpeed, myRanks.spe);
 
             let oppBaseSpe = oppActive && masterDataMap[oppActive.SpeciesId || oppActive.dexId] ? masterDataMap[oppActive.SpeciesId || oppActive.dexId].baseStats.spe : 0;
-            let oppSpeeds = getSpeeds(oppBaseSpe, oppItemSim);
+            let oppSpeeds = getSpeeds(oppBaseSpe, oppItemSim, opponentStatus);
             oppSpeeds.max = applyRank(oppSpeeds.max, opponentRanks.spe);
             oppSpeeds.semi = applyRank(oppSpeeds.semi, opponentRanks.spe);
             oppSpeeds.uninvested = applyRank(oppSpeeds.uninvested, opponentRanks.spe);
@@ -1509,7 +1593,8 @@
             for (let i = 0; i < 6; i++) {
                 if (i < myParty.length) {
                     const p = myParty[i];
-                    const iconFile = String(p.SpeciesId).padStart(4, '0') + "_default.png";
+                    let safeSpeciesId = p.SpeciesId > 0 ? String(p.SpeciesId).padStart(4, '0') : "0000";
+                    const iconFile = p.iconFile || (safeSpeciesId + "_default.png");
                     const actClass = i === myActiveIndex ? "active" : "";
                     const name = p.name || p.NameKo || dummyNames[p.SpeciesId || p.dexId] || "포켓몬";
 
@@ -1530,7 +1615,8 @@
 
                 if (i < opponentParty.length) {
                     const p = opponentParty[i];
-                    const iconFile = String(p.SpeciesId || p.dexId || "0000").padStart(4, '0') + "_default.png";
+                    let safeSpeciesId = (p.SpeciesId || p.dexId || 0) > 0 ? String(p.SpeciesId || p.dexId).padStart(4, '0') : "0000";
+                    const iconFile = p.iconFile || (safeSpeciesId + "_default.png");
                     const actClass = i === opponentActiveIndex ? "opponent-active" : "";
                     const name = p.name || p.NameKo || dummyNames[p.dexId || p.SpeciesId] || "상대 포켓몬";
 
@@ -1618,8 +1704,7 @@
                         userSelectedItemOpp[(oppActive && oppActive.id) || opponentActiveIndex] = e.target.value;
                         renderAll();
                     };
-
-                    const currentOppAbility = getOpponentAbility(oppActive, opponentActiveIndex);
+                            const currentOppAbility = getOpponentAbility(oppActive, opponentActiveIndex);
                     let abilsHtml = ``;
                     if (oppUsage.abils && oppUsage.abils.length > 0) {
                         oppUsage.abils.forEach(a => {
@@ -1658,6 +1743,7 @@
             }
         }
 
+
         window.selectMyActive = function (index) {
             changeMyActive(index);
             renderAll();
@@ -1674,6 +1760,34 @@
             .then(data => {
                 if (data && data.length > 0) {
                     myParty = data[0].Members;
+                    
+                    // 초기 체력 히스토리 리스트를 최대 체력으로 꽉 채웁니다.
+                    for (let i = 0; i < myParty.length; i++) {
+                        if (myParty[i]) {
+                            let max = NaN;
+                            if (myParty[i].Stats && myParty[i].Stats.Hp) {
+                                max = myParty[i].Stats.Hp;
+                            } else if (myParty[i].stats && myParty[i].stats.hp) {
+                                max = myParty[i].stats.hp;
+                            } else {
+                                const baseStats = masterDataMap[myParty[i].SpeciesId || myParty[i].dexId]?.baseStats;
+                                if (baseStats) {
+                                    max = getMyActualStats(myParty[i], baseStats).hp;
+                                }
+                            }
+                            if (!isNaN(max) && max > 0) {
+                                myHpHistories[i] = [max, max, max, max, max];
+                                myParty[i].currentHpFraction = 1.0;
+                                myParty[i].currentHpText = "HP " + max + " / " + max;
+                            }
+                        }
+                    }
+                    
+                    if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
+                        currentHpFractionMy = myParty[myActiveIndex].currentHpFraction || 1.0;
+                        currentMyHpText = myParty[myActiveIndex].currentHpText || "HP - / -";
+                    }
+                    
                     renderAll();
                 }
             })
@@ -1686,34 +1800,52 @@
 
         connection.on("UpdateOpponentParty", function (partyData) {
             opponentParty = partyData;
+            
+            // 초기 체력 히스토리 리스트를 100%로 꽉 채우지 않습니다 (나온 포켓몬만 띄우기 위함)
+            
+            if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
+                currentHpFractionOpp = opponentParty[opponentActiveIndex].currentHpFraction || 1.0;
+                currentOpponentHpText = opponentParty[opponentActiveIndex].currentHpText || "HP -%";
+            }
+            
+            addLog("상대 파티 정보 수신 (인식된 포켓몬 수: " + (partyData ? partyData.length : 0) + ")");
             renderAll();
         });
 
-        let myHpHistory = [];
-        let oppHpHistory = [];
+        let lastLoggedMyHpText = "";
+        let lastLoggedOppHpText = "";
+        let myHpHistories = [[], [], [], [], [], []];
+        let oppHpHistories = [[], [], [], [], [], []];
         const HP_HISTORY_SIZE = 5;
 
-        function getMedian(arr) {
+        function getMode(arr) {
             if (arr.length === 0) return NaN;
-            let sorted = [...arr].sort((a, b) => a - b);
-            return sorted[Math.floor(sorted.length / 2)];
+            let counts = {};
+            let maxCount = 0;
+            let mode = NaN;
+            for (let v of arr) {
+                counts[v] = (counts[v] || 0) + 1;
+                if (counts[v] > maxCount) {
+                    maxCount = counts[v];
+                    mode = v;
+                }
+            }
+            return mode;
         }
-
+        
         connection.on("UpdateHpEvent", function (ev) {
             let changed = false;
-            if (ev.myHp || ev.myHpMax) {
-                let myHpStr = (ev.myHp || "").replace(/T/ig, '7').replace(/[!f]/ig, '1').replace(/\s/g, '');
-                let curRaw = NaN;
-                if (/^[0-9]+$/.test(myHpStr)) {
-                    curRaw = parseFloat(myHpStr);
-                }
-                let cur = curRaw;
-                if (!isNaN(curRaw)) {
-                    myHpHistory.push(curRaw);
-                    if (myHpHistory.length > HP_HISTORY_SIZE) myHpHistory.shift();
-                    cur = getMedian(myHpHistory);
-                }
 
+            if (ev.myHp !== undefined && ev.myHp !== "") {
+                let myHpStr = ev.myHp.replace(/T/ig, '7').replace(/[!f]/ig, '1').replace(/\s/g, '');
+                
+                // 120/150 또는 120 형태로 들어오는 것을 처리
+                let curRaw = NaN;
+                let parts = myHpStr.split('/');
+                if (parts.length > 0 && /^[0-9]+$/.test(parts[0])) {
+                    curRaw = parseFloat(parts[0]);
+                }
+                
                 let max = NaN;
 
                 // 파티 샘플 데이터에서 최대 체력(Max HP)을 직접 계산해서 가져옵니다 (OCR 불필요)
@@ -1731,38 +1863,56 @@
                     }
                 }
 
-                if (!isNaN(cur) && !isNaN(max) && max > 0) {
-                    if (cur > max) cur = max; // 방어 코드
-                    currentHpFractionMy = cur / max;
-                    currentMyHpText = "HP " + cur + " / " + max;
-                    changed = true;
-                    if (myParty[myActiveIndex]) {
-                        myParty[myActiveIndex].currentHpFraction = currentHpFractionMy;
-                        myParty[myActiveIndex].currentHpText = currentMyHpText;
+                if (!isNaN(curRaw)) {
+                    if (!isNaN(max) && max > 0 && curRaw > max) {
+                        // 인식된 수치가 최대 체력을 넘으면 스킵
+                    } else if (myActiveIndex >= 0 && myActiveIndex < 6) {
+                        myHpHistories[myActiveIndex].push(curRaw);
+                        if (myHpHistories[myActiveIndex].length > HP_HISTORY_SIZE) {
+                            myHpHistories[myActiveIndex].shift();
+                        }
+                        
+                        let cur = getMode(myHpHistories[myActiveIndex]);
+                        
+                        if (!isNaN(max) && max > 0) {
+                            currentHpFractionMy = cur / max;
+                            currentMyHpText = "HP " + cur + " / " + max;
+                        } else {
+                            currentMyHpText = "HP " + cur;
+                        }
+                        
+                        changed = true;
+                        
+                        if (myParty[myActiveIndex]) {
+                            myParty[myActiveIndex].currentHpFraction = currentHpFractionMy;
+                            myParty[myActiveIndex].currentHpText = currentMyHpText;
+                        }
                     }
-                } else if (!isNaN(cur)) {
-                    currentMyHpText = "HP " + cur;
-                    changed = true;
                 }
             }
-            if (ev.opponentHp) {
+            
+            if (ev.opponentHp !== undefined && ev.opponentHp !== "") {
                 let oppStr = ev.opponentHp.replace(/T/ig, '7').replace(/[!f]/ig, '1').replace(/\s/g, '').replace(/%/g, '');
-                if (oppStr) {
-                    let pctRaw = NaN;
-                    if (/^[0-9]+$/.test(oppStr)) {
-                        pctRaw = parseFloat(oppStr);
-                    }
-                    let pct = pctRaw;
-                    if (!isNaN(pctRaw)) {
-                        oppHpHistory.push(pctRaw);
-                        if (oppHpHistory.length > HP_HISTORY_SIZE) oppHpHistory.shift();
-                        pct = getMedian(oppHpHistory);
-                    }
-                    if (pct > 100) pct = 100;
-                    if (!isNaN(pct)) {
+                let pctRaw = NaN;
+                if (/^[0-9]+$/.test(oppStr)) {
+                    pctRaw = parseFloat(oppStr);
+                }
+                
+                if (!isNaN(pctRaw)) {
+                    if (pctRaw > 100) {
+                        // 100%를 넘으면 스킵
+                    } else if (opponentActiveIndex >= 0 && opponentActiveIndex < 6) {
+                        oppHpHistories[opponentActiveIndex].push(pctRaw);
+                        if (oppHpHistories[opponentActiveIndex].length > HP_HISTORY_SIZE) {
+                            oppHpHistories[opponentActiveIndex].shift();
+                        }
+                        
+                        let pct = getMode(oppHpHistories[opponentActiveIndex]);
+                        
                         currentHpFractionOpp = pct / 100.0;
                         currentOpponentHpText = "HP " + pct + "%";
                         changed = true;
+                        
                         if (opponentParty[opponentActiveIndex]) {
                             opponentParty[opponentActiveIndex].currentHpFraction = currentHpFractionOpp;
                             opponentParty[opponentActiveIndex].currentHpText = currentOpponentHpText;
@@ -1771,16 +1921,100 @@
                 }
             }
 
-            // Robust active pokemon tracking using name OCR removed.
-
-            if (changed) renderAll();
+            if (changed) {
+                let hpLogChanged = false;
+                if (currentMyHpText && currentMyHpText !== lastLoggedMyHpText) {
+                    hpLogChanged = true;
+                    lastLoggedMyHpText = currentMyHpText;
+                }
+                if (currentOpponentHpText && currentOpponentHpText !== lastLoggedOppHpText) {
+                    hpLogChanged = true;
+                    lastLoggedOppHpText = currentOpponentHpText;
+                }
+                
+                if (hpLogChanged) {
+                    let hpMsg = "체력 업데이트";
+                    if (currentMyHpText) hpMsg += ` [내 포켓몬: ${currentMyHpText}]`;
+                    if (currentOpponentHpText) hpMsg += ` [상대 포켓몬: ${currentOpponentHpText}]`;
+                    addLog(hpMsg);
+                }
+                renderAll();
+            }
         });
 
         connection.on("BattleLogEvent", function (ev) {
             console.log("BattleLogEvent received:", ev);
-            if (ev.eventType === "RankChange" && ev.payload) {
+            
+            let sourceStr = ev.source === "My" ? "[내 포켓몬] " : (ev.source === "Opponent" ? "[상대 포켓몬] " : "");
+            
+            if (ev.eventType === "MegaEvolution") {
+                const source = ev.source;
+                const form = ev.payload || "Normal";
+                
+                let activeP = source === "My" ? myParty[myActiveIndex] : opponentParty[opponentActiveIndex];
+
+                if (activeP) {
+                    const originalId = activeP.SpeciesId || activeP.dexId;
+                    let megaFound = null;
+                    for (const key in masterDataMap) {
+                        const m = masterDataMap[key];
+                        if (m.isMegaForm && m.megaBaseSpeciesId === originalId) {
+                            if (form === "X" && m.nameKo.endsWith("X")) { megaFound = m; break; }
+                            if (form === "Y" && m.nameKo.endsWith("Y")) { megaFound = m; break; }
+                            if (form === "Normal" && !m.nameKo.endsWith("X") && !m.nameKo.endsWith("Y")) { megaFound = m; break; }
+                        }
+                    }
+                    if (!megaFound) {
+                        for (const key in masterDataMap) {
+                            const m = masterDataMap[key];
+                            if (m.isMegaForm && m.megaBaseSpeciesId === originalId) {
+                                megaFound = m; break;
+                            }
+                        }
+                    }
+
+                    if (megaFound) {
+                        let megaSuffix = (form === "X" || form === "Y") ? ("mega" + form) : "mega";
+                        let newIconFile = String(originalId).padStart(4, '0') + "_" + megaSuffix + ".png";
+                        
+                        if (source === "My") {
+                            myParty[myActiveIndex] = {
+                                ...activeP,
+                                SpeciesId: megaFound.id,
+                                dexId: megaFound.id,
+                                iconFile: newIconFile,
+                                types: megaFound.types,
+                                name: megaFound.nameKo,
+                                NameKo: megaFound.nameKo
+                            };
+                        } else {
+                            opponentParty[opponentActiveIndex] = {
+                                ...activeP,
+                                SpeciesId: megaFound.id,
+                                dexId: megaFound.id,
+                                iconFile: newIconFile,
+                                types: megaFound.types,
+                                name: megaFound.nameKo,
+                                NameKo: megaFound.nameKo
+                            };
+                        }
+                        
+                        addLog(`${sourceStr}${megaFound.nameKo}(으)로 메가진화!`);
+                    }
+                }
+            } else if (ev.eventType === "RankChange" && ev.payload) {
                 const stat = ev.payload.stat.toLowerCase();
                 const stages = ev.payload.stages;
+                const statName = STAT_LABELS[stat] || stat;
+                const sign = stages > 0 ? "+" : "";
+                let currentName = "";
+                if (ev.source === "My" && myParty[myActiveIndex]) {
+                    currentName = myParty[myActiveIndex].name || dummyNames[myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId] || "";
+                } else if (ev.source === "Opponent" && opponentParty[opponentActiveIndex]) {
+                    currentName = opponentParty[opponentActiveIndex].name || dummyNames[opponentParty[opponentActiveIndex].SpeciesId || opponentParty[opponentActiveIndex].dexId] || "";
+                }
+                let namePrefix = currentName ? `[${currentName}] ` : "";
+                addLog(`${sourceStr}${namePrefix}랭크 변화: ${statName} ${sign}${stages}`);
                 if (ev.source === "My") {
                     if (myRanks[stat] !== undefined) myRanks[stat] = Math.max(-6, Math.min(6, myRanks[stat] + stages));
                 } else if (ev.source === "Opponent") {
@@ -1788,26 +2022,86 @@
                 }
             } else if (ev.eventType === "StatusChange" && ev.payload) {
                 // payload: "PRZ"|"BRN"|"PSN"|"TOX"|"SLP"|"FRZ"|null
+                const statusName = STATUS_LABEL[ev.payload] || ev.payload;
+                addLog(`${sourceStr}상태 이상: ${statusName}`);
+                
                 if (ev.source === "My") myStatus = ev.payload || null;
                 else if (ev.source === "Opponent") opponentStatus = ev.payload || null;
             } else if (ev.eventType === "WeatherChange" && ev.payload) {
+                addLog(`날씨 변화: ${ev.payload}`);
                 currentWeather = ev.payload;
             } else if (ev.eventType === "BatonPass") {
+                addLog(`${sourceStr}배턴터치 사용`);
                 if (ev.source === "My") batonPassMy = true;
                 else if (ev.source === "Opponent") batonPassOpp = true;
             } else if (ev.eventType === "Switch") {
+                let targetIndex = -1;
+                let prevName = "";
+                
                 if (ev.source === "My") {
-                    let targetIndex = -1;
+                    if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
+                        prevName = myParty[myActiveIndex].name || dummyNames[myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId] || "???";
+                    }
                     if (ev.description) {
+                        let bestMatchCount = 1; // 최소 2글자 이상 일치해야 함
                         for (let i = 0; i < myParty.length; i++) {
                             let n = myParty[i].name || myParty[i].NameKo || dummyNames[myParty[i].SpeciesId || myParty[i].dexId];
-                            if (n && ev.description.includes(n)) {
-                                targetIndex = i;
-                                break;
+                            if (n) {
+                                let matchCount = 0;
+                                for (let char of n) {
+                                    if (ev.description.includes(char)) matchCount++;
+                                }
+                                if (ev.description.includes(n)) matchCount += 10; // 완전 일치 가산점
+                                
+                                if (matchCount > bestMatchCount) {
+                                    bestMatchCount = matchCount;
+                                    targetIndex = i;
+                                }
                             }
                         }
                     }
-
+                } else if (ev.source === "Opponent") {
+                    if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
+                        prevName = opponentParty[opponentActiveIndex].name || dummyNames[opponentParty[opponentActiveIndex].dexId || opponentParty[opponentActiveIndex].SpeciesId] || "???";
+                    }
+                    if (ev.description) {
+                        let bestMatchCount = 1;
+                        for (let i = 0; i < opponentParty.length; i++) {
+                            let n = opponentParty[i].name || opponentParty[i].NameKo || dummyNames[opponentParty[i].dexId || opponentParty[i].SpeciesId];
+                            if (n) {
+                                let matchCount = 0;
+                                for (let char of n) {
+                                    if (ev.description.includes(char)) matchCount++;
+                                }
+                                if (ev.description.includes(n)) matchCount += 10;
+                                
+                                if (matchCount > bestMatchCount) {
+                                    bestMatchCount = matchCount;
+                                    targetIndex = i;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if (targetIndex === -1) {
+                    return; // Ignore completely if no valid Pokemon name was found
+                }
+                
+                let nextName = "???";
+                if (targetIndex !== -1) {
+                    if (ev.source === "My") {
+                        nextName = myParty[targetIndex].name || dummyNames[myParty[targetIndex].SpeciesId || myParty[targetIndex].dexId] || "???";
+                    } else {
+                        nextName = opponentParty[targetIndex].name || dummyNames[opponentParty[targetIndex].dexId || opponentParty[targetIndex].SpeciesId] || "???";
+                    }
+                } else if (ev.description) {
+                    nextName = `(${ev.description.replace(/.*교체.*/, '').trim() || ev.description})`;
+                }
+                
+                addLog(`${sourceStr}교체: ${prevName} -> ${nextName}`);
+                
+                if (ev.source === "My") {
                     // Ignore duplicate switches
                     if (targetIndex !== -1 && targetIndex !== myActiveIndex) {
                         if (batonPassMy) {
@@ -1819,17 +2113,6 @@
                         changeMyActive(targetIndex);
                     }
                 } else if (ev.source === "Opponent") {
-                    let targetIndex = -1;
-                    if (ev.description) {
-                        for (let i = 0; i < opponentParty.length; i++) {
-                            let n = opponentParty[i].name || opponentParty[i].NameKo || dummyNames[opponentParty[i].dexId || opponentParty[i].SpeciesId];
-                            if (n && ev.description.includes(n)) {
-                                targetIndex = i;
-                                break;
-                            }
-                        }
-                    }
-
                     if (targetIndex !== -1 && targetIndex !== opponentActiveIndex) {
                         if (batonPassOpp) {
                             batonPassOpp = false; // Ranks kept
@@ -1845,6 +2128,7 @@
         });
 
         connection.on("BattleReset", function () {
+            addLog("--- 배틀 상태가 초기화되었습니다 ---");
             myRanks = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
             opponentRanks = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
             myStatus = null;
@@ -1858,6 +2142,7 @@
         connection.start().then(function () {
             document.getElementById("connectionStatus").innerText = "배틀 로그 연동됨";
             document.getElementById("connectionStatus").style.color = "#43b581";
+            addLog("서버와 배틀 로그 연동이 시작되었습니다.");
         }).catch(err => console.error(err.toString()));
         window.resetBattle = function () {
             connection.invoke("ResetBattle").catch(err => console.error(err.toString()));

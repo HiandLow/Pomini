@@ -1004,7 +1004,60 @@
 
         connection.on("BattleLogEvent", function (ev) {
             console.log("BattleLogEvent received:", ev);
-            if (ev.eventType === "RankChange" && ev.payload) {
+            if (ev.eventType === "MegaEvolution") {
+                const source = ev.source;
+                const form = ev.payload || "Normal";
+                
+                let activeP = source === "My" ? myParty[myActiveIndex] : opponentParty[opponentActiveIndex];
+
+                if (activeP) {
+                    const originalId = activeP.SpeciesId || activeP.dexId;
+                    let megaFound = null;
+                    for (const key in masterDataMap) {
+                        const m = masterDataMap[key];
+                        if (m.isMegaForm && m.megaBaseSpeciesId === originalId) {
+                            if (form === "X" && m.nameKo.endsWith("X")) { megaFound = m; break; }
+                            if (form === "Y" && m.nameKo.endsWith("Y")) { megaFound = m; break; }
+                            if (form === "Normal" && !m.nameKo.endsWith("X") && !m.nameKo.endsWith("Y")) { megaFound = m; break; }
+                        }
+                    }
+                    if (!megaFound) {
+                        for (const key in masterDataMap) {
+                            const m = masterDataMap[key];
+                            if (m.isMegaForm && m.megaBaseSpeciesId === originalId) {
+                                megaFound = m; break;
+                            }
+                        }
+                    }
+
+                    if (megaFound) {
+                        let megaSuffix = (form === "X" || form === "Y") ? ("mega" + form) : "mega";
+                        let newIconFile = String(originalId).padStart(4, '0') + "_" + megaSuffix + ".png";
+                        
+                        if (source === "My") {
+                            myParty[myActiveIndex] = {
+                                ...activeP,
+                                SpeciesId: megaFound.id,
+                                dexId: megaFound.id,
+                                iconFile: newIconFile,
+                                types: megaFound.types,
+                                name: megaFound.nameKo,
+                                NameKo: megaFound.nameKo
+                            };
+                        } else {
+                            opponentParty[opponentActiveIndex] = {
+                                ...activeP,
+                                SpeciesId: megaFound.id,
+                                dexId: megaFound.id,
+                                iconFile: newIconFile,
+                                types: megaFound.types,
+                                name: megaFound.nameKo,
+                                NameKo: megaFound.nameKo
+                            };
+                        }
+                    }
+                }
+            } else if (ev.eventType === "RankChange" && ev.payload) {
                 const stat = ev.payload.stat.toLowerCase();
                 const stages = ev.payload.stages;
                 if (ev.source === "My") {

@@ -8,10 +8,33 @@ namespace PokemonHelper.Services.Recognition
 {
     public class BattleLogAnalyzer
     {
+        private string? _pendingMyMegaForm = null;
+        private string? _pendingOpponentMegaForm = null;
+
+        public void Reset()
+        {
+            _pendingMyMegaForm = null;
+            _pendingOpponentMegaForm = null;
+        }
+
         public BattleLogEvent? Analyze(string logText)
         {
             if (string.IsNullOrWhiteSpace(logText))
                 return null;
+
+            // 0. 메가링/나이트 반응 감지
+            if (logText.Contains("나이트") && (logText.Contains("반응했다") || logText.Contains("모두링") || logText.Contains("메가링")))
+            {
+                string source = DetermineSource(logText, "나이트");
+                string form = "Normal";
+                if (logText.Contains("나이트X")) form = "X";
+                else if (logText.Contains("나이트Y")) form = "Y";
+                
+                if (source == "My") _pendingMyMegaForm = form;
+                else _pendingOpponentMegaForm = form;
+                
+                return null; // 아직 메가진화 이벤트는 발생시키지 않음
+            }
 
             // 1. 랭크업 감지
             var rankChanges = RankUpParser.Parse(logText);
@@ -87,11 +110,38 @@ namespace PokemonHelper.Services.Recognition
             if (logText.Contains("싸라기눈이 내리기 시작했다"))
                 return CreateWeather("Snow", logText);
 
-            return new BattleLogEvent
+            // 5. 메가진화 감지 (OCR 오타 보정을 위해 FuzzyIndexOf 사용)
+            if (RankUpParser.FuzzyIndexOf(logText, "메가진화", 0, 2) >= 0)
             {
-                EventType = "Log",
-                Description = logText
-            };
+                string source = DetermineSource(logText, "메가진화");
+                string form = "Normal";
+                
+                if (logText.Contains("메가리자몽X") || logText.Contains("뮤츠X")) form = "X";
+                else if (logText.Contains("메가리자몽Y") || logText.Contains("뮤츠Y")) form = "Y";
+                else
+                {
+                    if (source == "My" && _pendingMyMegaForm != null)
+                    {
+                        form = _pendingMyMegaForm;
+                        _pendingMyMegaForm = null;
+                    }
+                    else if (source == "Opponent" && _pendingOpponentMegaForm != null)
+                    {
+                        form = _pendingOpponentMegaForm;
+                        _pendingOpponentMegaForm = null;
+                    }
+                }
+
+                return new BattleLogEvent
+                {
+                    EventType = "MegaEvolution",
+                    Source = source,
+                    Description = logText,
+                    Payload = form
+                };
+            }
+
+            return null;
         }
 
         private string DetermineSource(string fullText, string subjectRaw)

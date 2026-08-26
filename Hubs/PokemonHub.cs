@@ -15,7 +15,7 @@ namespace PokemonHelper.Hubs
 
         public async Task ResetBattle()
         {
-            Services.ScreenCaptureService.IsPartyRecognitionEnabled = true;
+            Services.ScreenCaptureService.Instance?.ResetBattleState();
             await Clients.All.SendAsync("BattleReset");
         }
     }
