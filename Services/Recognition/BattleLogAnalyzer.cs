@@ -11,11 +11,15 @@ namespace PokemonHelper.Services.Recognition
     {
         private string? _pendingMyMegaForm = null;
         private string? _pendingOpponentMegaForm = null;
+        private string? _activeMyPokemon = null;
+        private string? _activeOpponentPokemon = null;
 
         public void Reset()
         {
             _pendingMyMegaForm = null;
             _pendingOpponentMegaForm = null;
+            _activeMyPokemon = null;
+            _activeOpponentPokemon = null;
         }
 
         public BattleLogEvent? Analyze(string logText)
@@ -72,22 +76,30 @@ namespace PokemonHelper.Services.Recognition
             
             if (logText.Contains("가랏") || logText.Contains("가릿") || logText.Contains("가라") || logText.Contains("부탁해") || logText.Contains("가자"))
             {
+                int idx = MatchSwitchIndex(logText, "My");
+                if (idx >= 0 && idx < BattleStateCache.MyPartyNames.Count)
+                    _activeMyPokemon = BattleStateCache.MyPartyNames[idx];
                 return new BattleLogEvent
                 {
                     EventType = "Switch",
                     Source = "My",
+                    Name = _activeMyPokemon ?? "",
                     Description = logText,
-                    TargetIndex = MatchSwitchIndex(logText, "My")
+                    TargetIndex = idx
                 };
             }
             if (logText.Contains("내보냈다"))
             {
+                int idx = MatchSwitchIndex(logText, "Opponent");
+                if (idx >= 0 && idx < BattleStateCache.OpponentPartyNames.Count)
+                    _activeOpponentPokemon = BattleStateCache.OpponentPartyNames[idx];
                 return new BattleLogEvent
                 {
                     EventType = "Switch",
                     Source = "Opponent",
+                    Name = _activeOpponentPokemon ?? "",
                     Description = logText,
-                    TargetIndex = MatchSwitchIndex(logText, "Opponent")
+                    TargetIndex = idx
                 };
             }
 
@@ -144,7 +156,88 @@ namespace PokemonHelper.Services.Recognition
                 };
             }
 
+            
+            // 6. 기술 사용 (MoveUse) 감지
+            if (logText.EndsWith("!") && !logText.Contains("효과가") && !logText.Contains("올라갔다") && !logText.Contains("떨어졌다") && !logText.Contains("내보냈다") && !logText.Contains("들어갔다") && !logText.Contains("넣어버렸다") && !logText.Contains("바톤터치") && !logText.Contains("메가진화") && !logText.Contains("급소에") && !logText.Contains("쓰러졌다") && !logText.Contains("모습이"))
+            {
+                string source = DetermineSource(logText, "");
+                string? detectedMove = null;
+                
+                // 이름 접두사에 의한 오인식 방지 (예: 상대대도각참의아이언헤드 -> 대도각참 매칭 방지)
+                string searchTarget = logText;
+                if (source == "My" && !string.IsNullOrEmpty(_activeMyPokemon))
+                {
+                    searchTarget = searchTarget.Replace($"{_activeMyPokemon}의", "");
+                }
+                else if (source == "Opponent" && !string.IsNullOrEmpty(_activeOpponentPokemon))
+                {
+                    searchTarget = searchTarget.Replace($"상대{_activeOpponentPokemon}의", "")
+                                               .Replace($"{_activeOpponentPokemon}의", "");
+                }
+
+                if (source == "My")
+                {
+                    // 현재 필드 포켓몬의 기술 4개에서만 검색
+                    if (_activeMyPokemon != null &&
+                        BattleStateCache.MyPokemonMoves.TryGetValue(_activeMyPokemon, out var myMoves))
+                    {
+                        foreach (var m in myMoves)
+                        {
+                            if (RankUpParser.FuzzyIndexOf(searchTarget, m, 0, 1) >= 0)
+                            {
+                                detectedMove = m;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // 상대 포켓몬: 현재 필드 포켓몬 기준 cascading 검색
+                    if (_activeOpponentPokemon != null)
+                    {
+                        // 1차: 확정/예측 슬롯 (Top 4)
+                        if (detectedMove == null && BattleStateCache.OpponentPredictedMoves.TryGetValue(_activeOpponentPokemon, out var top4))
+                        {
+                            foreach (var m in top4)
+                                if (RankUpParser.FuzzyIndexOf(searchTarget, m, 0, 1) >= 0) { detectedMove = m; break; }
+                        }
+                        // 2차: Top 10
+                        if (detectedMove == null && BattleStateCache.OpponentTop10Moves.TryGetValue(_activeOpponentPokemon, out var top10))
+                        {
+                            foreach (var m in top10)
+                                if (RankUpParser.FuzzyIndexOf(searchTarget, m, 0, 1) >= 0) { detectedMove = m; break; }
+                        }
+                    }
+                    // 3차: 전체 기술 풀 (포켓몬 특정 불가 or 위에서 못 찾은 경우)
+                    if (detectedMove == null)
+                    {
+                        foreach (var m in BattleStateCache.AllMovesCache)
+                        {
+                            if (m.Length >= 2 && searchTarget.Contains(m))
+                            {
+                                detectedMove = m;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (detectedMove != null)
+                {
+                    return new BattleLogEvent
+                    {
+                        EventType = "MoveUse",
+                        Source = source,
+                        Name = source,
+                        Description = logText,
+                        Payload = detectedMove
+                    };
+                }
+            }
+
             return null;
+
         }
 
         private string DetermineSource(string fullText, string subjectRaw)
@@ -178,7 +271,7 @@ namespace PokemonHelper.Services.Recognition
 
         private int MatchSwitchIndex(string description, string source)
         {
-            var names = source == "My" ? GetMyPartyNames() : GetOpponentPartyNames();
+            var names = source == "My" ? BattleStateCache.MyPartyNames : BattleStateCache.OpponentPartyNames;
             if (names == null || names.Count == 0) return -1;
 
             int bestMatchCount = 1; // 최소 2글자 이상 일치
@@ -206,78 +299,6 @@ namespace PokemonHelper.Services.Recognition
             return targetIndex;
         }
 
-        private List<string> GetMyPartyNames()
-        {
-            var names = new List<string>();
-            try
-            {
-                var path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PCH", "users", "local", "parties.json");
-                if (System.IO.File.Exists(path))
-                {
-                    var json = System.IO.File.ReadAllText(path);
-                    using var doc = System.Text.Json.JsonDocument.Parse(json);
-                    if (doc.RootElement.ValueKind == System.Text.Json.JsonValueKind.Array && doc.RootElement.GetArrayLength() > 0)
-                    {
-                        var firstParty = doc.RootElement[0];
-                        if (firstParty.TryGetProperty("Members", out var members) && members.ValueKind == System.Text.Json.JsonValueKind.Array)
-                        {
-                            foreach (var member in members.EnumerateArray())
-                            {
-                                string name = "";
-                                if (member.TryGetProperty("NameKo", out var nameProp)) name = nameProp.GetString() ?? "";
-                                if (string.IsNullOrEmpty(name))
-                                {
-                                    int dexId = 0;
-                                    if (member.TryGetProperty("SpeciesId", out var speciesIdProp)) dexId = speciesIdProp.GetInt32();
-                                    else if (member.TryGetProperty("dexId", out var dexIdProp)) dexId = dexIdProp.GetInt32();
-                                    
-                                    if (dexId > 0 && ScreenCaptureService.PokemonNames.TryGetValue(dexId, out var resolvedName))
-                                    {
-                                        name = resolvedName;
-                                    }
-                                }
-                                names.Add(name);
-                            }
-                        }
-                    }
-                }
-            }
-            catch { }
-            return names;
-        }
-
-        private List<string> GetOpponentPartyNames()
-        {
-            var names = new List<string>();
-            try
-            {
-                if (ScreenCaptureService.LastPartyData is List<Dictionary<string, object>> partyData)
-                {
-                    foreach (var dict in partyData)
-                    {
-                        string name = "";
-                        if (dict.TryGetValue("name", out var val) && val is string s) name = s;
-                        else if (dict.TryGetValue("NameKo", out var val2) && val2 is string s2) name = s2;
-                        
-                        if (string.IsNullOrEmpty(name))
-                        {
-                            int dexId = 0;
-                            if (dict.TryGetValue("dexId", out var dVal) && dVal is int d) dexId = d;
-                            else if (dict.TryGetValue("SpeciesId", out var sVal) && sVal is int sid) dexId = sid;
-                            else if (dict.TryGetValue("dexId", out var dVal2) && dVal2 is JsonElement je && je.ValueKind == JsonValueKind.Number) dexId = je.GetInt32();
-                            else if (dict.TryGetValue("SpeciesId", out var sVal2) && sVal2 is JsonElement je2 && je2.ValueKind == JsonValueKind.Number) dexId = je2.GetInt32();
-                            
-                            if (dexId > 0 && ScreenCaptureService.PokemonNames.TryGetValue(dexId, out var resolvedName))
-                            {
-                                name = resolvedName;
-                            }
-                        }
-                        names.Add(name);
-                    }
-                }
-            }
-            catch { }
-            return names;
-        }
+        
     }
 }

@@ -57,8 +57,50 @@ namespace PokemonHelper.Services
         private LogCascadeEmitGate _logEmitGate = new LogCascadeEmitGate();
         private int _logCascadeInFlight = 0;
 
-        private List<double> _myHpHistory = new List<double>();
-        private List<double> _oppHpHistory = new List<double>();
+        private int _myActiveIndex = 0;
+        private int _oppActiveIndex = 0;
+        
+        private Dictionary<int, List<double>> _myHpHistories = new Dictionary<int, List<double>>();
+        private Dictionary<int, List<double>> _oppHpHistories = new Dictionary<int, List<double>>();
+        private Dictionary<int, double> _lastBroadcastMyHpMap = new Dictionary<int, double>();
+        private Dictionary<int, double> _lastBroadcastOppHpMap = new Dictionary<int, double>();
+
+        private Dictionary<string, string> _hpOcrCorrections = new Dictionary<string, string> {
+            {"T", "7"}, {"!", "1"}, {"f", "1"}, {"I", "1"}, {"O", "0"}
+        };
+        private string _hpOcrWhitelist = "0123456789";
+
+        private void LoadHpOcrConfig()
+        {
+            try
+            {
+                string path = "Data/hp_ocr_config.json";
+                if (System.IO.File.Exists(path))
+                {
+                    string json = System.IO.File.ReadAllText(path);
+                    using var doc = JsonDocument.Parse(json);
+                    var root = doc.RootElement;
+                    
+                    if (root.TryGetProperty("corrections", out var corrProp))
+                    {
+                        var newCorr = new Dictionary<string, string>();
+                        foreach (var prop in corrProp.EnumerateObject())
+                        {
+                            newCorr[prop.Name] = prop.Value.GetString() ?? "";
+                        }
+                        _hpOcrCorrections = newCorr;
+                    }
+                    
+                    if (root.TryGetProperty("whitelist", out var whiteProp))
+                    {
+                        _hpOcrWhitelist = whiteProp.GetString() ?? "0123456789";
+                    }
+                    
+                    Console.WriteLine("[OCR] HP Config loaded from JSON");
+                }
+            }
+            catch (Exception ex) { Console.WriteLine("HP OCR Config Load Error: " + ex.Message); }
+        }
 
         private double GetMode(List<double> history)
         {
@@ -120,6 +162,7 @@ namespace PokemonHelper.Services
             Instance = this;
             _hubContext = hubContext;
             LoadPokemonData();
+            LoadHpOcrConfig();
             
             _ocrEngine = new PaddleOcrEngine();
             
@@ -452,6 +495,7 @@ namespace PokemonHelper.Services
                                 {
                                     _lastSentJson = json;
                                     LastPartyData = partyData;
+                                    BattleStateCache.Initialize(LastPartyData);
                                     TestModePartyData = partyData;
                                     SaveTestResult();
                                     Console.WriteLine($"상대 파티 인식 완료: {json}");
@@ -549,32 +593,99 @@ namespace PokemonHelper.Services
                             
                             if (!string.IsNullOrWhiteSpace(myHpText))
                             {
-                                string myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpText, "T", "7", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                                myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, "[!fI]", "1", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                                myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, "O", "0", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                string myHpStr = myHpText;
+                                foreach (var kv in _hpOcrCorrections)
+                                {
+                                    myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, System.Text.RegularExpressions.Regex.Escape(kv.Key), kv.Value, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                }
                                 myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, @"\s", "");
                                 myHpStr = myHpStr.TrimStart('-');
-                                var parts = myHpStr.Split('/');
-                                if (parts.Length > 0 && double.TryParse(parts[0], out double curRaw))
+                                
+                                bool isValid = true;
+                                foreach (char c in myHpStr)
                                 {
-                                    _myHpHistory.Add(curRaw);
-                                    if (_myHpHistory.Count > 5) _myHpHistory.RemoveAt(0);
-                                    hpDict["myHpParsed"] = GetMode(_myHpHistory).ToString();
+                                    if (!_hpOcrWhitelist.Contains(c)) { isValid = false; break; }
+                                }
+                                
+                                if (isValid && double.TryParse(myHpStr, out double curRaw))
+                                {
+                                    if (!_myHpHistories.ContainsKey(_myActiveIndex)) _myHpHistories[_myActiveIndex] = new List<double>();
+                                    var history = _myHpHistories[_myActiveIndex];
+                                    
+                                    history.Add(curRaw);
+                                    if (history.Count > 5) history.RemoveAt(0);
+                                    
+                                    if (history.Count >= 3)
+                                    {
+                                        double mode = GetMode(history);
+                                        _lastBroadcastMyHpMap.TryGetValue(_myActiveIndex, out double lastB);
+                                        
+                                        if (mode != lastB)
+                                        {
+                                            _lastBroadcastMyHpMap[_myActiveIndex] = mode;
+                                            hpDict["myHpParsed"] = mode.ToString();
+
+                                            var hpEv = new PokemonHelper.Models.BattleLogEvent {
+                                                EventType = "HpChange",
+                                                Source = "My",
+                                                Name = "My",
+                                                Description = $"내 HP 변경: {mode}",
+                                                Payload = mode.ToString(),
+                                                TargetIndex = _myActiveIndex
+                                            };
+                                            if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
+                                            _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
+                                        }
+                                    }
                                 }
                             }
 
                             if (!string.IsNullOrWhiteSpace(oppHpText))
                             {
-                                string oppStr = System.Text.RegularExpressions.Regex.Replace(oppHpText, "T", "7", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                                oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, "[!fI]", "1", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                                oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, "O", "0", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                string oppStr = oppHpText;
+                                foreach (var kv in _hpOcrCorrections)
+                                {
+                                    oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, System.Text.RegularExpressions.Regex.Escape(kv.Key), kv.Value, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                }
                                 oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, @"\s", "");
                                 oppStr = oppStr.Replace("%", "").TrimStart('-');
-                                if (double.TryParse(oppStr, out double pctRaw) && pctRaw <= 100)
+                                
+                                bool isValid = true;
+                                foreach (char c in oppStr)
                                 {
-                                    _oppHpHistory.Add(pctRaw);
-                                    if (_oppHpHistory.Count > 5) _oppHpHistory.RemoveAt(0);
-                                    hpDict["opponentHpParsed"] = GetMode(_oppHpHistory).ToString();
+                                    if (!_hpOcrWhitelist.Contains(c)) { isValid = false; break; }
+                                }
+                                
+                                if (isValid && double.TryParse(oppStr, out double pctRaw) && pctRaw <= 100)
+                                {
+                                    if (!_oppHpHistories.ContainsKey(_oppActiveIndex)) _oppHpHistories[_oppActiveIndex] = new List<double>();
+                                    var history = _oppHpHistories[_oppActiveIndex];
+                                    
+                                    history.Add(pctRaw);
+                                    if (history.Count > 5) history.RemoveAt(0);
+                                    
+                                    if (history.Count >= 3)
+                                    {
+                                        double mode = GetMode(history);
+                                        _lastBroadcastOppHpMap.TryGetValue(_oppActiveIndex, out double lastB);
+                                        
+                                        if (mode != lastB)
+                                        {
+                                            _lastBroadcastOppHpMap[_oppActiveIndex] = mode;
+                                            hpDict["opponentHpParsed"] = mode.ToString();
+
+                                            var hpEv = new PokemonHelper.Models.BattleLogEvent {
+                                                EventType = "HpChange",
+                                                Source = "Opponent",
+                                                Name = "Opponent",
+                                                Description = $"상대 HP 변경: {mode}%",
+                                                Payload = mode.ToString(),
+                                                TargetIndex = _oppActiveIndex
+                                            };
+                                            if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
+                                            _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
+                                        }
+                                    }
                                 }
                             }
 
@@ -661,8 +772,14 @@ private void DispatchLogCascade(LogCascadeRequest req)
                 {
                     if (ev.EventType == "Switch")
                     {
-                        if (ev.Source == "My") _myHpHistory.Clear();
-                        else if (ev.Source == "Opponent") _oppHpHistory.Clear();
+                        if (ev.Source == "My" && ev.TargetIndex != -1)
+                        {
+                            _myActiveIndex = ev.TargetIndex;
+                        }
+                        else if (ev.Source == "Opponent" && ev.TargetIndex != -1)
+                        {
+                            _oppActiveIndex = ev.TargetIndex;
+                        }
                     }
 
                     string payloadStr = "";
