@@ -46,6 +46,14 @@ namespace PokemonHelper.Services
         private string _lastEmittedLog = "";
         private string _lastHpNameLog = "";
         
+        public static string? TestVideoPath { get; set; }
+        private long _virtualTimeMs = 0;
+        public long GetCurrentTimeMs()
+        {
+            if (TestVideoPath != null) return _virtualTimeMs;
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
+
         private LogCascadeEmitGate _logEmitGate = new LogCascadeEmitGate();
         private int _logCascadeInFlight = 0;
 
@@ -118,7 +126,7 @@ namespace PokemonHelper.Services
             _spritesProvider = new JsonSpritesProvider("sprites.json");
             var nccMatcher = new NccMatcher(_spritesProvider);
             var typeMatcher = new TypeIconMatcher("type-icons");
-            
+
             _pickDetector = new PickEntryDetector(this, _ocrEngine);
             _partyRecognizer = new OpponentPartyRecognizer(this, nccMatcher, typeMatcher, _spritesProvider);
 
@@ -199,6 +207,12 @@ namespace PokemonHelper.Services
 
         public Bitmap CaptureWindowRegion(IntPtr hwnd, RectangleF normalized)
         {
+            if (TestVideoPath != null && _currentVideoFrame != null)
+            {
+                var clone = new Bitmap(_currentVideoFrame);
+                return CropNormalized(clone, normalized);
+            }
+
             if (!GetWindowRect(hwnd, out RECT rect))
                 return new Bitmap(1, 1);
 
@@ -318,13 +332,64 @@ namespace PokemonHelper.Services
             return new WindowBounds(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
         }
 
+        public static List<object> TestModeBattleLogs = new();
+        public static object? TestModePartyData = null;
+        private Bitmap? _currentVideoFrame = null;
+
+        public static void SaveTestResult()
+        {
+            if (string.IsNullOrEmpty(TestVideoPath)) return;
+            try
+            {
+                var dir = System.IO.Path.GetDirectoryName(TestVideoPath);
+                if (string.IsNullOrEmpty(dir)) dir = ".";
+                var fileName = System.IO.Path.GetFileNameWithoutExtension(TestVideoPath) + ".json";
+                var resultPath = System.IO.Path.Combine(dir, fileName);
+                var result = new { party = TestModePartyData, logs = TestModeBattleLogs };
+                System.IO.File.WriteAllText(resultPath, System.Text.Json.JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to save test result: {ex.Message}");
+            }
+        }
+
         private async Task CaptureLoop()
         {
             int loopCount = 0;
+            
+            OpenCvSharp.VideoCapture? videoCapture = null;
+            if (!string.IsNullOrEmpty(TestVideoPath))
+            {
+                videoCapture = new OpenCvSharp.VideoCapture(TestVideoPath);
+                TargetHwnd = new IntPtr(-1);
+                IsRunning = true;
+                Console.WriteLine($"Starting Test Mode with video: {TestVideoPath}");
+                if (!Directory.Exists(".agents/temp")) Directory.CreateDirectory(".agents/temp");
+            }
+
             while (!_cts.Token.IsCancellationRequested)
             {
-                // HP OCR 주기를 100ms에서 33ms로 단축 (약 3배 빠름)
-                await Task.Delay(33, _cts.Token);
+                if (videoCapture != null)
+                {
+                    using var mat = new OpenCvSharp.Mat();
+                    if (!videoCapture.Read(mat) || mat.Empty())
+                    {
+                        SaveTestResult();
+                        Console.WriteLine("Test mode finished, results saved.");
+                        Environment.Exit(0);
+                        return;
+                    }
+                    var old = _currentVideoFrame;
+                    _currentVideoFrame = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(mat);
+                    old?.Dispose();
+                    _virtualTimeMs += 33;
+                }
+                else
+                {
+                    await Task.Delay(33, _cts.Token);
+                }
+
                 if (!IsRunning || TargetHwnd == IntPtr.Zero) continue;
                 
                 loopCount++;
@@ -334,6 +399,16 @@ namespace PokemonHelper.Services
                     _pickDetector.Region = Settings.PickEntry;
                     _pickDetector.StatsRegion = Settings.StatsDisplay;
                     _logOcr.LogRegion = Settings.Log;
+
+                    if (loopCount == 150)
+                    {
+                        if (_currentVideoFrame != null)
+                        {
+                            _currentVideoFrame.Save(".agents/temp/frame150.png", System.Drawing.Imaging.ImageFormat.Png);
+                            using var pickBmp = CaptureWindowRegion(TargetHwnd, Settings.PickEntry);
+                            pickBmp.Save(".agents/temp/pick150.png", System.Drawing.Imaging.ImageFormat.Png);
+                        }
+                    }
 
                     if (loopCount % 3 == 0)
                     {
@@ -377,6 +452,8 @@ namespace PokemonHelper.Services
                                 {
                                     _lastSentJson = json;
                                     LastPartyData = partyData;
+                                    TestModePartyData = partyData;
+                                    SaveTestResult();
                                     Console.WriteLine($"상대 파티 인식 완료: {json}");
                                     
                                     IsPartyRecognitionEnabled = false;
@@ -388,7 +465,7 @@ namespace PokemonHelper.Services
                         }
                         else if (!IsPartyRecognitionEnabled)
                         {
-                            long nowMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                            long nowMs = GetCurrentTimeMs();
                             using var logBmp = _logOcr.CaptureLogRegion(TargetHwnd);
                             
                             ulong fp = LogOcr.ComputeFingerprint(logBmp);
@@ -512,6 +589,7 @@ namespace PokemonHelper.Services
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Capture loop error: {ex.Message}");
+                    Console.WriteLine(ex.StackTrace);
                 }
             }
         }
@@ -525,9 +603,10 @@ private void DispatchLogCascade(LogCascadeRequest req)
                 return;
             }
             Console.WriteLine("[3층 재시도] 시작 — 원본: " + req.SourceRaw);
-            long nowMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            long nowMs = GetCurrentTimeMs();
             int gen = _logEmitGate.BeginHold(nowMs);
-            Task.Run(() =>
+            
+            Action cascadeAction = () =>
             {
                 try
                 {
@@ -535,13 +614,6 @@ private void DispatchLogCascade(LogCascadeRequest req)
                     req.Dispose();
                     
                     string adopted = LogFusionVoter.ShouldAdoptSecondOpinion(text, req.BestScore, req.Vocab) ? text : null;
-                    if (adopted != null)
-                    {
-                        lock (_logEmitLock)
-                        {
-
-                        }
-                    }
                     Console.WriteLine($"[3층 재시도] 완료 — {((adopted == null) ? "기각" : "채택")}");
                     var finals = _logEmitGate.Complete(gen, adopted);
                     EmitBatch(finals);
@@ -550,7 +622,16 @@ private void DispatchLogCascade(LogCascadeRequest req)
                 {
                     Interlocked.Exchange(ref _logCascadeInFlight, 0);
                 }
-            });
+            };
+
+            if (TestVideoPath != null)
+            {
+                cascadeAction();
+            }
+            else
+            {
+                Task.Run(cascadeAction);
+            }
         }
 
         private void EmitBatch(IReadOnlyList<string> raws)
@@ -570,7 +651,7 @@ private void DispatchLogCascade(LogCascadeRequest req)
             _lastEmittedLog = raw;
             if (!string.IsNullOrWhiteSpace(raw) && !LogOcr.IsTimerOnlyRaw(raw))
             {
-                long now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                long now = GetCurrentTimeMs();
 
                 string res = _logCorrector.Correct(raw);
                 Console.WriteLine($"[BattleLog] {res}");
@@ -611,6 +692,11 @@ private void DispatchLogCascade(LogCascadeRequest req)
 
                     Console.WriteLine($"[BattleLog Event] {ev.EventType} - {ev.Name}");
 
+                    if (TestVideoPath != null)
+                    {
+                        TestModeBattleLogs.Add(ev);
+                        SaveTestResult();
+                    }
 
                     _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", ev);
                 }

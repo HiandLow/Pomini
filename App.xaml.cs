@@ -20,6 +20,15 @@ namespace PokemonHelper
         {
             base.OnStartup(e);
 
+            for (int i = 0; i < e.Args.Length; i++)
+            {
+                if (e.Args[i] == "--test-video" && i + 1 < e.Args.Length)
+                {
+                    ScreenCaptureService.TestVideoPath = e.Args[i + 1];
+                    break;
+                }
+            }
+
             // 원본 PCH.App과 동일하게 Host를 빌드하여 의존성 주입(DI)과 웹 서버를 함께 켭니다.
             _host = Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -121,6 +130,14 @@ namespace PokemonHelper
             await _host.StartAsync();
 
             var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            
+            if (ScreenCaptureService.TestVideoPath != null)
+            {
+                var ocrService = _host.Services.GetRequiredService<ScreenCaptureService>();
+                ocrService.Start();
+                mainWindow.WindowState = WindowState.Minimized;
+            }
+
             mainWindow.Show();
         }
 
