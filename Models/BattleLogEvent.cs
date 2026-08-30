@@ -12,6 +12,8 @@ namespace PokemonHelper.Models
         
         // Specific payload based on EventType
         public object? Payload { get; set; }
+        
+        public int TargetIndex { get; set; } = -1;
     }
 
     public class RankChangePayload

@@ -611,33 +611,59 @@
     <div class="simulator-area">
         <div class="sim-toolbar">
             <div style="display: flex; gap: 10px;">
-                <div>타입 <select>
-                        <option></option>
+                <div>타입 <select id="myTypeSelect" onchange="renderAll()">
+                        <option value="">기본</option>
+                        <option value="NORMAL">노말</option><option value="FIRE">불꽃</option><option value="WATER">물</option><option value="GRASS">풀</option>
+                        <option value="ELECTRIC">전기</option><option value="ICE">얼음</option><option value="FIGHTING">격투</option><option value="POISON">독</option>
+                        <option value="GROUND">땅</option><option value="FLYING">비행</option><option value="PSYCHIC">에스퍼</option><option value="BUG">벌레</option>
+                        <option value="ROCK">바위</option><option value="GHOST">고스트</option><option value="DRAGON">드래곤</option><option value="DARK">악</option>
+                        <option value="STEEL">강철</option><option value="FAIRY">페어리</option>
                     </select></div>
-                <div>벽 <select>
-                        <option></option>
+                <div>벽 <select id="myScreenSelect" onchange="renderAll()">
+                        <option value="">없음</option>
+                        <option value="Reflect">리플렉터 (물리 반감)</option>
+                        <option value="LightScreen">빛의장막 (특수 반감)</option>
+                        <option value="AuroraVeil">오로라베일 (모두 반감)</option>
                     </select></div>
-                <div>순풍 <select>
-                        <option></option>
+                <div>순풍 <select id="myTailwindSelect" onchange="renderAll()">
+                        <option value="">없음</option>
+                        <option value="Active">적용</option>
                     </select></div>
             </div>
             <div style="display: flex; gap: 10px;">
-                <div>필드 <select>
-                        <option></option>
+                <div>필드 <select id="terrainSelect" onchange="renderAll()">
+                        <option value="None">없음</option>
+                        <option value="Electric">일렉트릭 (전기 1.3배)</option>
+                        <option value="Grassy">그래스 (풀 1.3배)</option>
+                        <option value="Psychic">사이코 (에스퍼 1.3배)</option>
+                        <option value="Misty">미스트 (드래곤 0.5배)</option>
                     </select></div>
-                <div>날씨 <select>
-                        <option></option>
+                <div>날씨 <select id="weatherSelect" onchange="handleWeatherSelect()">
+                        <option value="None">없음</option>
+                        <option value="Sun">쾌청 (불 1.5, 물 0.5)</option>
+                        <option value="Rain">비 (물 1.5, 불 0.5)</option>
+                        <option value="Sand">모래바람 (바위 특방 1.5배)</option>
+                        <option value="Snow">싸라기눈 (얼음 방어 1.5배)</option>
                     </select></div>
             </div>
             <div style="display: flex; gap: 10px;">
-                <div>순풍 <select>
-                        <option></option>
+                <div>순풍 <select id="oppTailwindSelect" onchange="renderAll()">
+                        <option value="">없음</option>
+                        <option value="Active">적용</option>
                     </select></div>
-                <div>벽 <select>
-                        <option></option>
+                <div>벽 <select id="oppScreenSelect" onchange="renderAll()">
+                        <option value="">없음</option>
+                        <option value="Reflect">리플렉터 (물리 반감)</option>
+                        <option value="LightScreen">빛의장막 (특수 반감)</option>
+                        <option value="AuroraVeil">오로라베일 (모두 반감)</option>
                     </select></div>
-                <div>타입 <select>
-                        <option></option>
+                <div>타입 <select id="oppTypeSelect" onchange="renderAll()">
+                        <option value="">기본</option>
+                        <option value="NORMAL">노말</option><option value="FIRE">불꽃</option><option value="WATER">물</option><option value="GRASS">풀</option>
+                        <option value="ELECTRIC">전기</option><option value="ICE">얼음</option><option value="FIGHTING">격투</option><option value="POISON">독</option>
+                        <option value="GROUND">땅</option><option value="FLYING">비행</option><option value="PSYCHIC">에스퍼</option><option value="BUG">벌레</option>
+                        <option value="ROCK">바위</option><option value="GHOST">고스트</option><option value="DRAGON">드래곤</option><option value="DARK">악</option>
+                        <option value="STEEL">강철</option><option value="FAIRY">페어리</option>
                     </select></div>
             </div>
         </div>
@@ -739,8 +765,17 @@
             myActiveIndex = index;
             myMaxHpKnown = NaN;
             if (index >= 0 && myParty[index]) {
-                currentHpFractionMy = myParty[index].currentHpFraction !== undefined ? myParty[index].currentHpFraction : 1.0;
-                currentMyHpText = myParty[index].currentHpText !== undefined ? myParty[index].currentHpText : "HP - / -";
+                if (myParty[index].currentHpFraction === undefined) {
+                    let maxHp = "-";
+                    const dexId = myParty[index].SpeciesId || myParty[index].dexId;
+                    if (dexId && masterDataMap[dexId] && masterDataMap[dexId].baseStats) {
+                        maxHp = getMyActualStats(myParty[index], masterDataMap[dexId].baseStats).hp;
+                    }
+                    myParty[index].currentHpFraction = 1.0;
+                    myParty[index].currentHpText = maxHp !== "-" ? `HP ${maxHp} / ${maxHp}` : "HP - / -";
+                }
+                currentHpFractionMy = myParty[index].currentHpFraction;
+                currentMyHpText = myParty[index].currentHpText;
             }
         }
 
@@ -751,9 +786,6 @@
                 if (opponentParty[index].currentHpFraction === undefined) {
                     opponentParty[index].currentHpFraction = 1.0;
                     opponentParty[index].currentHpText = "HP 100%";
-                    if (typeof oppHpHistories !== 'undefined' && oppHpHistories[index]) {
-                        oppHpHistories[index] = [100, 100, 100, 100, 100];
-                    }
                 }
                 currentHpFractionOpp = opponentParty[index].currentHpFraction;
                 currentOpponentHpText = opponentParty[index].currentHpText;
@@ -780,6 +812,28 @@
         let myRanks = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
         let opponentRanks = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
         let currentWeather = "None"; // "Sun", "Rain", "Sand", "Snow"
+
+        function handleWeatherSelect() {
+            const el = document.getElementById("weatherSelect");
+            if (el) currentWeather = el.value;
+            renderAll();
+        }
+
+        function getUIData() {
+            const safeVal = (id) => {
+                const el = document.getElementById(id);
+                return el ? el.value : "";
+            };
+            return {
+                myType: safeVal("myTypeSelect"),
+                myScreen: safeVal("myScreenSelect"),
+                myTailwind: safeVal("myTailwindSelect") === "Active",
+                terrain: safeVal("terrainSelect"),
+                oppTailwind: safeVal("oppTailwindSelect") === "Active",
+                oppScreen: safeVal("oppScreenSelect"),
+                oppType: safeVal("oppTypeSelect")
+            };
+        }
 
         function formatRanks(ranks) {
             let parts = [];
@@ -1002,7 +1056,7 @@
             return eff;
         }
 
-        function calculateDamage(attackerStats, defenderStats, move, attackerTypes, defenderTypes, attackerItem, defenderItem, attackerAbility, defenderAbility, attackerHpFraction, defenderHpFraction, attackerStatus) {
+        function calculateDamage(attackerStats, defenderStats, move, attackerTypes, defenderTypes, attackerItem, defenderItem, attackerAbility, defenderAbility, attackerHpFraction, defenderHpFraction, attackerStatus, defenderScreen, currentTerrain) {
             if (!move || move.category === 'STATUS' || move.power === 0) return { minRaw: 0, maxRaw: 0, min: '0.0', max: '0.0' };
 
             let atkStat = move.category === 'PHYSICAL' ? attackerStats.atk : attackerStats.spa;
@@ -1026,6 +1080,16 @@
             defStat = Math.floor(defStat * mods.defMult * aMods.defMult);
 
             let basePower = Math.floor(move.power * aMods.bpMult);
+            
+            // Terrain modifiers
+            const isAttackerGrounded = !attackerTypes.includes('FLYING') && attackerAbility !== '부유';
+            const isDefenderGrounded = !defenderTypes.includes('FLYING') && defenderAbility !== '부유';
+            if (currentTerrain === 'Electric' && isAttackerGrounded && move.type === 'ELECTRIC') basePower = Math.floor(basePower * 1.3);
+            if (currentTerrain === 'Grassy' && isAttackerGrounded && move.type === 'GRASS') basePower = Math.floor(basePower * 1.3);
+            if (currentTerrain === 'Grassy' && isDefenderGrounded && (move.nameKo === '지진' || move.nameKo === '땅고르기' || move.nameKo === '매그니튜드')) basePower = Math.floor(basePower * 0.5);
+            if (currentTerrain === 'Psychic' && isAttackerGrounded && move.type === 'PSYCHIC') basePower = Math.floor(basePower * 1.3);
+            if (currentTerrain === 'Misty' && isDefenderGrounded && move.type === 'DRAGON') basePower = Math.floor(basePower * 0.5);
+
             let baseDamage = Math.floor(Math.floor(Math.floor(22) * basePower * atkStat / defStat) / 50) + 2;
             
             // Weather damage modifiers
@@ -1039,6 +1103,15 @@
 
             // Burn status halves physical damage (except Guts)
             if (attackerStatus === 'BRN' && move.category === 'PHYSICAL' && attackerAbility !== '근성') {
+                baseDamage = Math.floor(baseDamage * 0.5);
+            }
+
+            // Screens
+            if (defenderScreen === 'Reflect' && move.category === 'PHYSICAL') {
+                baseDamage = Math.floor(baseDamage * 0.5);
+            } else if (defenderScreen === 'LightScreen' && move.category === 'SPECIAL') {
+                baseDamage = Math.floor(baseDamage * 0.5);
+            } else if (defenderScreen === 'AuroraVeil') {
                 baseDamage = Math.floor(baseDamage * 0.5);
             }
 
@@ -1108,7 +1181,7 @@
             };
         }
 
-        function getSpeeds(baseSpe, item, status) {
+        function getSpeeds(baseSpe, item, status, isTailwindActive) {
             if (!baseSpe) return { max: 'ERR', semi: 'ERR', uninvested: 'ERR' };
             const uninvested = Math.floor((baseSpe * 2 + 31) / 2) + 5;
             const semi = Math.floor((baseSpe * 2 + 31 + 63) / 2) + 5;
@@ -1116,6 +1189,7 @@
 
             let mult = (item === "구애스카프") ? 1.5 : 1.0;
             if (status === "PRZ") mult *= 0.5;
+            if (isTailwindActive) mult *= 2.0;
             return {
                 max: Math.floor(max * mult),
                 semi: Math.floor(semi * mult),
@@ -1123,7 +1197,7 @@
             };
         }
 
-        function getMyActualSpeed(myActive, item, status) {
+        function getMyActualSpeed(myActive, item, status, isTailwindActive) {
             if (!myActive) return "-";
             let spe = 0;
             if (myActive.Stats && myActive.Stats.Spe) spe = myActive.Stats.Spe;
@@ -1146,6 +1220,7 @@
             }
             if (item === "구애스카프") spe = Math.floor(spe * 1.5);
             if (status === "PRZ") spe = Math.floor(spe * 0.5);
+            if (isTailwindActive) spe = Math.floor(spe * 2.0);
             return spe;
         }
 
@@ -1158,7 +1233,6 @@
             })
             .catch(e => console.error("Failed to load usage data", e));
 
-        // Fetch Master Data
         fetch("/api/master")
             .then(res => res.json())
             .then(data => {
@@ -1175,6 +1249,20 @@
                 renderAll();
             })
             .catch(e => console.error("Failed to load master data", e));
+
+        let spritesDataMap = {}; // dexId -> formKey -> iconFile
+        fetch("/api/sprites")
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.sprites) {
+                    data.sprites.forEach(s => {
+                        if (!spritesDataMap[s.dexId]) spritesDataMap[s.dexId] = {};
+                        spritesDataMap[s.dexId][s.formKey || "default"] = s.iconFile;
+                    });
+                }
+                renderAll();
+            })
+            .catch(e => console.error("Failed to load sprites data", e));
 
         const toggleBtn = document.getElementById("togglePerspectiveBtn");
         toggleBtn.addEventListener("click", () => {
@@ -1426,19 +1514,24 @@
             }
 
             let safeMyId = (myActive && (myActive.SpeciesId || myActive.dexId || 0) > 0) ? String(myActive.SpeciesId || myActive.dexId).padStart(4, '0') : "0000";
-            let myIcon = myActive ? (myActive.iconFile || (safeMyId + "_default.png")) : "";
+            let myIcon = myActive ? (myActive.iconFile || (safeMyId + "_default.png")) : "0000_default.png";
             const myName = myActive ? (myActive.name || myActive.NameKo || dummyNames[myActive.SpeciesId || myActive.dexId] || "내 포켓몬") : "";
             const myMoves = myActive ? myActive.MovesKo : ["-", "-", "-", "-"];
 
             let safeOppId = (oppActive && (oppActive.SpeciesId || oppActive.dexId || 0) > 0) ? String(oppActive.SpeciesId || oppActive.dexId).padStart(4, '0') : "0000";
-            const oppIcon = oppActive ? (oppActive.iconFile || (safeOppId + "_default.png")) : "";
+            const oppIcon = oppActive ? (oppActive.iconFile || (safeOppId + "_default.png")) : "0000_default.png";
             const oppName = oppActive ? (oppActive.name || oppActive.NameKo || dummyNames[oppActive.SpeciesId || oppActive.dexId] || "상대 포켓몬") : "상대 포켓몬";
 
             let oppUsage = oppActive ? getUsageForDexId(oppActive.dexId || oppActive.DexId || oppActive.SpeciesId) : null;
             let oppMoves = getTopMoves(oppUsage);
 
-            const myTypes = myActive ? (myActive.types || myActive.Types || myActive.type || (masterDataMap[myActive.SpeciesId || myActive.dexId]?.types) || ["NORMAL"]) : ["NORMAL"];
-            const oppTypes = oppActive ? (oppActive.types || oppActive.Types || (masterDataMap[oppActive.SpeciesId || oppActive.dexId]?.types) || ["NORMAL"]) : ["NORMAL"];
+            const uiData = getUIData();
+
+            let myTypes = myActive ? (myActive.types || myActive.Types || myActive.type || (masterDataMap[myActive.SpeciesId || myActive.dexId]?.types) || ["NORMAL"]) : ["NORMAL"];
+            let oppTypes = oppActive ? (oppActive.types || oppActive.Types || (masterDataMap[oppActive.SpeciesId || oppActive.dexId]?.types) || ["NORMAL"]) : ["NORMAL"];
+
+            if (uiData.myType) myTypes = [uiData.myType];
+            if (uiData.oppType) oppTypes = [uiData.oppType];
 
             let movesToRender = isOpponentPerspective ? oppMoves : myMoves;
             let movesHtml = "";
@@ -1475,9 +1568,9 @@
                             myStats.def = applyRank(myStats.def, myRanks.def);
                             myStats.spd = applyRank(myStats.spd, myRanks.spd);
 
-                            const dMax = calculateDamage(oppStatsAtk, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
-                            const dSemi = calculateDamage(oppStatsSemi, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
-                            const dZero = calculateDamage(oppStatsZero, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus);
+                            const dMax = calculateDamage(oppStatsAtk, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus, uiData.myScreen, uiData.terrain);
+                            const dSemi = calculateDamage(oppStatsSemi, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus, uiData.myScreen, uiData.terrain);
+                            const dZero = calculateDamage(oppStatsZero, myStats, move, oppTypes, myTypes, oppItem, myItem, oppAbility, myAbility, currentHpFractionOpp, currentHpFractionMy, opponentStatus, uiData.myScreen, uiData.terrain);
 
                             const isPhys = move.category === 'PHYSICAL';
                             const isSpec = move.category === 'SPECIAL';
@@ -1511,9 +1604,9 @@
                             const myAbility = getMyAbility(myActive, myActiveIndex);
                             const oppAbility = getOpponentAbility(oppActive, opponentActiveIndex);
 
-                            const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
-                            const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
-                            const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus);
+                            const dMax = calculateDamage(atkStats, defMax, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus, uiData.oppScreen, uiData.terrain);
+                            const dSemi = calculateDamage(atkStats, defSemi, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus, uiData.oppScreen, uiData.terrain);
+                            const dZero = calculateDamage(atkStats, defZero, move, myTypes, oppTypes, myItem, oppItem, myAbility, oppAbility, currentHpFractionMy, currentHpFractionOpp, myStatus, uiData.oppScreen, uiData.terrain);
 
                             const isPhys = move.category === 'PHYSICAL';
                             const isSpec = move.category === 'SPECIAL';
@@ -1538,11 +1631,11 @@
 
             const myItemSim = getMyItem(myActive, myActiveIndex);
             const oppItemSim = getOpponentItem(oppActive, opponentActiveIndex);
-            let mySpeed = getMyActualSpeed(myActive, myItemSim, myStatus);
+            let mySpeed = getMyActualSpeed(myActive, myItemSim, myStatus, uiData.myTailwind);
             mySpeed = applyRank(mySpeed, myRanks.spe);
 
             let oppBaseSpe = oppActive && masterDataMap[oppActive.SpeciesId || oppActive.dexId] ? masterDataMap[oppActive.SpeciesId || oppActive.dexId].baseStats.spe : 0;
-            let oppSpeeds = getSpeeds(oppBaseSpe, oppItemSim, opponentStatus);
+            let oppSpeeds = getSpeeds(oppBaseSpe, oppItemSim, opponentStatus, uiData.oppTailwind);
             oppSpeeds.max = applyRank(oppSpeeds.max, opponentRanks.spe);
             oppSpeeds.semi = applyRank(oppSpeeds.semi, opponentRanks.spe);
             oppSpeeds.uninvested = applyRank(oppSpeeds.uninvested, opponentRanks.spe);
@@ -1776,7 +1869,6 @@
                                 }
                             }
                             if (!isNaN(max) && max > 0) {
-                                myHpHistories[i] = [max, max, max, max, max];
                                 myParty[i].currentHpFraction = 1.0;
                                 myParty[i].currentHpText = "HP " + max + " / " + max;
                             }
@@ -1814,41 +1906,15 @@
 
         let lastLoggedMyHpText = "";
         let lastLoggedOppHpText = "";
-        let myHpHistories = [[], [], [], [], [], []];
-        let oppHpHistories = [[], [], [], [], [], []];
-        const HP_HISTORY_SIZE = 5;
-
-        function getMode(arr) {
-            if (arr.length === 0) return NaN;
-            let counts = {};
-            let maxCount = 0;
-            let mode = NaN;
-            for (let v of arr) {
-                counts[v] = (counts[v] || 0) + 1;
-                if (counts[v] > maxCount) {
-                    maxCount = counts[v];
-                    mode = v;
-                }
-            }
-            return mode;
-        }
         
         connection.on("UpdateHpEvent", function (ev) {
             let changed = false;
 
-            if (ev.myHp !== undefined && ev.myHp !== "") {
-                let myHpStr = ev.myHp.replace(/T/ig, '7').replace(/[!f]/ig, '1').replace(/\s/g, '');
-                
-                // 120/150 또는 120 형태로 들어오는 것을 처리
-                let curRaw = NaN;
-                let parts = myHpStr.split('/');
-                if (parts.length > 0 && /^[0-9]+$/.test(parts[0])) {
-                    curRaw = parseFloat(parts[0]);
-                }
-                
+            if (ev.myHpParsed !== undefined && ev.myHpParsed !== "") {
+                let cur = parseFloat(ev.myHpParsed);
                 let max = NaN;
 
-                // 파티 샘플 데이터에서 최대 체력(Max HP)을 직접 계산해서 가져옵니다 (OCR 불필요)
+                // 파티 샘플 데이터에서 최대 체력(Max HP)을 직접 계산해서 가져옵니다
                 if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
                     let myActive = myParty[myActiveIndex];
                     if (myActive.Stats && myActive.Stats.Hp) {
@@ -1863,17 +1929,10 @@
                     }
                 }
 
-                if (!isNaN(curRaw)) {
-                    if (!isNaN(max) && max > 0 && curRaw > max) {
+                if (!isNaN(cur)) {
+                    if (!isNaN(max) && max > 0 && cur > max) {
                         // 인식된 수치가 최대 체력을 넘으면 스킵
                     } else if (myActiveIndex >= 0 && myActiveIndex < 6) {
-                        myHpHistories[myActiveIndex].push(curRaw);
-                        if (myHpHistories[myActiveIndex].length > HP_HISTORY_SIZE) {
-                            myHpHistories[myActiveIndex].shift();
-                        }
-                        
-                        let cur = getMode(myHpHistories[myActiveIndex]);
-                        
                         if (!isNaN(max) && max > 0) {
                             currentHpFractionMy = cur / max;
                             currentMyHpText = "HP " + cur + " / " + max;
@@ -1882,7 +1941,6 @@
                         }
                         
                         changed = true;
-                        
                         if (myParty[myActiveIndex]) {
                             myParty[myActiveIndex].currentHpFraction = currentHpFractionMy;
                             myParty[myActiveIndex].currentHpText = currentMyHpText;
@@ -1891,32 +1949,16 @@
                 }
             }
             
-            if (ev.opponentHp !== undefined && ev.opponentHp !== "") {
-                let oppStr = ev.opponentHp.replace(/T/ig, '7').replace(/[!f]/ig, '1').replace(/\s/g, '').replace(/%/g, '');
-                let pctRaw = NaN;
-                if (/^[0-9]+$/.test(oppStr)) {
-                    pctRaw = parseFloat(oppStr);
-                }
-                
-                if (!isNaN(pctRaw)) {
-                    if (pctRaw > 100) {
-                        // 100%를 넘으면 스킵
-                    } else if (opponentActiveIndex >= 0 && opponentActiveIndex < 6) {
-                        oppHpHistories[opponentActiveIndex].push(pctRaw);
-                        if (oppHpHistories[opponentActiveIndex].length > HP_HISTORY_SIZE) {
-                            oppHpHistories[opponentActiveIndex].shift();
-                        }
-                        
-                        let pct = getMode(oppHpHistories[opponentActiveIndex]);
-                        
-                        currentHpFractionOpp = pct / 100.0;
-                        currentOpponentHpText = "HP " + pct + "%";
-                        changed = true;
-                        
-                        if (opponentParty[opponentActiveIndex]) {
-                            opponentParty[opponentActiveIndex].currentHpFraction = currentHpFractionOpp;
-                            opponentParty[opponentActiveIndex].currentHpText = currentOpponentHpText;
-                        }
+            if (ev.opponentHpParsed !== undefined && ev.opponentHpParsed !== "") {
+                let pct = parseFloat(ev.opponentHpParsed);
+                if (!isNaN(pct) && pct <= 100 && opponentActiveIndex >= 0 && opponentActiveIndex < 6) {
+                    currentHpFractionOpp = pct / 100.0;
+                    currentOpponentHpText = "HP " + pct + "%";
+                    changed = true;
+                    
+                    if (opponentParty[opponentActiveIndex]) {
+                        opponentParty[opponentActiveIndex].currentHpFraction = currentHpFractionOpp;
+                        opponentParty[opponentActiveIndex].currentHpText = currentOpponentHpText;
                     }
                 }
             }
@@ -1933,9 +1975,20 @@
                 }
                 
                 if (hpLogChanged) {
+                    let myName = "내 포켓몬";
+                    if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
+                        const mId = myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId;
+                        myName = myParty[myActiveIndex].name || myParty[myActiveIndex].NameKo || (masterDataMap[mId] ? masterDataMap[mId].nameKo : null) || "내 포켓몬";
+                    }
+                    let oppName = "상대 포켓몬";
+                    if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
+                        const oId = opponentParty[opponentActiveIndex].SpeciesId || opponentParty[opponentActiveIndex].dexId;
+                        oppName = opponentParty[opponentActiveIndex].name || opponentParty[opponentActiveIndex].NameKo || (masterDataMap[oId] ? masterDataMap[oId].nameKo : null) || "상대 포켓몬";
+                    }
+
                     let hpMsg = "체력 업데이트";
-                    if (currentMyHpText) hpMsg += ` [내 포켓몬: ${currentMyHpText}]`;
-                    if (currentOpponentHpText) hpMsg += ` [상대 포켓몬: ${currentOpponentHpText}]`;
+                    if (currentMyHpText) hpMsg += ` [${myName}: ${currentMyHpText}]`;
+                    if (currentOpponentHpText) hpMsg += ` [${oppName}: ${currentOpponentHpText}]`;
                     addLog(hpMsg);
                 }
                 renderAll();
@@ -1974,8 +2027,11 @@
                     }
 
                     if (megaFound) {
-                        let megaSuffix = (form === "X" || form === "Y") ? ("mega" + form) : "mega";
-                        let newIconFile = String(originalId).padStart(4, '0') + "_" + megaSuffix + ".png";
+                        let formKey = (form === "X" || form === "Y") ? ("mega" + form) : "mega";
+                        let newIconFile = String(originalId).padStart(4, '0') + "_" + formKey + ".png";
+                        if (spritesDataMap[originalId] && spritesDataMap[originalId][formKey]) {
+                            newIconFile = spritesDataMap[originalId][formKey];
+                        }
                         
                         if (source === "My") {
                             myParty[myActiveIndex] = {
@@ -2030,62 +2086,28 @@
             } else if (ev.eventType === "WeatherChange" && ev.payload) {
                 addLog(`날씨 변화: ${ev.payload}`);
                 currentWeather = ev.payload;
+                const weatherEl = document.getElementById("weatherSelect");
+                if (weatherEl) weatherEl.value = currentWeather;
             } else if (ev.eventType === "BatonPass") {
                 addLog(`${sourceStr}배턴터치 사용`);
                 if (ev.source === "My") batonPassMy = true;
                 else if (ev.source === "Opponent") batonPassOpp = true;
             } else if (ev.eventType === "Switch") {
-                let targetIndex = -1;
+                let targetIndex = ev.targetIndex !== undefined ? ev.targetIndex : -1;
                 let prevName = "";
+                
+                if (targetIndex === -1) {
+                    return; // Ignore completely if no valid Pokemon name was found
+                }
                 
                 if (ev.source === "My") {
                     if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
                         prevName = myParty[myActiveIndex].name || dummyNames[myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId] || "???";
                     }
-                    if (ev.description) {
-                        let bestMatchCount = 1; // 최소 2글자 이상 일치해야 함
-                        for (let i = 0; i < myParty.length; i++) {
-                            let n = myParty[i].name || myParty[i].NameKo || dummyNames[myParty[i].SpeciesId || myParty[i].dexId];
-                            if (n) {
-                                let matchCount = 0;
-                                for (let char of n) {
-                                    if (ev.description.includes(char)) matchCount++;
-                                }
-                                if (ev.description.includes(n)) matchCount += 10; // 완전 일치 가산점
-                                
-                                if (matchCount > bestMatchCount) {
-                                    bestMatchCount = matchCount;
-                                    targetIndex = i;
-                                }
-                            }
-                        }
-                    }
                 } else if (ev.source === "Opponent") {
                     if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
                         prevName = opponentParty[opponentActiveIndex].name || dummyNames[opponentParty[opponentActiveIndex].dexId || opponentParty[opponentActiveIndex].SpeciesId] || "???";
                     }
-                    if (ev.description) {
-                        let bestMatchCount = 1;
-                        for (let i = 0; i < opponentParty.length; i++) {
-                            let n = opponentParty[i].name || opponentParty[i].NameKo || dummyNames[opponentParty[i].dexId || opponentParty[i].SpeciesId];
-                            if (n) {
-                                let matchCount = 0;
-                                for (let char of n) {
-                                    if (ev.description.includes(char)) matchCount++;
-                                }
-                                if (ev.description.includes(n)) matchCount += 10;
-                                
-                                if (matchCount > bestMatchCount) {
-                                    bestMatchCount = matchCount;
-                                    targetIndex = i;
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                if (targetIndex === -1) {
-                    return; // Ignore completely if no valid Pokemon name was found
                 }
                 
                 let nextName = "???";

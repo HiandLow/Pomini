@@ -93,6 +93,22 @@ namespace PokemonHelper
                                     context.Response.StatusCode = 404;
                                 }
                             });
+                            endpoints.MapGet("/api/sprites", async context =>
+                            {
+                                var path = Path.Combine(Directory.GetCurrentDirectory(), "sprites.json");
+                                if (!File.Exists(path)) path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sprites.json");
+                                if (!File.Exists(path)) path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "sprites.json");
+                                
+                                if (File.Exists(path))
+                                {
+                                    context.Response.ContentType = "application/json";
+                                    await context.Response.WriteAsync(await File.ReadAllTextAsync(path));
+                                }
+                                else
+                                {
+                                    context.Response.StatusCode = 404;
+                                }
+                            });
                         });
                     });
                 })

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using PokemonHelper.Models;
 using PokemonHelper.Services.Recognition;
 
@@ -75,7 +76,8 @@ namespace PokemonHelper.Services.Recognition
                 {
                     EventType = "Switch",
                     Source = "My",
-                    Description = logText
+                    Description = logText,
+                    TargetIndex = MatchSwitchIndex(logText, "My")
                 };
             }
             if (logText.Contains("내보냈다"))
@@ -84,7 +86,8 @@ namespace PokemonHelper.Services.Recognition
                 {
                     EventType = "Switch",
                     Source = "Opponent",
-                    Description = logText
+                    Description = logText,
+                    TargetIndex = MatchSwitchIndex(logText, "Opponent")
                 };
             }
 
@@ -163,7 +166,6 @@ namespace PokemonHelper.Services.Recognition
 
         private BattleLogEvent CreateStatus(string status, string desc)
         {
-            // 로그 앞부분으로 내/상대 구분
             string source = desc.StartsWith("상대") ? "Opponent" : "My";
             return new BattleLogEvent
             {
@@ -172,6 +174,110 @@ namespace PokemonHelper.Services.Recognition
                 Description = desc,
                 Payload = status
             };
+        }
+
+        private int MatchSwitchIndex(string description, string source)
+        {
+            var names = source == "My" ? GetMyPartyNames() : GetOpponentPartyNames();
+            if (names == null || names.Count == 0) return -1;
+
+            int bestMatchCount = 1; // 최소 2글자 이상 일치
+            int targetIndex = -1;
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                string n = names[i];
+                if (string.IsNullOrWhiteSpace(n)) continue;
+
+                int matchCount = 0;
+                foreach (char c in n)
+                {
+                    if (description.Contains(c)) matchCount++;
+                }
+                if (description.Contains(n)) matchCount += 10; // 완전 일치 가산점
+
+                if (matchCount > bestMatchCount)
+                {
+                    bestMatchCount = matchCount;
+                    targetIndex = i;
+                }
+            }
+
+            return targetIndex;
+        }
+
+        private List<string> GetMyPartyNames()
+        {
+            var names = new List<string>();
+            try
+            {
+                var path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PCH", "users", "local", "parties.json");
+                if (System.IO.File.Exists(path))
+                {
+                    var json = System.IO.File.ReadAllText(path);
+                    using var doc = System.Text.Json.JsonDocument.Parse(json);
+                    if (doc.RootElement.ValueKind == System.Text.Json.JsonValueKind.Array && doc.RootElement.GetArrayLength() > 0)
+                    {
+                        var firstParty = doc.RootElement[0];
+                        if (firstParty.TryGetProperty("Members", out var members) && members.ValueKind == System.Text.Json.JsonValueKind.Array)
+                        {
+                            foreach (var member in members.EnumerateArray())
+                            {
+                                string name = "";
+                                if (member.TryGetProperty("NameKo", out var nameProp)) name = nameProp.GetString() ?? "";
+                                if (string.IsNullOrEmpty(name))
+                                {
+                                    int dexId = 0;
+                                    if (member.TryGetProperty("SpeciesId", out var speciesIdProp)) dexId = speciesIdProp.GetInt32();
+                                    else if (member.TryGetProperty("dexId", out var dexIdProp)) dexId = dexIdProp.GetInt32();
+                                    
+                                    if (dexId > 0 && ScreenCaptureService.PokemonNames.TryGetValue(dexId, out var resolvedName))
+                                    {
+                                        name = resolvedName;
+                                    }
+                                }
+                                names.Add(name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+            return names;
+        }
+
+        private List<string> GetOpponentPartyNames()
+        {
+            var names = new List<string>();
+            try
+            {
+                if (ScreenCaptureService.LastPartyData is List<Dictionary<string, object>> partyData)
+                {
+                    foreach (var dict in partyData)
+                    {
+                        string name = "";
+                        if (dict.TryGetValue("name", out var val) && val is string s) name = s;
+                        else if (dict.TryGetValue("NameKo", out var val2) && val2 is string s2) name = s2;
+                        
+                        if (string.IsNullOrEmpty(name))
+                        {
+                            int dexId = 0;
+                            if (dict.TryGetValue("dexId", out var dVal) && dVal is int d) dexId = d;
+                            else if (dict.TryGetValue("SpeciesId", out var sVal) && sVal is int sid) dexId = sid;
+                            else if (dict.TryGetValue("dexId", out var dVal2) && dVal2 is JsonElement je && je.ValueKind == JsonValueKind.Number) dexId = je.GetInt32();
+                            else if (dict.TryGetValue("SpeciesId", out var sVal2) && sVal2 is JsonElement je2 && je2.ValueKind == JsonValueKind.Number) dexId = je2.GetInt32();
+                            
+                            if (dexId > 0 && ScreenCaptureService.PokemonNames.TryGetValue(dexId, out var resolvedName))
+                            {
+                                name = resolvedName;
+                            }
+                        }
+                        names.Add(name);
+                    }
+                }
+            }
+            catch { }
+            return names;
         }
     }
 }

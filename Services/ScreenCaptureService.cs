@@ -48,6 +48,15 @@ namespace PokemonHelper.Services
         
         private LogCascadeEmitGate _logEmitGate = new LogCascadeEmitGate();
         private int _logCascadeInFlight = 0;
+
+        private List<double> _myHpHistory = new List<double>();
+        private List<double> _oppHpHistory = new List<double>();
+
+        private double GetMode(List<double> history)
+        {
+            if (history.Count == 0) return double.NaN;
+            return history.GroupBy(x => x).OrderByDescending(g => g.Count()).First().Key;
+        }
         private readonly object _logEmitLock = new object();
 
         
@@ -126,6 +135,8 @@ namespace PokemonHelper.Services
             _logCorrector.SetSpeciesVocabulary(_pokemonList.Select(x => x.NameKo));
         }
 
+        public static Dictionary<int, string> PokemonNames { get; } = new Dictionary<int, string>();
+        
         private void LoadPokemonData()
         {
             try
@@ -144,6 +155,7 @@ namespace PokemonHelper.Services
                             NameKo = el.GetProperty("nameKo").GetString() ?? ""
                         };
                         _pokemonList.Add(pokemon);
+                        PokemonNames[id] = pokemon.NameKo;
 
                         if (el.TryGetProperty("types", out var typesProp) && typesProp.ValueKind == JsonValueKind.Array)
                         {
@@ -454,9 +466,43 @@ namespace PokemonHelper.Services
                             {
                                 _lastHpNameLog = currentHpNameLog;
                                 Console.WriteLine($"[OCR HP] {currentHpNameLog}");
-                                var hpDict = new Dictionary<string, string>();
-                                hpDict["myHp"] = myHpText?.Trim();
-                                hpDict["opponentHp"] = oppHpText?.Trim();
+                            }
+
+                            var hpDict = new Dictionary<string, string>();
+                            
+                            if (!string.IsNullOrWhiteSpace(myHpText))
+                            {
+                                string myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpText, "T", "7", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, "[!fI]", "1", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, "O", "0", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                myHpStr = System.Text.RegularExpressions.Regex.Replace(myHpStr, @"\s", "");
+                                myHpStr = myHpStr.TrimStart('-');
+                                var parts = myHpStr.Split('/');
+                                if (parts.Length > 0 && double.TryParse(parts[0], out double curRaw))
+                                {
+                                    _myHpHistory.Add(curRaw);
+                                    if (_myHpHistory.Count > 5) _myHpHistory.RemoveAt(0);
+                                    hpDict["myHpParsed"] = GetMode(_myHpHistory).ToString();
+                                }
+                            }
+
+                            if (!string.IsNullOrWhiteSpace(oppHpText))
+                            {
+                                string oppStr = System.Text.RegularExpressions.Regex.Replace(oppHpText, "T", "7", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, "[!fI]", "1", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, "O", "0", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, @"\s", "");
+                                oppStr = oppStr.Replace("%", "").TrimStart('-');
+                                if (double.TryParse(oppStr, out double pctRaw) && pctRaw <= 100)
+                                {
+                                    _oppHpHistory.Add(pctRaw);
+                                    if (_oppHpHistory.Count > 5) _oppHpHistory.RemoveAt(0);
+                                    hpDict["opponentHpParsed"] = GetMode(_oppHpHistory).ToString();
+                                }
+                            }
+
+                            if (hpDict.Count > 0)
+                            {
                                 _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
                             }
                         }
@@ -532,6 +578,12 @@ private void DispatchLogCascade(LogCascadeRequest req)
                 var ev = _logAnalyzer.Analyze(res);
                 if (ev != null)
                 {
+                    if (ev.EventType == "Switch")
+                    {
+                        if (ev.Source == "My") _myHpHistory.Clear();
+                        else if (ev.Source == "Opponent") _oppHpHistory.Clear();
+                    }
+
                     string payloadStr = "";
                     if (ev.Payload is PokemonHelper.Models.RankChangePayload rcp)
                     {
