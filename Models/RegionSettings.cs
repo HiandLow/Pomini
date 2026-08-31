@@ -42,4 +42,10 @@ namespace PokemonHelper.Models
             }
         };
     }
+
+    public class RegionSettingsConfig
+    {
+        public int ActivePreset { get; set; } = 1;
+        public System.Collections.Generic.Dictionary<int, RegionSettings> Presets { get; set; } = new System.Collections.Generic.Dictionary<int, RegionSettings>();
+    }
 }

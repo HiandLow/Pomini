@@ -1,0 +1,13 @@
+0: Switch - None | 잘가는피카츄를내보냈다!
+1: Switch - None | 가랏!우두머리였던이어름!
+2: HpChange - 171 | 내 HP 변경: 171
+3: HpChange - 100 | 상대 HP 변경: 100%
+4: Switch - None | 잘가는한카리아스를내보냈다!
+5: MoveUse - 고속이동 | 이어름의고속이동!
+6: RankChange - {'Stat': 'Spe', 'Stages': 2} | 이어롭의스피드가크게올라갔다!
+7: HpChange - 100 | 상대 HP 변경: 100%
+8: MoveUse - 코튼가드 | 코튼가드!
+9: RankChange - {'Stat': 'Def', 'Stages': 3} | 이어름의방어가매우크게올라갔다!
+10: MoveUse - 칼춤 | 상대한카리아스의칼춤!
+11: RankChange - {'Stat': 'Atk', 'Stages': 2} | 상대한카리아스의공격이크게올라갔다!
+12: Switch - None | 잘가는대도각참을내보냈다!

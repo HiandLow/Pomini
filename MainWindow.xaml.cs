@@ -14,6 +14,23 @@ namespace PokemonHelper
         {
             InitializeComponent();
             _ocrService = ocrService;
+            
+            var repo = new JsonRegionSettingsRepository();
+            var config = repo.LoadConfig();
+            PresetComboBox.SelectedIndex = config.ActivePreset - 1;
+        }
+
+        private void PresetComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (PresetComboBox.SelectedIndex >= 0)
+            {
+                int preset = PresetComboBox.SelectedIndex + 1;
+                var repo = new JsonRegionSettingsRepository();
+                var config = repo.LoadConfig();
+                config.ActivePreset = preset;
+                repo.SaveConfig(config);
+                ScreenCaptureService.Settings = repo.Load();
+            }
         }
 
         private void RefreshProcessButton_Click(object sender, RoutedEventArgs e)

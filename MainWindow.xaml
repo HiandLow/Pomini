@@ -18,7 +18,13 @@
                 <TextBlock Text="타겟 윈도우:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="14"/>
                 <ComboBox x:Name="ProcessComboBox" Width="200" Height="30" Margin="0,0,10,0" DisplayMemberPath="MainWindowTitle" SelectedValuePath="MainWindowHandle"/>
                 <Button x:Name="RefreshProcessButton" Content="새로고침" Width="80" Height="30" Click="RefreshProcessButton_Click"/>
-                <Button x:Name="SetRegionButton" Content="영역 설정" Width="80" Height="30" Margin="10,0,0,0" Click="SetRegionButton_Click"/>
+                <TextBlock Text="영역 프리셋:" VerticalAlignment="Center" Margin="15,0,5,0" FontSize="14"/>
+                <ComboBox x:Name="PresetComboBox" Width="50" Height="30" Margin="0,0,10,0" SelectionChanged="PresetComboBox_SelectionChanged">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                </ComboBox>
+                <Button x:Name="SetRegionButton" Content="영역 설정" Width="80" Height="30" Click="SetRegionButton_Click"/>
             </StackPanel>
 
             <!-- OCR 컨트롤 영역 -->

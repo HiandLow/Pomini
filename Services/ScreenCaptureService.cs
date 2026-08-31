@@ -105,7 +105,28 @@ namespace PokemonHelper.Services
         private double GetMode(List<double> history)
         {
             if (history.Count == 0) return double.NaN;
-            return history.GroupBy(x => x).OrderByDescending(g => g.Count()).First().Key;
+            
+            var counts = new Dictionary<double, int>();
+            foreach (var v in history)
+            {
+                if (!counts.ContainsKey(v)) counts[v] = 0;
+                counts[v]++;
+            }
+
+            double bestVal = history.Last();
+            int maxCount = -1;
+
+            for (int i = history.Count - 1; i >= 0; i--)
+            {
+                double v = history[i];
+                if (counts[v] > maxCount)
+                {
+                    maxCount = counts[v];
+                    bestVal = v;
+                }
+            }
+
+            return bestVal;
         }
         private readonly object _logEmitLock = new object();
 
@@ -143,6 +164,7 @@ namespace PokemonHelper.Services
         private JsonSpritesProvider _spritesProvider;
         
         private WindowsOcrEngine _windowsOcrEngine;
+        private WindowsOcrEngine _hpoWindowsOcrEngine;
         private ActiveBattleDetector _battleDetector;
         private LogOcr _logOcr;
         private LogFusionVoter _logVoter;
@@ -155,6 +177,10 @@ namespace PokemonHelper.Services
         {
             IsPartyRecognitionEnabled = true;
             _logAnalyzer.Reset();
+            _myHpHistories.Clear();
+            _oppHpHistories.Clear();
+            _lastBroadcastMyHpMap.Clear();
+            _lastBroadcastOppHpMap.Clear();
         }
 
         public ScreenCaptureService(IHubContext<PokemonHub> hubContext)
@@ -175,6 +201,7 @@ namespace PokemonHelper.Services
 
             _battleDetector = new ActiveBattleDetector(this);
             _windowsOcrEngine = new WindowsOcrEngine();
+            _hpoWindowsOcrEngine = new WindowsOcrEngine("en-US");
             _logOcr = new LogOcr(this, _windowsOcrEngine, Settings.Log);
             _logOcr.UseThresholdPreprocess = true;
             _logVoter = new LogFusionVoter();
@@ -565,7 +592,7 @@ namespace PokemonHelper.Services
                         {
                             using var myHpBmp = CaptureWindowRegion(TargetHwnd, Settings.MyHp);
                             using var enhanced = PadAndEnhance(myHpBmp);
-                            myHpText = _windowsOcrEngine.Recognize(enhanced);
+                            myHpText = _hpoWindowsOcrEngine.Recognize(enhanced);
                         }
 
                         string oppHpText = null;
@@ -573,13 +600,71 @@ namespace PokemonHelper.Services
                         {
                             using var oppHpBmp = CaptureWindowRegion(TargetHwnd, Settings.OpponentHp);
                             using var enhanced = PadAndEnhance(oppHpBmp);
-                            oppHpText = _windowsOcrEngine.Recognize(enhanced);
+                            oppHpText = _hpoWindowsOcrEngine.Recognize(enhanced);
                             if (!string.IsNullOrWhiteSpace(oppHpText) && !oppHpText.Contains('%'))
                             {
                                 oppHpText = null;
                             }
                         }
                         
+                        void EmitMyHp()
+                        {
+                            if (!_myHpHistories.ContainsKey(_myActiveIndex)) return;
+                            var history = _myHpHistories[_myActiveIndex];
+                            if (history.Count == 0) return;
+                            
+                            double mode = GetMode(history);
+                            _lastBroadcastMyHpMap.TryGetValue(_myActiveIndex, out double lastB);
+                            
+                            if (mode != lastB)
+                            {
+                                _lastBroadcastMyHpMap[_myActiveIndex] = mode;
+                                var hpEv = new PokemonHelper.Models.BattleLogEvent {
+                                    EventType = "HpChange",
+                                    Source = "My",
+                                    Name = "My",
+                                    Description = $"내 HP 변경: {mode}",
+                                    Payload = mode.ToString(),
+                                    TargetIndex = _myActiveIndex
+                                };
+                                if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
+                                _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
+
+                                var hpDict = new Dictionary<string, string>();
+                                hpDict["myHpParsed"] = mode.ToString();
+                                _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
+                            }
+                        }
+
+                        void EmitOppHp()
+                        {
+                            if (!_oppHpHistories.ContainsKey(_oppActiveIndex)) return;
+                            var history = _oppHpHistories[_oppActiveIndex];
+                            if (history.Count == 0) return;
+                            
+                            double mode = GetMode(history);
+                            _lastBroadcastOppHpMap.TryGetValue(_oppActiveIndex, out double lastB);
+                            
+                            if (mode != lastB)
+                            {
+                                _lastBroadcastOppHpMap[_oppActiveIndex] = mode;
+                                var hpEv = new PokemonHelper.Models.BattleLogEvent {
+                                    EventType = "HpChange",
+                                    Source = "Opponent",
+                                    Name = "Opponent",
+                                    Description = $"상대 HP 변경: {mode}%",
+                                    Payload = mode.ToString(),
+                                    TargetIndex = _oppActiveIndex
+                                };
+                                if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
+                                _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
+
+                                var hpDict = new Dictionary<string, string>();
+                                hpDict["opponentHpParsed"] = mode.ToString();
+                                _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
+                            }
+                        }
+
                         if (!string.IsNullOrWhiteSpace(myHpText) || !string.IsNullOrWhiteSpace(oppHpText))
                         {
                             string currentHpNameLog = $"MyHP: '{myHpText}', OppHP: '{oppHpText}'";
@@ -589,9 +674,12 @@ namespace PokemonHelper.Services
                                 Console.WriteLine($"[OCR HP] {currentHpNameLog}");
                             }
 
-                            var hpDict = new Dictionary<string, string>();
-                            
-                            if (!string.IsNullOrWhiteSpace(myHpText))
+                            if (string.IsNullOrWhiteSpace(myHpText))
+                            {
+                                EmitMyHp();
+                                if (_myHpHistories.ContainsKey(_myActiveIndex)) _myHpHistories[_myActiveIndex].Clear();
+                            }
+                            else
                             {
                                 string myHpStr = myHpText;
                                 foreach (var kv in _hpOcrCorrections)
@@ -613,34 +701,23 @@ namespace PokemonHelper.Services
                                     var history = _myHpHistories[_myActiveIndex];
                                     
                                     history.Add(curRaw);
-                                    if (history.Count > 5) history.RemoveAt(0);
+                                    if (history.Count > 4) history.RemoveAt(0); // 4 프레임으로 완화
                                     
-                                    if (history.Count >= 3)
-                                    {
-                                        double mode = GetMode(history);
-                                        _lastBroadcastMyHpMap.TryGetValue(_myActiveIndex, out double lastB);
-                                        
-                                        if (mode != lastB)
-                                        {
-                                            _lastBroadcastMyHpMap[_myActiveIndex] = mode;
-                                            hpDict["myHpParsed"] = mode.ToString();
-
-                                            var hpEv = new PokemonHelper.Models.BattleLogEvent {
-                                                EventType = "HpChange",
-                                                Source = "My",
-                                                Name = "My",
-                                                Description = $"내 HP 변경: {mode}",
-                                                Payload = mode.ToString(),
-                                                TargetIndex = _myActiveIndex
-                                            };
-                                            if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
-                                            _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
-                                        }
-                                    }
+                                    if (history.Count >= 2) EmitMyHp(); // 2프레임 연속일 때도 방출
+                                }
+                                else
+                                {
+                                    EmitMyHp();
+                                    if (_myHpHistories.ContainsKey(_myActiveIndex)) _myHpHistories[_myActiveIndex].Clear();
                                 }
                             }
-
-                            if (!string.IsNullOrWhiteSpace(oppHpText))
+                            
+                            if (string.IsNullOrWhiteSpace(oppHpText))
+                            {
+                                EmitOppHp();
+                                if (_oppHpHistories.ContainsKey(_oppActiveIndex)) _oppHpHistories[_oppActiveIndex].Clear();
+                            }
+                            else
                             {
                                 string oppStr = oppHpText;
                                 foreach (var kv in _hpOcrCorrections)
@@ -649,50 +726,36 @@ namespace PokemonHelper.Services
                                 }
                                 oppStr = System.Text.RegularExpressions.Regex.Replace(oppStr, @"\s", "");
                                 oppStr = oppStr.Replace("%", "").TrimStart('-');
-                                
+
                                 bool isValid = true;
                                 foreach (char c in oppStr)
                                 {
                                     if (!_hpOcrWhitelist.Contains(c)) { isValid = false; break; }
                                 }
-                                
-                                if (isValid && double.TryParse(oppStr, out double pctRaw) && pctRaw <= 100)
+
+                                if (isValid && double.TryParse(oppStr, out double pctRaw))
                                 {
                                     if (!_oppHpHistories.ContainsKey(_oppActiveIndex)) _oppHpHistories[_oppActiveIndex] = new List<double>();
                                     var history = _oppHpHistories[_oppActiveIndex];
                                     
                                     history.Add(pctRaw);
-                                    if (history.Count > 5) history.RemoveAt(0);
+                                    if (history.Count > 4) history.RemoveAt(0);
                                     
-                                    if (history.Count >= 3)
-                                    {
-                                        double mode = GetMode(history);
-                                        _lastBroadcastOppHpMap.TryGetValue(_oppActiveIndex, out double lastB);
-                                        
-                                        if (mode != lastB)
-                                        {
-                                            _lastBroadcastOppHpMap[_oppActiveIndex] = mode;
-                                            hpDict["opponentHpParsed"] = mode.ToString();
-
-                                            var hpEv = new PokemonHelper.Models.BattleLogEvent {
-                                                EventType = "HpChange",
-                                                Source = "Opponent",
-                                                Name = "Opponent",
-                                                Description = $"상대 HP 변경: {mode}%",
-                                                Payload = mode.ToString(),
-                                                TargetIndex = _oppActiveIndex
-                                            };
-                                            if (TestVideoPath != null) { TestModeBattleLogs.Add(hpEv); SaveTestResult(); }
-                                            _ = _hubContext.Clients.All.SendAsync("BattleLogEvent", hpEv);
-                                        }
-                                    }
+                                    if (history.Count >= 2) EmitOppHp();
+                                }
+                                else
+                                {
+                                    EmitOppHp();
+                                    if (_oppHpHistories.ContainsKey(_oppActiveIndex)) _oppHpHistories[_oppActiveIndex].Clear();
                                 }
                             }
-
-                            if (hpDict.Count > 0)
-                            {
-                                _ = _hubContext.Clients.All.SendAsync("UpdateHpEvent", hpDict);
-                            }
+                        }
+                        else
+                        {
+                            EmitMyHp();
+                            EmitOppHp();
+                            if (_myHpHistories.ContainsKey(_myActiveIndex)) _myHpHistories[_myActiveIndex].Clear();
+                            if (_oppHpHistories.ContainsKey(_oppActiveIndex)) _oppHpHistories[_oppActiveIndex].Clear();
                         }
                     }
                     catch (Exception) { }

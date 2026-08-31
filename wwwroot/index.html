@@ -1904,8 +1904,45 @@
             renderAll();
         });
 
-        let lastLoggedMyHpText = "";
-        let lastLoggedOppHpText = "";
+        let lastLoggedMyHpText = "HP - / -";
+        let lastLoggedOppHpText = "HP -%";
+        let hpLogTimeout = null;
+        let lastMoveEvent = null;
+
+        function flushHpLog() {
+            if (hpLogTimeout) {
+                clearTimeout(hpLogTimeout);
+                hpLogTimeout = null;
+            }
+            let myHpChanged = false;
+            let oppHpChanged = false;
+            
+            if (currentMyHpText && currentMyHpText !== lastLoggedMyHpText) {
+                myHpChanged = true;
+                lastLoggedMyHpText = currentMyHpText;
+            }
+            if (currentOpponentHpText && currentOpponentHpText !== lastLoggedOppHpText) {
+                oppHpChanged = true;
+                lastLoggedOppHpText = currentOpponentHpText;
+            }
+            
+            if (myHpChanged) {
+                let myName = "내 포켓몬";
+                if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
+                    const mId = myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId;
+                    myName = myParty[myActiveIndex].name || myParty[myActiveIndex].NameKo || (masterDataMap[mId] ? masterDataMap[mId].nameKo : null) || "내 포켓몬";
+                }
+                addLog(`체력 업데이트 [${myName}: ${currentMyHpText}]`);
+            }
+            if (oppHpChanged) {
+                let oppName = "상대 포켓몬";
+                if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
+                    const oId = opponentParty[opponentActiveIndex].SpeciesId || opponentParty[opponentActiveIndex].dexId;
+                    oppName = opponentParty[opponentActiveIndex].name || opponentParty[opponentActiveIndex].NameKo || (masterDataMap[oId] ? masterDataMap[oId].nameKo : null) || "상대 포켓몬";
+                }
+                addLog(`체력 업데이트 [${oppName}: ${currentOpponentHpText}]`);
+            }
+        }
         
         connection.on("UpdateHpEvent", function (ev) {
             let changed = false;
@@ -1964,38 +2001,21 @@
             }
 
             if (changed) {
-                let hpLogChanged = false;
-                if (currentMyHpText && currentMyHpText !== lastLoggedMyHpText) {
-                    hpLogChanged = true;
-                    lastLoggedMyHpText = currentMyHpText;
-                }
-                if (currentOpponentHpText && currentOpponentHpText !== lastLoggedOppHpText) {
-                    hpLogChanged = true;
-                    lastLoggedOppHpText = currentOpponentHpText;
-                }
-                
-                if (hpLogChanged) {
-                    let myName = "내 포켓몬";
-                    if (myActiveIndex >= 0 && myParty[myActiveIndex]) {
-                        const mId = myParty[myActiveIndex].SpeciesId || myParty[myActiveIndex].dexId;
-                        myName = myParty[myActiveIndex].name || myParty[myActiveIndex].NameKo || (masterDataMap[mId] ? masterDataMap[mId].nameKo : null) || "내 포켓몬";
-                    }
-                    let oppName = "상대 포켓몬";
-                    if (opponentActiveIndex >= 0 && opponentParty[opponentActiveIndex]) {
-                        const oId = opponentParty[opponentActiveIndex].SpeciesId || opponentParty[opponentActiveIndex].dexId;
-                        oppName = opponentParty[opponentActiveIndex].name || opponentParty[opponentActiveIndex].NameKo || (masterDataMap[oId] ? masterDataMap[oId].nameKo : null) || "상대 포켓몬";
-                    }
-
-                    let hpMsg = "체력 업데이트";
-                    if (currentMyHpText) hpMsg += ` [${myName}: ${currentMyHpText}]`;
-                    if (currentOpponentHpText) hpMsg += ` [${oppName}: ${currentOpponentHpText}]`;
-                    addLog(hpMsg);
-                }
                 renderAll();
+                
+                if (hpLogTimeout) {
+                    clearTimeout(hpLogTimeout);
+                }
+                hpLogTimeout = setTimeout(flushHpLog, 1500); // 1.5초 동안 체력 변화가 없으면 최종 체력을 로그에 출력 (이벤트 발생 시 즉시 출력됨)
             }
         });
 
         connection.on("BattleLogEvent", function (ev) {
+            // HpChange 이벤트는 무시하고, 그 외의 실제 텍스트 이벤트 발생 시에만 플러시
+            if (ev.eventType !== "HpChange") {
+                flushHpLog();
+            }
+            
             console.log("BattleLogEvent received:", ev);
             
             let sourceStr = ev.source === "My" ? "[내 포켓몬] " : (ev.source === "Opponent" ? "[상대 포켓몬] " : "");
@@ -2088,10 +2108,26 @@
                 currentWeather = ev.payload;
                 const weatherEl = document.getElementById("weatherSelect");
                 if (weatherEl) weatherEl.value = currentWeather;
-            } else if (ev.eventType === "BatonPass") {
-                addLog(`${sourceStr}배턴터치 사용`);
-                if (ev.source === "My") batonPassMy = true;
-                else if (ev.source === "Opponent") batonPassOpp = true;
+            } else if (ev.eventType === "MoveUse") {
+                if (ev.payload) {
+                    addLog(`${sourceStr}[${ev.payload}] 사용`);
+                    if (ev.payload === "배턴터치") {
+                        if (ev.source === "My") batonPassMy = true;
+                        else if (ev.source === "Opponent") batonPassOpp = true;
+                    }
+                } else {
+                    addLog(`${sourceStr}기술 사용: ${ev.description}`);
+                }
+            } else if (ev.eventType === "Effectiveness") {
+                addLog(`${sourceStr}${ev.description}`);
+            } else if (ev.eventType === "CriticalHit") {
+                addLog(`${sourceStr}급소에 맞았다!`);
+            } else if (ev.eventType === "Miss" || ev.eventType === "Fail") {
+                addLog(`${sourceStr}${ev.description}`);
+            } else if (ev.eventType === "Faint") {
+                addLog(`${sourceStr}쓰러졌다!`);
+            } else if (ev.eventType === "ItemUse") {
+                addLog(`${ev.description}`);
             } else if (ev.eventType === "Switch") {
                 let targetIndex = ev.targetIndex !== undefined ? ev.targetIndex : -1;
                 let prevName = "";
@@ -2124,6 +2160,24 @@
                 addLog(`${sourceStr}교체: ${prevName} -> ${nextName}`);
                 
                 if (ev.source === "My") {
+                    let max = NaN;
+                    if (targetIndex !== -1 && myParty[targetIndex]) {
+                        let myActive = myParty[targetIndex];
+                        if (myActive.Stats && myActive.Stats.Hp) {
+                            max = myActive.Stats.Hp;
+                        } else if (myActive.stats && myActive.stats.hp) {
+                            max = myActive.stats.hp;
+                        } else {
+                            const baseStats = masterDataMap[myActive.SpeciesId || myActive.dexId]?.baseStats;
+                            if (baseStats) {
+                                max = getMyActualStats(myActive, baseStats).hp;
+                            }
+                        }
+                    }
+                    if (!isNaN(max)) {
+                        lastLoggedMyHpText = `HP ${max} / ${max}`;
+                    }
+
                     // Ignore duplicate switches
                     if (targetIndex !== -1 && targetIndex !== myActiveIndex) {
                         if (batonPassMy) {
@@ -2135,6 +2189,7 @@
                         changeMyActive(targetIndex);
                     }
                 } else if (ev.source === "Opponent") {
+                    lastLoggedOppHpText = "HP 100%";
                     if (targetIndex !== -1 && targetIndex !== opponentActiveIndex) {
                         if (batonPassOpp) {
                             batonPassOpp = false; // Ranks kept

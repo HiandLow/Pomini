@@ -15,9 +15,9 @@ namespace PokemonHelper.Services.Recognition
 	{
 		private readonly OcrEngine _engine;
 
-		public WindowsOcrEngine()
+		public WindowsOcrEngine(string lang = "ko")
 		{
-			_engine = OcrEngine.TryCreateFromLanguage(new Language("ko")) ?? OcrEngine.TryCreateFromUserProfileLanguages() ?? throw new InvalidOperationException("Windows OCR 한국어 모델을 찾지 못했습니다. Windows 설정 → 언어 → 한국어 → 옵션에서 'OCR' 추가 후 재시도하세요.");
+			_engine = OcrEngine.TryCreateFromLanguage(new Language(lang)) ?? OcrEngine.TryCreateFromUserProfileLanguages() ?? throw new InvalidOperationException($"Windows OCR {lang} 모델을 찾지 못했습니다.");
 		}
 
 		public string Recognize(Bitmap bmp, OcrLayoutHint hint = OcrLayoutHint.Block)

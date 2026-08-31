@@ -26,6 +26,8 @@ namespace PokemonHelper.Services.Recognition
         {
             if (string.IsNullOrWhiteSpace(logText))
                 return null;
+                
+            logText = logText.Replace(" ", "");
 
             // 0. 메가링/나이트 반응 감지
             if (logText.Contains("나이트") && (logText.Contains("반응했다") || logText.Contains("모두링") || logText.Contains("메가링")))
@@ -64,15 +66,7 @@ namespace PokemonHelper.Services.Recognition
             // 2. 교체 감지 (단순 키워드 기반)
             if (logText.Contains("가방에서")) return null; // 아이템 사용 방지
             
-            if (logText.Contains("배턴터치"))
-            {
-                return new BattleLogEvent
-                {
-                    EventType = "BatonPass",
-                    Source = DetermineSource(logText, "배턴터치"),
-                    Description = logText
-                };
-            }
+
             
             if (logText.Contains("가랏") || logText.Contains("가릿") || logText.Contains("가라") || logText.Contains("부탁해") || logText.Contains("가자"))
             {
@@ -156,9 +150,33 @@ namespace PokemonHelper.Services.Recognition
                 };
             }
 
+            if (logText.Contains("효과가굉장했다") || logText.Contains("효과가별로인듯하다") || logText.Contains("효과가없는것같다") || logText.Contains("효과가경장했다") || logText.Contains("효과가핑장했다") || logText.Contains("효과가링장했다") || logText.Contains("효과가징장했다"))
+            {
+                return new BattleLogEvent { EventType = "Effectiveness", Source = DetermineSource(logText, ""), Description = logText };
+            }
+
+            if (logText.Contains("급소에맞았다"))
+            {
+                return new BattleLogEvent { EventType = "CriticalHit", Source = DetermineSource(logText, ""), Description = logText };
+            }
+
+            if (logText.Contains("빗나갔다") || logText.Contains("피했다"))
+            {
+                return new BattleLogEvent { EventType = "Miss", Source = DetermineSource(logText, ""), Description = logText };
+            }
+            if (logText.Contains("실패하고말았다") || logText.Contains("잘통하지않았다"))
+            {
+                return new BattleLogEvent { EventType = "Fail", Source = DetermineSource(logText, ""), Description = logText };
+            }
+
+            if (logText.Contains("쓰러졌다"))
+            {
+                return new BattleLogEvent { EventType = "Faint", Source = DetermineSource(logText, ""), Description = logText };
+            }
+
             
-            // 6. 기술 사용 (MoveUse) 감지
-            if (logText.EndsWith("!") && !logText.Contains("효과가") && !logText.Contains("올라갔다") && !logText.Contains("떨어졌다") && !logText.Contains("내보냈다") && !logText.Contains("들어갔다") && !logText.Contains("넣어버렸다") && !logText.Contains("바톤터치") && !logText.Contains("메가진화") && !logText.Contains("급소에") && !logText.Contains("쓰러졌다") && !logText.Contains("모습이"))
+            bool hasExclamation = logText.EndsWith("!") || logText.EndsWith("1") || logText.EndsWith("l") || logText.EndsWith("I") || logText.EndsWith("|") || logText.EndsWith("i");
+            if (hasExclamation && !logText.Contains("효과가") && !logText.Contains("올라갔다") && !logText.Contains("떨어졌다") && !logText.Contains("내보냈다") && !logText.Contains("들어갔다") && !logText.Contains("넣어버렸다") && !logText.Contains("메가진화") && !logText.Contains("급소에") && !logText.Contains("쓰러졌다") && !logText.Contains("모습이"))
             {
                 string source = DetermineSource(logText, "");
                 string? detectedMove = null;
@@ -229,7 +247,7 @@ namespace PokemonHelper.Services.Recognition
                     {
                         EventType = "MoveUse",
                         Source = source,
-                        Name = source,
+                        Name = source == "My" ? (_activeMyPokemon ?? "") : (_activeOpponentPokemon ?? ""),
                         Description = logText,
                         Payload = detectedMove
                     };
@@ -274,7 +292,8 @@ namespace PokemonHelper.Services.Recognition
             var names = source == "My" ? BattleStateCache.MyPartyNames : BattleStateCache.OpponentPartyNames;
             if (names == null || names.Count == 0) return -1;
 
-            int bestMatchCount = 1; // 최소 2글자 이상 일치
+            int bestMatchCount = -1;
+            int bestLength = -1;
             int targetIndex = -1;
 
             for (int i = 0; i < names.Count; i++)
@@ -287,14 +306,17 @@ namespace PokemonHelper.Services.Recognition
                 {
                     if (description.Contains(c)) matchCount++;
                 }
-                if (description.Contains(n)) matchCount += 10; // 완전 일치 가산점
+                if (description.Contains(n)) matchCount += 100; // 완전 일치 시 압도적 가산점 부여
 
-                if (matchCount > bestMatchCount)
+                if (matchCount > bestMatchCount || (matchCount == bestMatchCount && n.Length > bestLength))
                 {
                     bestMatchCount = matchCount;
+                    bestLength = n.Length;
                     targetIndex = i;
                 }
             }
+
+            if (bestMatchCount < 2) return -1; // 최소 2글자 이상 매칭되어야 인정 (혹은 Contains 보너스)
 
             return targetIndex;
         }
